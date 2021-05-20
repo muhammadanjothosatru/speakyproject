@@ -9,7 +9,6 @@ import tensorflow as tf
 from tensorflow.keras.layers.experimental import preprocessing
 from tensorflow.keras import layers
 from tensorflow.keras import models
-from IPython import display
 
 seed = 42
 tf.random.set_seed(seed)
@@ -59,6 +58,7 @@ waveform_ds = files_ds.map(get_waveform_and_label, num_parallel_calls=AUTOTUNE)
 
 
 def get_spectrogram(waveform):
+    print(tf.shape(waveform))
     zero_padding = tf.zeros([16000] - tf.shape(waveform), dtype=tf.float32)
 
     waveform = tf.cast(waveform, tf.float32)
@@ -69,6 +69,16 @@ def get_spectrogram(waveform):
     spectrogram = tf.abs(spectrogram)
 
     return spectrogram
+
+
+for waveform, label in waveform_ds.take(1):
+    label = label.numpy().decode('utf-8')
+    spectrogram = get_spectrogram(waveform)
+
+print('Label:', label)
+print('Waveform shape:', waveform.shape)
+print('Spectrogram shape:', spectrogram.shape)
+print('Audio playback')
 
 
 def get_spectrogram_and_label_id(audio, label):
@@ -94,7 +104,7 @@ train_ds = spectrogram_ds
 val_ds = preprocess_dataset(val_files)
 test_ds = preprocess_dataset(test_files)
 
-batch_size = 64
+batch_size = 4
 train_ds = train_ds.batch(batch_size)
 val_ds = val_ds.batch(batch_size)
 
@@ -168,7 +178,7 @@ plt.xlabel('Prediction')
 plt.ylabel('Label')
 plt.show()
 
-sample_file = data_dir / 'uh/7.wav'
+sample_file = data_dir / 'uh/99.wav'
 
 sample_ds = preprocess_dataset([str(sample_file)])
 
