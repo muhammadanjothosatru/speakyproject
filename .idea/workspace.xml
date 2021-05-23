@@ -22,11 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="985d97c5-a4d3-4674-84af-537bf3547acb" name="Default Changelist" comment="commitd android">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-android/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-android/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-android/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-android/.idea/misc.xml" afterDir="false" />
-    </list>
+    <list default="true" id="985d97c5-a4d3-4674-84af-537bf3547acb" name="Default Changelist" comment="commitd android" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

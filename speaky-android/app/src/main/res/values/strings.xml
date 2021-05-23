@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Speaky</string>
+    <string name="copyright">©Copyright by Big Hero 6</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="tag">Increase your public speaking skill here!</string>
+    <string name="e_mail">E-mail</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="belum_punya_akun">Belum punya akun?</string>
+    <string name="register">Register</string>
+    <string name="your_name">Full name</string>
+    <string name="re_type_password">Re-type Password</string>
+    <string name="swipe_right_for_login">Swipe Right for Login</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="daftar_disini">Daftar di sini.</string>
+    <string name="atau">atau</string>
+    <string name="masuk_dengan_google">Masuk dengan Google</string>
+    <string name="full_name">Nama Lengkap</string>
+    <string name="sudah_punya_akun">Sudah punya akun?</string>
+    <string name="masuk_disini">Masuk di sini</string>
 </resources>
