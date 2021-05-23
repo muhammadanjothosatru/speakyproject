@@ -130,7 +130,7 @@ model = models.Sequential([
     layers.Flatten(),
     layers.Dense(128, activation='relu'),
     layers.Dropout(0.5),
-    layers.Dense(num_labels),
+    layers.Dense(num_labels, activation='sigmoid'),
 ])
 
 model.summary()
@@ -178,12 +178,13 @@ plt.xlabel('Prediction')
 plt.ylabel('Label')
 plt.show()
 
-sample_file = data_dir / 'uh/99.wav'
+test_dir = pathlib.Path('test')
+sample_file = test_dir / '2.wav'
 
 sample_ds = preprocess_dataset([str(sample_file)])
-
+print(sample_ds)
 for spectrogram, label in sample_ds.batch(1):
     prediction = model(spectrogram)
-    plt.bar(commands, tf.nn.softmax(prediction[0]))
+    plt.bar(commands, tf.nn.sigmoid(prediction[0]))
     plt.title(f'Predictions for "{commands[label[0]]}"')
     plt.show()
