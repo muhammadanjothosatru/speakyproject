@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.bighero.speaky.ui.home.databinding.FragmentDashboardBinding
+import com.bighero.speaky.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment() {
 
