@@ -21,4 +21,9 @@
     <string name="full_name">Nama Lengkap</string>
     <string name="sudah_punya_akun">Sudah punya akun?</string>
     <string name="masuk_disini">Masuk di sini</string>
+    <string name="title_activity_home">MainActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="introduce">This is profile fragment</string>
+    <string name="profile">Profile</string>
 </resources>
