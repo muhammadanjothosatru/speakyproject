@@ -3,6 +3,7 @@ from os.path import isdir, join
 from tensorflow.keras import layers, models
 import numpy as np
 import matplotlib.pyplot as plt
+import tensorflowjs as tfjs
 
 dataset_path = 'dataset2'
 target_all = [name for name in listdir(dataset_path) if isdir(join(dataset_path, name))]
@@ -80,3 +81,4 @@ plt.legend()
 plt.show()
 
 models.save_model(model, model_filename)
+tfjs.converters.save_keras_model(model, "website_test")
