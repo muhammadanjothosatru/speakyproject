@@ -14,18 +14,18 @@
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.bighero.speaky.ui.home.fragment.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_history"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.bighero.speaky.ui.home.fragment.practice.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_practice"
+        android:name="com.bighero.speaky.ui.home.fragment.practice.PracticeFragment"
+        android:label="@string/title_practice"
+        tools:layout="@layout/fragment_practice" />
 
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.bighero.speaky.ui.home.fragment.profile.ProfileFragment"
-        android:label="@string/profile"
+        android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile"/>
 </navigation>

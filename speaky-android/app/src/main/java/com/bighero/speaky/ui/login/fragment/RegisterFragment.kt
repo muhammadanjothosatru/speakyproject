@@ -1,60 +1,109 @@
 package com.bighero.speaky.ui.login.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.bighero.speaky.R
+import com.bighero.speaky.databinding.FragmentRegisterBinding
+import com.jakewharton.rxbinding2.widget.RxTextView
+import io.reactivex.Observable
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class RegisterFragment : Fragment(), View.OnClickListener {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [RegisterFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class RegisterFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding : FragmentRegisterBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false)
+    ): View {
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RegisterFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RegisterFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    @SuppressLint("CheckResult")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val emailStream = RxTextView.textChanges(binding.etEmail)
+            .skipInitialValue()
+            .map { email ->
+                !Patterns.EMAIL_ADDRESS.matcher(email).matches()
             }
+        emailStream.subscribe {
+            showEmailExistAlert(it)
+        }
+
+        val passwordStream = RxTextView.textChanges(binding.etPassword)
+            .skipInitialValue()
+            .map { password ->
+                password.length <6
+            }
+        passwordStream.subscribe {
+            showPasswordMinimalAlert(it)
+        }
+
+        val passwordConfirmationStream = Observable.merge(
+            RxTextView.textChanges(binding.etPassword)
+                .map { password ->
+                    password.toString() != binding.etConfirmPassword.text.toString()
+                },
+            RxTextView.textChanges(binding.etConfirmPassword)
+                .map { confirmPassword ->
+                    confirmPassword.toString() != binding.etPassword.text.toString()
+                }
+        )
+        passwordConfirmationStream.subscribe {
+            showPasswordConfirmationAlert(it)
+        }
+
+        val invalidFieldsStream = Observable.combineLatest(
+            emailStream,
+            passwordStream,
+            passwordConfirmationStream,
+            { emailInvalid: Boolean, passwordInvalid: Boolean, passwordConfirmationInvalid: Boolean ->
+                !emailInvalid && !passwordInvalid && !passwordConfirmationInvalid
+            }
+        )
+        invalidFieldsStream.subscribe { isValid ->
+            if (isValid) {
+                binding.btnRegister.isEnabled = true
+                binding.btnRegister.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue_700))
+            } else {
+                binding.btnRegister.isEnabled = false
+                binding.btnRegister.setBackgroundColor(ContextCompat.getColor(requireContext(), android.R.color.darker_gray))
+            }
+        }
+
+        binding.masukDisini.setOnClickListener(this)
     }
+
+    override fun onClick(v: View) {
+        if (v.id == R.id.masuk_disini) {
+            val mLoginFragment = LoginFragment()
+            val mFragmentManager = fragmentManager
+            mFragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frame_container, mLoginFragment,LoginFragment::class.java.simpleName)
+                commit()
+            }
+        }
+    }
+
+    private fun showEmailExistAlert(isNotValid: Boolean) {
+        binding.etEmail.error = if (isNotValid) getString(R.string.email_not_valid) else null
+    }
+
+    private fun showPasswordMinimalAlert(isNotValid: Boolean) {
+        binding.etPassword.error = if (isNotValid) getString(R.string.password_not_valid) else null
+    }
+
+    private fun showPasswordConfirmationAlert(isNotValid: Boolean) {
+        binding.etConfirmPassword.error = if (isNotValid) getString(R.string.password_not_same) else null
+    }
+
+
 }

@@ -13,4 +13,13 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="inputBox">
+        <item name="android:layout_width">280dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:paddingStart">30dp</item>
+        <item name="android:background">@drawable/et_custom</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
 </resources>

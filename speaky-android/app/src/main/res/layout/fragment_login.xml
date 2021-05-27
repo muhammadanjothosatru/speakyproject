@@ -10,42 +10,33 @@
         android:id="@+id/logo"
         android:layout_width="288dp"
         android:layout_height="96dp"
+        android:src="@drawable/speaky"
         android:layout_centerHorizontal="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.133"
-        tools:src="@drawable/speaky" />
+        tools:ignore="ContentDescription" />
 
     <EditText
         android:id="@+id/et_email"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
+        style="@style/inputBox"
         android:hint="@string/e_mail"
         android:layout_marginTop="120dp"
-        android:paddingStart="30dp"
         android:inputType="textEmailAddress"
-        android:fontFamily="@font/roboto_regular"
-        android:background="@drawable/et_custom"
-        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo"
-        tools:ignore="RtlSymmetry" />
+        tools:ignore="RtlSymmetry"/>
 
     <EditText
         android:id="@+id/et_password"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
+        style="@style/inputBox"
         android:hint="@string/password"
         android:layout_marginTop="10dp"
-        android:paddingStart="30dp"
-        android:fontFamily="@font/roboto_regular"
         android:inputType="textPassword"
         android:layout_centerInParent="true"
-        android:background="@drawable/et_custom"
-        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_email"
