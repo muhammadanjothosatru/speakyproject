@@ -16,13 +16,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.133" />
+        app:layout_constraintVertical_bias="0.05" />
 
     <EditText
         android:id="@+id/et_name"
         style="@style/inputBox"
         android:hint="@string/full_name"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo"

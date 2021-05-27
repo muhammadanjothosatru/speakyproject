@@ -23,7 +23,7 @@
         android:id="@+id/et_email"
         style="@style/inputBox"
         android:hint="@string/e_mail"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="50dp"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,7 +92,7 @@
         android:layout_height="wrap_content"
         android:text="@string/atau"
         android:textColor="@color/black"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/daftar_disini"/>

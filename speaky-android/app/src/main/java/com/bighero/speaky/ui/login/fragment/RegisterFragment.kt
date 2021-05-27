@@ -70,13 +70,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
             }
         )
         invalidFieldsStream.subscribe { isValid ->
-            if (isValid) {
-                binding.btnRegister.isEnabled = true
-                binding.btnRegister.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue_700))
-            } else {
-                binding.btnRegister.isEnabled = false
-                binding.btnRegister.setBackgroundColor(ContextCompat.getColor(requireContext(), android.R.color.darker_gray))
-            }
+            binding.btnRegister.isEnabled = isValid
         }
 
         binding.masukDisini.setOnClickListener(this)
