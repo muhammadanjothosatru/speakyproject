@@ -28,7 +28,7 @@ model.compile(loss='binary_crossentropy',
               optimizer='rmsprop',
               metrics=['acc'])
 
-history = model.fit(x_train, y_train, epochs=500, batch_size=2, validation_data=(x_val, y_val))
+history = model.fit(x_train, y_train, epochs=500, batch_size=8, validation_data=(x_val, y_val))
 
 acc = history.history['acc']
 val_acc = history.history['val_acc']

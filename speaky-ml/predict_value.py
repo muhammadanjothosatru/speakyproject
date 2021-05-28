@@ -1,5 +1,5 @@
 from prepare_dataset import *
-from tensorflow.keras import layers, models
+from tensorflow.keras import models
 
 model_filename = 'disfluency_model.h5'
 
@@ -14,3 +14,5 @@ print(mfcc_reshape.shape)
 
 mfcc_reshape = mfcc_reshape.reshape(1, 16, 16, 1)
 print(mfcc_reshape.shape)
+
+print(model.predict(mfccs))

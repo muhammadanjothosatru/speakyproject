@@ -22,11 +22,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec8e32b8-1ed4-4689-be1b-c11ed0cd24ef" name="Default Changelist" comment="update the model and features">
-      <change afterPath="$PROJECT_DIR$/speaky-ml/predict_value.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/speaky-ml/prepare_dataset.py" afterDir="false" />
+    <list default="true" id="ec8e32b8-1ed4-4689-be1b-c11ed0cd24ef" name="Default Changelist" comment="update file to be seperate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/disfluency_model.h5" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/disfluency_model.h5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/predict_value.py" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/predict_value.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/speaky-ml/training_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/training_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/website_test/group1-shard1of1.bin" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/website_test/group1-shard1of1.bin" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +65,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/speaky-android" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.training_model">
+  <component name="RunManager" selected="Python.predict_value">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -126,6 +127,48 @@
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
       <method v="2" />
     </configuration>
+    <configuration name="predict_value" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="speakyproject" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/speaky-ml" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/speaky-ml/predict_value.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="prepare_dataset" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="speakyproject" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/speaky-ml" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/speaky-ml/prepare_dataset.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="preprocess_dataset" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="speakyproject" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -170,7 +213,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.predict_value" />
         <item itemvalue="Python.training_model" />
+        <item itemvalue="Python.prepare_dataset" />
         <item itemvalue="Python.preprocess_dataset" />
       </list>
     </recent_temporary>
@@ -219,7 +264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622182924442</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="update file to be seperate">
+      <created>1622188005481</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1622188005481</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -241,6 +293,7 @@
     <MESSAGE value="finish creating model" />
     <MESSAGE value="save model to json file" />
     <MESSAGE value="update the model and features" />
-    <option name="LAST_COMMIT_MESSAGE" value="update the model and features" />
+    <MESSAGE value="update file to be seperate" />
+    <option name="LAST_COMMIT_MESSAGE" value="update file to be seperate" />
   </component>
 </project>
