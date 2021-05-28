@@ -22,19 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec8e32b8-1ed4-4689-be1b-c11ed0cd24ef" name="Default Changelist" comment="save model to json file">
-      <change afterPath="$PROJECT_DIR$/speaky-ml/Output.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/speaky-ml/mfcc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/speaky-ml/mfcc.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/speaky-ml/website_test/.vscode/settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/speaky-ml/website_test/script.js" afterDir="false" />
+    <list default="true" id="ec8e32b8-1ed4-4689-be1b-c11ed0cd24ef" name="Default Changelist" comment="update the model and features">
+      <change afterPath="$PROJECT_DIR$/speaky-ml/predict_value.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/speaky-ml/prepare_dataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/disfluency_model.h5" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/disfluency_model.h5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/mfcc_set.npz" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/mfcc_set.npz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/preprocess_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/preprocess_dataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/speaky-ml/training_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/training_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/website_test/group1-shard1of1.bin" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/website_test/group1-shard1of1.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/website_test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/website_test/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622038824880</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="update the model and features">
+      <created>1622182924442</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1622182924442</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -241,6 +240,7 @@
     <MESSAGE value="add another library" />
     <MESSAGE value="finish creating model" />
     <MESSAGE value="save model to json file" />
-    <option name="LAST_COMMIT_MESSAGE" value="save model to json file" />
+    <MESSAGE value="update the model and features" />
+    <option name="LAST_COMMIT_MESSAGE" value="update the model and features" />
   </component>
 </project>
