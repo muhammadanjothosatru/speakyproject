@@ -22,100 +22,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec8e32b8-1ed4-4689-be1b-c11ed0cd24ef" name="Default Changelist" comment="finish creating model">
-      <change afterPath="$PROJECT_DIR$/speaky-ml/website_test/group1-shard1of1.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/speaky-ml/website_test/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/speaky-ml/website_test/model.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub-0.9.0.dist-info/INSTALLER" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub-0.9.0.dist-info/LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub-0.9.0.dist-info/METADATA" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub-0.9.0.dist-info/RECORD" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub-0.9.0.dist-info/WHEEL" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub-0.9.0.dist-info/entry_points.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub-0.9.0.dist-info/top_level.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/compressed_module_resolver.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/estimator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/feature_column.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/feature_column_v2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/image_module_info_pb2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/image_util.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/keras_layer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/meta_graph_lib.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/module.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/module_attachment_pb2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/module_def_pb2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/module_impl.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/module_spec.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/module_v2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/native_module.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/registry.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/resolver.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/saved_model_lib.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/saved_model_module.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/tensor_info.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/tf_utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/tf_v1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/tools/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/tools/make_image_classifier/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/tools/make_image_classifier/make_image_classifier.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/tools/make_image_classifier/make_image_classifier_lib.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/tools/make_nearest_neighbour_index/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/tools/make_nearest_neighbour_index/embedding_generator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/tools/make_nearest_neighbour_index/index_builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/tools/make_nearest_neighbour_index/make_nearest_neighbour_index.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/tools/make_nearest_neighbour_index/similarity_finder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflow_hub/version.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs-3.6.0.dist-info/INSTALLER" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs-3.6.0.dist-info/METADATA" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs-3.6.0.dist-info/RECORD" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs-3.6.0.dist-info/REQUESTED" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs-3.6.0.dist-info/WHEEL" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs-3.6.0.dist-info/entry_points.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs-3.6.0.dist-info/top_level.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/converters/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/converters/common.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/converters/converter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/converters/fold_batch_norms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/converters/fuse_depthwise_conv2d.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/converters/fuse_prelu.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/converters/graph_rewrite_util.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/converters/keras_h5_conversion.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/converters/keras_tfjs_loader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/converters/tf_saved_model_conversion_v2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/converters/wizard.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/op_list/arithmetic.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/op_list/basic_math.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/op_list/control.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/op_list/convolution.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/op_list/creation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/op_list/dynamic.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/op_list/evaluation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/op_list/graph.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/op_list/hash_table.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/op_list/image.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/op_list/logical.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/op_list/matrices.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/op_list/normalization.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/op_list/reduction.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/op_list/slice_join.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/op_list/sparse.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/op_list/spectral.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/op_list/transformation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/quantization.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/read_weights.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/resource_loader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/version.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/tensorflowjs/write_weights.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Scripts/make_image_classifier.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Scripts/make_nearest_neighbour_index.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Scripts/tensorflowjs_converter.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/Scripts/tensorflowjs_wizard.exe" afterDir="false" />
+    <list default="true" id="ec8e32b8-1ed4-4689-be1b-c11ed0cd24ef" name="Default Changelist" comment="save model to json file">
+      <change afterPath="$PROJECT_DIR$/speaky-ml/Output.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/speaky-ml/mfcc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/speaky-ml/mfcc.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/speaky-ml/website_test/.vscode/settings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/speaky-ml/website_test/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/speaky-ml/disfluency_model.h5" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/disfluency_model.h5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/mfcc_set.npz" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/mfcc_set.npz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/preprocess_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/preprocess_dataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/speaky-ml/training_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/training_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/website_test/group1-shard1of1.bin" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/website_test/group1-shard1of1.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/website_test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/website_test/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,6 +68,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/speaky-android" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -293,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622037792333</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="save model to json file">
+      <created>1622038824880</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1622038824880</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -313,6 +240,7 @@
     <MESSAGE value="commitd android" />
     <MESSAGE value="add another library" />
     <MESSAGE value="finish creating model" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish creating model" />
+    <MESSAGE value="save model to json file" />
+    <option name="LAST_COMMIT_MESSAGE" value="save model to json file" />
   </component>
 </project>

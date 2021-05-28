@@ -21,6 +21,8 @@ y_val = feature_sets['y_val']
 x_test = feature_sets['x_test']
 y_test = feature_sets['y_test']
 
+print(y_test)
+
 x_train = x_train.reshape(x_train.shape[0],
                           x_train.shape[1],
                           x_train.shape[2],
@@ -64,6 +66,7 @@ val_acc = history.history['val_acc']
 loss = history.history['loss']
 val_loss = history.history['val_loss']
 
+
 epochs = range(1, len(acc) + 1)
 
 plt.plot(epochs, acc, 'r', label='Training acc')
@@ -79,6 +82,14 @@ plt.title('Training and Validation loss')
 plt.legend()
 
 plt.show()
+
+mfccs = np.expand_dims(x_test[2], 0)
+print(mfccs.shape)
+mfcc_reshape = mfccs.reshape(1, 256)
+np.savetxt("mfcc", mfcc_reshape)
+print(mfcc_reshape.shape)
+mfcc_reshape = mfcc_reshape.reshape(1, 16, 16, 1)
+print(mfcc_reshape.shape)
 
 models.save_model(model, model_filename)
 tfjs.converters.save_keras_model(model, "website_test")
