@@ -25,5 +25,6 @@ class LoginActivity : AppCompatActivity() {
                 .add(R.id.frame_container, mLoginFragment, LoginFragment::class.java.simpleName)
                 .commit()
         }
+
     }
 }

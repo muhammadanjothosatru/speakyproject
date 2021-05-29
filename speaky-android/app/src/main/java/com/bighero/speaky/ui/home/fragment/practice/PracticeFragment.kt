@@ -12,7 +12,7 @@ import com.bighero.speaky.databinding.FragmentPracticeBinding
 
 class PracticeFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: NotificationsViewModel
+    private lateinit var practiceViewModel: PracticeViewModel
     private var _binding: FragmentPracticeBinding? = null
 
     // This property is only valid between onCreateView and
@@ -24,14 +24,14 @@ class PracticeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
+        practiceViewModel =
+            ViewModelProvider(this).get(PracticeViewModel::class.java)
 
         _binding = FragmentPracticeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
+        practiceViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

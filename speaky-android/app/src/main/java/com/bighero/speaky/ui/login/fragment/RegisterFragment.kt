@@ -1,15 +1,20 @@
 package com.bighero.speaky.ui.login.fragment
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+import android.widget.Toast
 import com.bighero.speaky.R
 import com.bighero.speaky.databinding.FragmentRegisterBinding
+import com.bighero.speaky.ui.home.HomeActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 
@@ -17,18 +22,65 @@ class RegisterFragment : Fragment(), View.OnClickListener {
 
     private var _binding : FragmentRegisterBinding? = null
     private val binding get() = _binding!!
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        auth = Firebase.auth
         return binding.root
+
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        validateInput()
+        binding.btnRegister.setOnClickListener {
+            registerUser()
+        }
+
+    }
+
+    private fun registerUser() {
+        if (binding.etName.text.toString().isEmpty()) {
+            binding.etName.error = "Please input your name"
+            binding.etName.requestFocus()
+            return
+        }
+        if (binding.etEmail.text.toString().isEmpty()) {
+            binding.etEmail.error = "Please input your name"
+            binding.etEmail.requestFocus()
+            return
+        }
+        if (binding.etPassword.text.toString().isEmpty()) {
+            binding.etPassword.error = "Please input your name"
+            binding.etPassword.requestFocus()
+            return
+        }
+        if (binding.etConfirmPassword.text.toString().isEmpty()) {
+            binding.etConfirmPassword.error = "Please input your name"
+            binding.etConfirmPassword.requestFocus()
+            return
+        }
+
+        auth.createUserWithEmailAndPassword(binding.etEmail.text.toString(), binding.etPassword.text.toString())
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful) {
+                    startActivity(Intent(requireActivity(),HomeActivity::class.java))
+                    activity?.finish()
+                } else {
+                    Toast.makeText(requireContext(), "Register failed.",
+                        Toast.LENGTH_SHORT).show()
+                }
+            }
+
     }
 
     @SuppressLint("CheckResult")
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    private fun validateInput() {
         val emailStream = RxTextView.textChanges(binding.etEmail)
             .skipInitialValue()
             .map { email ->
@@ -74,6 +126,19 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         }
 
         binding.masukDisini.setOnClickListener(this)
+    }
+
+    public override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = auth.currentUser
+        if(currentUser != null){
+            reload();
+        }
+    }
+
+    private fun reload() {
+        TODO("Not yet implemented")
     }
 
     override fun onClick(v: View) {
