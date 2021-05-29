@@ -93,10 +93,11 @@ def extract_feature(in_files, in_y):
 
     return out_x, out_y
 
-
 x_train, y_train = extract_feature(filenames_train, y_orig_train)
 x_val, y_val = extract_feature(filenames_val, y_orig_val)
 x_test, y_test = extract_feature(filenames_test, y_orig_test)
+
+print(x_test[0])
 
 np.savez(feature_save_file,
          x_train=x_train,
