@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.bighero.speaky.ui.home.fragment.history.HistoryFragment"
+        android:name="com.bighero.speaky.ui.home.fragment.dashboard.DashboardFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_history" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.bighero.speaky.ui.home.fragment.dashboard.DashboardFragment"
+        android:name="com.bighero.speaky.ui.home.fragment.history.HistoryFragment"
         android:label="@string/title_history"
         tools:layout="@layout/fragment_dashboard" />
 

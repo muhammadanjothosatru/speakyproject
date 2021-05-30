@@ -2,22 +2,21 @@ package com.bighero.speaky.ui.home.fragment.profile
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bighero.speaky.databinding.FragmentProfileBinding
 import com.bighero.speaky.ui.login.LoginActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class ProfileFragment : Fragment() {
-
-
     private var _binding: FragmentProfileBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private lateinit var auth: FirebaseAuth
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -31,15 +30,22 @@ class ProfileFragment : Fragment() {
         return root
     }
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        auth = Firebase.auth
+        setUser(auth.currentUser)
         binding.btLogout.setOnClickListener {
             Firebase.auth.signOut()
             startActivity((Intent(requireActivity(), LoginActivity::class.java)))
             activity?.finish()
         }
     }
-
+    private fun setUser(user: FirebaseUser?) {
+        binding.nameprofile.hint = user?.displayName.toString()
+        binding.emaillprofile.hint = user?.email.toString()
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
