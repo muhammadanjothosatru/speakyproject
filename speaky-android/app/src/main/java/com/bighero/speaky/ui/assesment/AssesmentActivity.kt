@@ -16,6 +16,10 @@ class AssesmentActivity : AppCompatActivity() {
         binding= ActivityAssesmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.title = "Tes"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), 111)
         }
@@ -45,5 +49,9 @@ class AssesmentActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 111 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
             binding.btRecord.isEnabled = true
+    }
+
+    override fun onBackPressed() {
+        this.finish()
     }
 }

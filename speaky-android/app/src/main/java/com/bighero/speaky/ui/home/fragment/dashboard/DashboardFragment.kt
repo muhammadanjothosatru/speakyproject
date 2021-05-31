@@ -15,6 +15,8 @@ import com.bighero.speaky.ui.assesment.AssesmentActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 class DashboardFragment : Fragment() {
@@ -23,6 +25,9 @@ class DashboardFragment : Fragment() {
     private var _binding: FragmentDashboardBinding? = null
     private lateinit var auth: FirebaseAuth
     private val binding get() = _binding!!
+
+    private lateinit var database: DatabaseReference
+    private lateinit var uId : String
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +38,7 @@ class DashboardFragment : Fragment() {
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        database = Firebase.database.reference
         return root
     }
 
@@ -40,9 +46,17 @@ class DashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         auth = Firebase.auth
         setUser(auth.currentUser)
+        uId= auth.currentUser!!.uid
         binding.btTest.setOnClickListener {
             startActivity(Intent(activity, AssesmentActivity::class.java))
         }
+        database.child("users").child(uId).child("name").get().addOnSuccessListener {
+            Log.i("firebase", "Got value ${it.value}")
+            binding.name.text= it.value.toString()
+        }.addOnFailureListener {
+            Log.e("firebase", "Error getting data", it)
+        }
+
 
     }
 
