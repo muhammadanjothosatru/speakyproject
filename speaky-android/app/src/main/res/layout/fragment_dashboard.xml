@@ -56,7 +56,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView7"
             app:layout_constraintTop_toBottomOf="@+id/textView7"
-            tools:text="646" />
+            android:text="0 Point" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 <!--    <Button-->
