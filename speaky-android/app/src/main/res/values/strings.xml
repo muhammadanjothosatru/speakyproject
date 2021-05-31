@@ -30,5 +30,14 @@
     <string name="password_not_same">Password tidak sama!</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="running_text">running...</string>
+    <string name="halo">Halo</string>
+    <string name="your_last_score">Skor Terakhir Kamu</string>
+    <string name="score">0 Point</string>
+    <string name="mulai_tes">Mulai tes</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="nama">Nama</string>
+    <string name="sign_out">Keluar</string>
+    <string name="mulai">Mulai</string>
 
 </resources>

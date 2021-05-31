@@ -10,20 +10,19 @@
         android:id="@+id/logo"
         android:layout_width="288dp"
         android:layout_height="96dp"
+        android:layout_marginTop="150dp"
         android:layout_centerHorizontal="true"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.133"
-        tools:src="@drawable/speaky" />
+        android:src="@drawable/speaky" />
 
     <EditText
         android:id="@+id/et_email"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:hint="@string/e_mail"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="50dp"
         android:paddingStart="30dp"
         android:inputType="textEmailAddress"
         android:fontFamily="@font/roboto_regular"
@@ -95,15 +94,13 @@
         app:layout_constraintStart_toEndOf="@id/belum_akun"
         app:layout_constraintTop_toBottomOf="@+id/btn_login"/>
 
-    <TextView
-        android:id="@+id/atau"
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/atau"
-        android:textColor="@color/black"
-        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/daftar_disini"/>
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

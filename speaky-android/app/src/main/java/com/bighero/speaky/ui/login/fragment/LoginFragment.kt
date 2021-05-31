@@ -2,7 +2,6 @@ package com.bighero.speaky.ui.login.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -25,7 +24,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         auth = Firebase.auth
         return binding.root
@@ -35,6 +34,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         binding.daftarDisini.setOnClickListener(this)
         binding.btnLogin.setOnClickListener {
+            showLoading(true)
             doLogin()
         }
     }
@@ -55,8 +55,10 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 if (task.isSuccessful) {
                     val user = auth.currentUser
                     updateUI(user)
+                    showLoading(false)
                 } else {
                     updateUI(null)
+                    showLoading(false)
                 }
             }
 
@@ -73,15 +75,6 @@ class LoginFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    public override fun onStart() {
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        if(currentUser != null){
-            updateUI(currentUser);
-        }
-    }
-
     override fun onClick(v: View) {
         if (v.id == R.id.daftar_disini) {
             val mRegisterFragment = RegisterFragment()
@@ -90,6 +83,15 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 replace(R.id.frame_container, mRegisterFragment,RegisterFragment::class.java.simpleName)
                 commit()
             }
+        }
+    }
+    fun showLoading(i:Boolean) {
+        if (i) {
+            binding.progressBar.visibility = View.VISIBLE
+            binding.btnLogin.isClickable = false
+        } else {
+            binding.progressBar.visibility = View.INVISIBLE
+            binding.btnLogin.isClickable = true
         }
     }
 

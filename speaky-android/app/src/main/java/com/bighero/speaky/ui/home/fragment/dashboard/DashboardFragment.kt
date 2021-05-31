@@ -1,5 +1,6 @@
 package com.bighero.speaky.ui.home.fragment.dashboard
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bighero.speaky.databinding.FragmentDashboardBinding
+import com.bighero.speaky.ui.assesment.AssesmentActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -38,6 +40,9 @@ class DashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         auth = Firebase.auth
         setUser(auth.currentUser)
+        binding.btTest.setOnClickListener {
+            startActivity(Intent(activity, AssesmentActivity::class.java))
+        }
 
     }
 

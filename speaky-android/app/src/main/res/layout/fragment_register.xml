@@ -12,17 +12,16 @@
         android:layout_height="96dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/speaky"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
         android:id="@+id/et_name"
         style="@style/inputBox"
         android:hint="@string/full_name"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo"
@@ -108,16 +107,5 @@
         android:textColor="@color/blue_700"
         app:layout_constraintStart_toEndOf="@id/sudah_akun"
         app:layout_constraintTop_toBottomOf="@+id/btn_register"/>
-
-    <TextView
-        android:id="@+id/atau"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/atau"
-        android:textColor="@color/black"
-        android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/masuk_disini"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

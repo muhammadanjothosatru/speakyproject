@@ -30,22 +30,16 @@ class ProfileFragment : Fragment() {
         return root
     }
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         auth = Firebase.auth
-        setUser(auth.currentUser)
         binding.btLogout.setOnClickListener {
             Firebase.auth.signOut()
             startActivity((Intent(requireActivity(), LoginActivity::class.java)))
             activity?.finish()
         }
     }
-    private fun setUser(user: FirebaseUser?) {
-        binding.nameprofile.hint = user?.displayName.toString()
-        binding.emaillprofile.hint = user?.email.toString()
-    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
