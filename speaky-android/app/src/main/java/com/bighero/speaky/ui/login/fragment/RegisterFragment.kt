@@ -76,7 +76,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         auth.createUserWithEmailAndPassword(binding.etEmail.text.toString(), binding.etPassword.text.toString())
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    writeNewUser(binding.etName.text.toString(), binding.etEmail.text.toString(), binding.etEmail.text.toString())
+                    writeNewUser(binding.etName.text.toString(), binding.etEmail.text.toString(), binding.etPassword.text.toString())
                     startActivity(Intent(requireActivity(),HomeActivity::class.java))
                     activity?.finish()
                 } else {

@@ -45,7 +45,6 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         auth = Firebase.auth
-        setUser(auth.currentUser)
         uId= auth.currentUser!!.uid
         binding.btTest.setOnClickListener {
             startActivity(Intent(activity, AssesmentActivity::class.java))
@@ -56,15 +55,8 @@ class DashboardFragment : Fragment() {
         }.addOnFailureListener {
             Log.e("firebase", "Error getting data", it)
         }
-
-
     }
 
-    private fun setUser(user: FirebaseUser?) {
-        if (user != null) {
-            binding.name.text = user.email.toString()
-        }
-    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
