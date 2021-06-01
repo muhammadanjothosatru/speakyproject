@@ -7,8 +7,9 @@ from tensorflow.keras import models
 
 app = Flask(__name__)
 
-path_model_disfluency = 'model_disfluency.h5'
-path_model_eyegaze = 'model_eyegaze.h5'
+path_model_disfluency = 'model_disfluency_v1.h5'
+path_model_eyegaze = 'model_gaze_v1.h5'
+path_model_blink = 'model_blink_v1.h5'
 
 model_disfluency = models.load_model(path_model_disfluency)
 model_eyegaze = models.load_model(path_model_eyegaze)
