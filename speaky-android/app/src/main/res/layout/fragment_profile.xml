@@ -90,7 +90,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
             <TextView
-                android:id="@+id/tv_item_time"
+                android:id="@+id/tv_item_point"
                 style="@style/regularText"
                 android:text="@string/time"
                 app:layout_constraintEnd_toEndOf="parent"

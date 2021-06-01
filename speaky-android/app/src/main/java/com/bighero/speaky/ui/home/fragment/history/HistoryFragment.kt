@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bighero.speaky.data.source.remote.response.PractiveResponse
 import com.bighero.speaky.databinding.FragmentHistoryBinding
 import com.bighero.speaky.util.ViewModelFactory
@@ -16,7 +17,7 @@ class HistoryFragment : Fragment() {
     private lateinit var homeViewModel: HistoryViewModel
     private var _binding: FragmentHistoryBinding? = null
     private val binding get() = _binding!!
-
+    private lateinit var historyAdapter: HistoryAdapter
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,24 +27,27 @@ class HistoryFragment : Fragment() {
         homeViewModel = ViewModelProvider(this,factory)[HistoryViewModel::class.java]
         _binding = FragmentHistoryBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        historyAdapter = HistoryAdapter()
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         getResponseUsingLiveData()
     }
+
     private fun getResponseUsingLiveData() {
         homeViewModel.getResponseUsingLiveData().observe(viewLifecycleOwner, {
             printa(it)
         })
     }
+
     private fun printa(response: PractiveResponse) {
-        response.history?.let { products ->
-            products.forEach{ product ->
-                product.title.let {
-                    Log.i("title", it)
-                }
-            }
+        response.history?.let {
+          binding.rvHistory.layoutManager = LinearLayoutManager(context)
+            historyAdapter.setHistory(it)
+            historyAdapter.notifyDataSetChanged()
+            binding.rvHistory.setHasFixedSize(true)
+            binding.rvHistory.adapter = historyAdapter
         }
 
         response.exception?.let { exception ->
