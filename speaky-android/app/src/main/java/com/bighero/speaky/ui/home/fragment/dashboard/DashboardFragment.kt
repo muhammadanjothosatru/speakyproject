@@ -6,14 +6,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bighero.speaky.databinding.FragmentDashboardBinding
 import com.bighero.speaky.ui.assesment.AssesmentActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -33,7 +30,7 @@ class DashboardFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         dashboardViewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
@@ -45,7 +42,6 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         auth = Firebase.auth
-        setUser(auth.currentUser)
         uId= auth.currentUser!!.uid
         binding.btTest.setOnClickListener {
             startActivity(Intent(activity, AssesmentActivity::class.java))
@@ -56,15 +52,8 @@ class DashboardFragment : Fragment() {
         }.addOnFailureListener {
             Log.e("firebase", "Error getting data", it)
         }
-
-
     }
 
-    private fun setUser(user: FirebaseUser?) {
-        if (user != null) {
-            binding.name.text = user.email.toString()
-        }
-    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
