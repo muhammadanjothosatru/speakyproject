@@ -46,6 +46,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         validateInput()
         binding.btnRegister.setOnClickListener {
+            showLoading(true)
             registerUser()
         }
 
@@ -77,11 +78,13 @@ class RegisterFragment : Fragment(), View.OnClickListener {
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     writeNewUser(binding.etName.text.toString(), binding.etEmail.text.toString(), binding.etPassword.text.toString())
+                    showLoading(false)
                     startActivity(Intent(requireActivity(),HomeActivity::class.java))
                     activity?.finish()
                 } else {
                     Toast.makeText(requireContext(), "Register failed.",
                         Toast.LENGTH_SHORT).show()
+                    showLoading(false)
                 }
             }
 
@@ -166,5 +169,14 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         binding.etConfirmPassword.error = if (isNotValid) getString(R.string.password_not_same) else null
     }
 
+    fun showLoading(i:Boolean) {
+        if (i) {
+            binding.progressBar.visibility = View.VISIBLE
+            binding.btnRegister.isClickable = false
+        } else {
+            binding.progressBar.visibility = View.INVISIBLE
+            binding.btnRegister.isClickable = true
+        }
+    }
 
 }
