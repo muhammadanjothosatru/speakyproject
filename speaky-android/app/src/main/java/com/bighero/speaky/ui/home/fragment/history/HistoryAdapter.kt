@@ -19,7 +19,7 @@ class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
         fun bind(historyList: HistoryEntity) {
             with(binding) {
                tvItemDate.text = historyList.tanggal
-                tvItemPoint.text = historyList.point.toString()
+                tvItemTime.text = historyList.point.toString()
             }
         }
     }

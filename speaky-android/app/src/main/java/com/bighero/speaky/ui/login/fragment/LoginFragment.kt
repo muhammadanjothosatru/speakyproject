@@ -34,22 +34,22 @@ class LoginFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         binding.daftarDisini.setOnClickListener(this)
         binding.btnLogin.setOnClickListener {
-            showLoading(true)
             doLogin()
         }
     }
 
     private fun doLogin() {
         if (binding.etEmail.text.toString().isEmpty()) {
-            binding.etEmail.error = "Please input your name"
+            binding.etEmail.error = "Please input your email"
             binding.etEmail.requestFocus()
             return
         }
         if (binding.etPassword.text.toString().isEmpty()) {
-            binding.etPassword.error = "Please input your name"
+            binding.etPassword.error = "Please input your password"
             binding.etPassword.requestFocus()
             return
         }
+        showLoading(true)
         auth.signInWithEmailAndPassword(binding.etEmail.text.toString(), binding.etPassword.text.toString())
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {

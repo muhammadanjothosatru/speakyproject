@@ -1,54 +1,68 @@
 package com.bighero.speaky.ui.assesment
 
-import android.Manifest
-import android.content.Intent
-import android.content.pm.PackageManager
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
-import androidx.core.app.ActivityCompat
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
+import com.bighero.speaky.R
 import com.bighero.speaky.databinding.ActivityAssesmentBinding
+import com.bighero.speaky.ui.assesment.fragment.PreviewFragment
 
 class AssesmentActivity : AppCompatActivity() {
+    val drawerToogle by lazy {
+        ActionBarDrawerToggle(this, binding.draweLayout, binding.toolbar, R.string.drawer_open, R.string.drawer_close)
+    }
     private lateinit var binding : ActivityAssesmentBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityAssesmentBinding.inflate(layoutInflater)
+        binding = ActivityAssesmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         supportActionBar?.title = "Tes"
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        binding.navigationView.setNavigationItemSelectedListener {
+            selectDrawerItem(it)
+            true
+        }
+        binding.draweLayout.addDrawerListener(drawerToogle)
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), 111)
-        }
-        else{
-            binding.btRecord.isEnabled = true
-        }
-
-        binding.btRecord.setOnClickListener {
-            var i= Intent(MediaStore.ACTION_VIDEO_CAPTURE)
-            startActivityForResult(i, 123)
-        }
+        val fragment = PreviewFragment.newInstance()
+        addFragment(fragment)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode ==123) {
-            binding.videoView.setVideoURI(data?.data)
-            binding.videoView.start()
-        }
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
+        drawerToogle.syncState()
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == 111 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            binding.btRecord.isEnabled = true
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        drawerToogle.onConfigurationChanged(newConfig)
+    }
+
+    private fun selectDrawerItem(item: MenuItem) {
+        var fragment: Fragment? = null
+
+        binding.draweLayout.closeDrawer(GravityCompat.START)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return if (drawerToogle.onOptionsItemSelected(item)) true else super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.fragment_menu, menu)
+        return false
+    }
+
+    private fun addFragment(fragment: Fragment) {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.add(R.id.frame_container, fragment)
+        fragmentTransaction.commit()
     }
 
     override fun onBackPressed() {

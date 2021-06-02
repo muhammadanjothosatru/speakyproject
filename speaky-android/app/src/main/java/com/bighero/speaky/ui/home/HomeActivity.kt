@@ -25,7 +25,7 @@ class HomeActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_home)
         val appBarConfiguration = AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_practice, R.id.navigation_profile
+                R.id.navigation_home, R.id.navigation_module, R.id.navigation_practice, R.id.navigation_history, R.id.navigation_profile
             ).build()
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
