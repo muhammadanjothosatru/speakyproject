@@ -16,82 +16,66 @@
         android:src="@drawable/speaky"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
     <EditText
         android:id="@+id/et_email"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
+        style="@style/inputBox"
         android:layout_marginTop="50dp"
         android:background="@drawable/et_custom"
-        android:fontFamily="@font/roboto_regular"
         android:hint="@string/e_mail"
         android:inputType="textEmailAddress"
-        android:paddingStart="30dp"
-        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo"
-        tools:ignore="RtlSymmetry" />
+        tools:ignore="RtlSymmetry"
+        android:importantForAutofill="auto"
+        android:autofillHints="@string/e_mail" />
 
     <EditText
         android:id="@+id/et_password"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
+        style="@style/inputBox"
         android:layout_centerInParent="true"
         android:layout_marginTop="10dp"
-        android:background="@drawable/et_custom"
-        android:fontFamily="@font/roboto_regular"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:paddingStart="30dp"
-        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_email"
-        tools:ignore="RtlSymmetry" />
+        tools:ignore="Autofill,RtlSymmetry" />
 
     <Button
         android:id="@+id/btn_login"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
+        style="@style/customButton"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/btn_custom"
-        android:fontFamily="@font/roboto_regular"
         android:text="@string/login"
-        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_password" />
 
     <TextView
         android:id="@+id/belum_akun"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="95dp"
+        style="@style/regularText"
+        android:layout_marginStart="90dp"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/roboto_regular"
         android:text="@string/belum_punya_akun"
-        android:textSize="15sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
     <TextView
         android:id="@+id/daftar_disini"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/regularText"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/roboto_regular"
         android:text="@string/daftar_disini"
+        android:textSize="16sp"
         android:textColor="@color/blue_700"
-        android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@id/belum_akun"
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 

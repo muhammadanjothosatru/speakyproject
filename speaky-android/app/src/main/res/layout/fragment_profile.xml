@@ -2,111 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_edit"
-        android:backgroundTint="@android:color/transparent"
-        app:layout_constraintTop_toTopOf="@id/profile_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/profile_image"/>
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
-        android:layout_width="138dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/avatar_default"
-        app:civ_border_width="1dp"
-        app:civ_border_color="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <include android:id="@+id/detail_content"
+            layout="@layout/content_detail_profile"/>
+    </androidx.core.widget.NestedScrollView>
 
-    <TextView
-        android:id="@+id/profile_name"
-        style="@style/regularText"
-        android:layout_marginTop="16dp"
-        android:text="@string/nama"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/profile_image"
-        app:layout_constraintEnd_toEndOf="@id/profile_image"
-        app:layout_constraintTop_toBottomOf="@id/profile_image"/>
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_item_test"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/blue_200"
-        android:layout_marginTop="16dp"
-        app:cardCornerRadius="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_name">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:padding="15dp">
-            <TextView
-                android:id="@+id/tv_jumlah"
-                style="@style/regularText"
-                android:text="@string/date"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-            <TextView
-                android:id="@+id/tv_jumlah_tes"
-                style="@style/regularText"
-                android:text="@string/time"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_item_score"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/blue_200"
-        android:layout_marginTop="16dp"
-        app:cardCornerRadius="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cv_item_test">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:padding="15dp">
-            <TextView
-                android:id="@+id/tv_item_date"
-                style="@style/regularText"
-                android:text="@string/date"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-            <TextView
-                android:id="@+id/tv_item_point"
-                style="@style/regularText"
-                android:text="@string/time"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/btLogout"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn_custom"
-        android:text="@string/sign_out"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cv_item_score"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

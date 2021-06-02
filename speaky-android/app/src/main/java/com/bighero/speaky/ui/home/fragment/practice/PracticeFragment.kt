@@ -30,10 +30,6 @@ class PracticeFragment : Fragment() {
         _binding = FragmentPracticeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        practiceViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         return root
     }
 

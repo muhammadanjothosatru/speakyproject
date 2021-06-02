@@ -33,11 +33,14 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         auth = Firebase.auth
+        /*
         binding.btLogout.setOnClickListener {
             Firebase.auth.signOut()
             startActivity((Intent(requireActivity(), LoginActivity::class.java)))
             activity?.finish()
         }
+
+         */
     }
 
     override fun onDestroyView() {

@@ -41,21 +41,30 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        showLoading(true)
         auth = Firebase.auth
         uId= auth.currentUser!!.uid
-        binding.btTest.setOnClickListener {
-            startActivity(Intent(activity, AssesmentActivity::class.java))
-        }
         database.child("users").child(uId).child("name").get().addOnSuccessListener {
             Log.i("firebase", "Got value ${it.value}")
-            binding.name.text= it.value.toString()
+            showLoading(false)
         }.addOnFailureListener {
             Log.e("firebase", "Error getting data", it)
+            showLoading(false)
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun showLoading(i:Boolean) {
+        if (i) {
+            binding.progressBar.visibility = View.VISIBLE
+            binding.content.visibility = View.INVISIBLE
+        } else {
+            binding.progressBar.visibility = View.INVISIBLE
+            binding.content.visibility = View.VISIBLE
+        }
     }
 }

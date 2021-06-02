@@ -16,25 +16,29 @@
         android:src="@drawable/speaky"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
     <EditText
         android:id="@+id/et_name"
         style="@style/inputBox"
         android:layout_marginTop="50dp"
         android:hint="@string/full_name"
-        android:importantForAutofill="no"
+        android:importantForAutofill="auto"
+        android:autofillHints="@string/full_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo"
-        tools:ignore="RtlSymmetry" />
+        tools:ignore="RtlSymmetry"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/et_email"
         style="@style/inputBox"
         android:layout_marginTop="10dp"
         android:hint="@string/e_mail"
-        android:importantForAutofill="no"
+        android:importantForAutofill="auto"
+        android:autofillHints="@string/e_mail"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +55,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_email"
-        tools:ignore="RtlSymmetry" />
+        tools:ignore="RtlSymmetry"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/et_confirm_password"
@@ -63,49 +68,38 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_password"
-        tools:ignore="RtlSymmetry" />
+        tools:ignore="RtlSymmetry"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/btn_register"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
+        style="@style/customButton"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/btn_custom"
-        android:fontFamily="@font/roboto_regular"
         android:text="@string/register"
-        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_confirm_password" />
 
     <TextView
         android:id="@+id/sudah_akun"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        style="@style/regularText"
         android:layout_marginStart="95dp"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/roboto_regular"
         android:text="@string/sudah_punya_akun"
-        android:textSize="15sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_register" />
 
     <TextView
         android:id="@+id/masuk_disini"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        style="@style/regularText"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/roboto_regular"
         android:text="@string/masuk_disini"
         android:textColor="@color/blue_700"
-        android:textSize="15sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@id/sudah_akun"
         app:layout_constraintTop_toBottomOf="@+id/btn_register" />
 

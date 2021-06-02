@@ -1,6 +1,7 @@
 package com.bighero.speaky.ui.login.fragment
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
@@ -13,6 +14,7 @@ import com.bighero.speaky.R
 import com.bighero.speaky.data.entity.UserEntity
 import com.bighero.speaky.databinding.FragmentRegisterBinding
 import com.bighero.speaky.ui.home.HomeActivity
+import com.bighero.speaky.ui.login.TermActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -46,7 +48,6 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         validateInput()
         binding.btnRegister.setOnClickListener {
-            showLoading(true)
             registerUser()
         }
 
@@ -74,12 +75,13 @@ class RegisterFragment : Fragment(), View.OnClickListener {
             return
         }
 
+        showLoading(true)
         auth.createUserWithEmailAndPassword(binding.etEmail.text.toString(), binding.etPassword.text.toString())
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     writeNewUser(binding.etName.text.toString(), binding.etEmail.text.toString(), binding.etPassword.text.toString())
                     showLoading(false)
-                    startActivity(Intent(requireActivity(),HomeActivity::class.java))
+                    startActivity(Intent(activity, TermActivity::class.java))
                     activity?.finish()
                 } else {
                     Toast.makeText(requireContext(), "Register failed.",
