@@ -22,7 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec8e32b8-1ed4-4689-be1b-c11ed0cd24ef" name="Default Changelist" comment="adding three model" />
+    <list default="true" id="ec8e32b8-1ed4-4689-be1b-c11ed0cd24ef" name="Default Changelist" comment="change workspace">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -157,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622570633619</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="change workspace">
+      <created>1622656416682</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1622656416682</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -177,6 +186,7 @@
     <MESSAGE value="commitd android" />
     <MESSAGE value="tidy up Disfluency" />
     <MESSAGE value="adding three model" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding three model" />
+    <MESSAGE value="change workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="change workspace" />
   </component>
 </project>
