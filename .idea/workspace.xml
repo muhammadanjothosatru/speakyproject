@@ -22,7 +22,50 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec8e32b8-1ed4-4689-be1b-c11ed0cd24ef" name="Default Changelist" comment="commitd android" />
+    <list default="true" id="ec8e32b8-1ed4-4689-be1b-c11ed0cd24ef" name="Default Changelist" comment="tidy up Disfluency">
+      <change afterPath="$PROJECT_DIR$/speaky-ml/api/model/blink/model_blink_v1.h5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/speaky-ml/api/model/gaze/model_gaze_v1.h5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/group1-shard1of1.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/mfcc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/model.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/CONTRIBUTING.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/Cakefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/lib/browser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/lib/xhr2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/src/000-xml_http_request_event_target.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/src/001-xml_http_request.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/src/errors.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/src/progress_event.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/src/xml_http_request_upload.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/fixtures/hello.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/fixtures/hello.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/fixtures/xhr2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/html/browser_test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/event_target_test.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/events_test.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/headers_test.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/helpers/browser_mocha_runner.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/helpers/browser_mocha_setup.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/helpers/setup.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/helpers/xhr_server.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/nodejs_set_test.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/redirect_test.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/response_type_test.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/responseurl_test.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/send_test.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/status_test.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/xhr_test.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/api/disfluency_model.h5" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/api/model/disfluency/model_disfluency_v1.h5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/api/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/api/index.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,6 +79,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="InvalidFacetManager">
+    <ignored-facets>
+      <facet id="speakyproject/invalid/Android" />
+    </ignored-facets>
+  </component>
   <component name="ProjectId" id="1swE3YqdU4t0kN6fcP6M7aKRUsh" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -48,7 +96,16 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/speaky-android" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/speaky-ml/api/model/gaze" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Documents\Kuliah\Mata Kuliah\Semester 6\1. Bangkit\Capstone\speakyproject\speaky-ml\api\model\gaze" />
+      <recent name="D:\Documents\Kuliah\Mata Kuliah\Semester 6\1. Bangkit\Capstone\speakyproject\speaky-ml\api\model\disfluency" />
+      <recent name="D:\Documents\Kuliah\Mata Kuliah\Semester 6\1. Bangkit\Capstone\speakyproject\speaky-ml\api\model\blink" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -129,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621775203711</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="tidy up Disfluency">
+      <created>1622570306674</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1622570306674</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -147,17 +211,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="commitd android" />
-    <option name="LAST_COMMIT_MESSAGE" value="commitd android" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="488" y="156" key="FileChooserDialogImpl" timestamp="1622452504489">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="488" y="156" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1622452504489" />
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1622450632876" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1622450601385">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1622450601385" />
+    <MESSAGE value="tidy up Disfluency" />
+    <option name="LAST_COMMIT_MESSAGE" value="tidy up Disfluency" />
   </component>
 </project>
