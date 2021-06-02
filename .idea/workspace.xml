@@ -22,50 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec8e32b8-1ed4-4689-be1b-c11ed0cd24ef" name="Default Changelist" comment="tidy up Disfluency">
-      <change afterPath="$PROJECT_DIR$/speaky-ml/api/model/blink/model_blink_v1.h5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/speaky-ml/api/model/gaze/model_gaze_v1.h5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/.vscode/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/group1-shard1of1.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/mfcc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/model.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/CONTRIBUTING.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/Cakefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/lib/browser.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/lib/xhr2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/src/000-xml_http_request_event_target.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/src/001-xml_http_request.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/src/errors.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/src/progress_event.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/src/xml_http_request_upload.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/fixtures/hello.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/fixtures/hello.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/fixtures/xhr2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/html/browser_test.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/event_target_test.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/events_test.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/headers_test.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/helpers/browser_mocha_runner.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/helpers/browser_mocha_setup.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/helpers/setup.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/helpers/xhr_server.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/nodejs_set_test.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/redirect_test.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/response_type_test.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/responseurl_test.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/send_test.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/status_test.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/node_modules/xhr2/test/src/xhr_test.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/website_test/script.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/api/disfluency_model.h5" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/api/model/disfluency/model_disfluency_v1.h5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/api/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/api/index.py" afterDir="false" />
-    </list>
+    <list default="true" id="ec8e32b8-1ed4-4689-be1b-c11ed0cd24ef" name="Default Changelist" comment="adding three model" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -193,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622570306674</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="adding three model">
+      <created>1622570633619</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1622570633619</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -212,6 +176,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="commitd android" />
     <MESSAGE value="tidy up Disfluency" />
-    <option name="LAST_COMMIT_MESSAGE" value="tidy up Disfluency" />
+    <MESSAGE value="adding three model" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding three model" />
   </component>
 </project>
