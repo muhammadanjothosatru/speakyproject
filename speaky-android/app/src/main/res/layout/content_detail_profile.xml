@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -27,23 +27,25 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/nama"
                 android:textSize="20sp"/>
+
             <TextView
-                android:id="@+id/pprofile_status"
+                android:id="@+id/profile_status"
                 style="@style/regularTextWhite"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/tv_custom"
                 android:text="@string/status"
-                android:paddingTop="3dp"
-                android:paddingBottom="3dp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:textSize="16sp"/>
+                android:paddingTop="7dp"
+                android:paddingBottom="7dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:textSize="16sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        app:cardCornerRadius="5dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="15dp">
@@ -67,23 +69,54 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        app:cardCornerRadius="5dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="15dp">>
+        android:layout_marginTop="15dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:padding="20dp">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit"/>
+                android:src="@drawable/ic_edit" />
+
             <TextView
                 style="@style/regularTextThin"
                 android:layout_marginStart="10dp"
                 android:textSize="16sp"
-                android:text="@string/subscribe"/>
+                android:text="@string/subscribe" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:cardCornerRadius="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:padding="20dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_edit" />
+
+            <TextView
+                style="@style/regularTextThin"
+                android:layout_marginStart="10dp"
+                android:textSize="16sp"
+                android:text="@string/pengaturan" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -92,21 +125,25 @@
         android:layout_height="60dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="15dp">>
+        android:layout_marginTop="15dp"
+        app:cardCornerRadius="5dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:padding="20dp">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit"/>
+                android:src="@drawable/ic_edit" />
+
             <TextView
                 style="@style/regularTextThin"
                 android:layout_marginStart="10dp"
                 android:textSize="16sp"
-                android:text="@string/pengaturan"/>
+                android:text="@string/term" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -115,21 +152,25 @@
         android:layout_height="60dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="15dp">>
+        android:layout_marginTop="15dp"
+        app:cardCornerRadius="5dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:padding="20dp">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit"/>
+                android:src="@drawable/ic_edit" />
+
             <TextView
                 style="@style/regularTextThin"
                 android:layout_marginStart="10dp"
                 android:textSize="16sp"
-                android:text="@string/term"/>
+                android:text="@string/faq" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -138,53 +179,26 @@
         android:layout_height="60dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="15dp">>
+        android:layout_marginTop="15dp"
+        app:cardCornerRadius="5dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:padding="20dp">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit"/>
+                android:src="@drawable/ic_edit" />
+
             <TextView
                 style="@style/regularTextThin"
                 android:layout_marginStart="10dp"
                 android:textSize="16sp"
-                android:text="@string/faq"/>
+                android:text="@string/help" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="15dp">>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:padding="20dp">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit"/>
-            <TextView
-                style="@style/regularTextThin"
-                android:layout_marginStart="10dp"
-                android:textSize="16sp"
-                android:text="@string/help"/>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/btLogout"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn_custom"
-        android:text="@string/sign_out"
-        android:layout_marginTop="16dp"/>
 
 </LinearLayout>

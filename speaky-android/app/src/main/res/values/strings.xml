@@ -1,16 +1,14 @@
 <resources>
     <string name="app_name">Speaky</string>
     <string name="copyright">©Copyright by Big Hero 6</string>
-    <string name="tag">Increase your public speaking skill here!</string>
     <string name="e_mail">E-mail</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="belum_punya_akun">Belum punya akun?</string>
     <string name="register">Register</string>
-    <string name="your_name">Full name</string>
     <string name="re_type_password">Re-type Password</string>
     <string name="swipe_right_for_login">Swipe Right for Login</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_home">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_history">History</string>
     <string name="title_practice">Practice</string>
@@ -21,24 +19,19 @@
     <string name="full_name">Nama Lengkap</string>
     <string name="sudah_punya_akun">Sudah punya akun?</string>
     <string name="masuk_disini">Masuk di sini</string>
-    <string name="title_activity_home">MainActivity</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="introduce">This is profile fragment</string>
     <string name="password_not_valid">Password kurang dari 6 karakter!</string>
     <string name="email_not_valid">Format email tidak valid!</string>
     <string name="password_not_same">Password tidak sama!</string>
     <string name="confirm_password">Confirm Password</string>
-    <string name="running_text">running...</string>
+    <string name="running_text">running…</string>
     <string name="halo">Halo</string>
     <string name="your_last_score">Skor Terakhir Kamu</string>
     <string name="score">0</string>
-    <string name="mulai_tes">Mulai tes</string>
+    <string name="mulai_tes">Ikuti ujian lagi</string>
     <string name="date">Date</string>
     <string name="time">Time</string>
     <string name="nama">Nama</string>
     <string name="sign_out">Keluar</string>
-    <string name="mulai">Mulai</string>
     <string name="agree">Setuju dan Lanjut</string>
     <string name="term">Terms and Condition</string>
     <string name="detail_term">These Terms and Conditions constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and [your business name] (“we,” “us” or “our”), concerning your access to and use of our mobile application (the “Application”). You agree that by accessing the Application, you have read, understood, and agree to be bound by all of these Terms and Conditions Use. IF YOU DO NOT AGREE WITH ALL OF THESE TERMS AND CONDITIONS, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE APPLICATION AND YOU MUST DISCONTINUE USE IMMEDIATELY. \n
@@ -72,5 +65,9 @@
     <string name="pengaturan">Pengaturan</string>
     <string name="faq">FAQ</string>
     <string name="help">Bantuan</string>
+    <string name="search">Search</string>
+    <string name="notification">Notification</string>
+    <string name="hapus_akun">Hapus akun</string>
+    <string name="beginner">Beginner</string>
 
 </resources>

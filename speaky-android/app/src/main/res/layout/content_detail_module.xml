@@ -4,16 +4,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="20dp">
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_practive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_custom" />
 
     <TextView
         android:id="@+id/title_module_fragment"
         style="@style/regularText"
+        android:layout_marginTop="20dp"
         android:textSize="16sp"
         android:text="@string/title_modul_pembelajaran"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/description_module_fragment"
