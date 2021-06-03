@@ -11,9 +11,11 @@ Speaky is a self learning public speaking machine learning based. The machine le
 - Deploy the existing model using Flask 
 
 ## Android
-- Make User Interface and User experience
-- Use Android Studio to build app
+- Define database
+- Make User Interface and User experience in kotlin
+- Create a basic features
 - Record video and sound to upload in cloud for machine learning processing to get point
+- Connect to API with Retrofit
 - Save point and assessment history
 
 ## Cloud
