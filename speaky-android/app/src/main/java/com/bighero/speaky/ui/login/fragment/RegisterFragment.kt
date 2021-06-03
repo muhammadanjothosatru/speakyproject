@@ -1,19 +1,17 @@
 package com.bighero.speaky.ui.login.fragment
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.bighero.speaky.R
 import com.bighero.speaky.data.entity.UserEntity
 import com.bighero.speaky.databinding.FragmentRegisterBinding
-import com.bighero.speaky.ui.home.HomeActivity
 import com.bighero.speaky.ui.login.TermActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -79,22 +77,29 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         auth.createUserWithEmailAndPassword(binding.etEmail.text.toString(), binding.etPassword.text.toString())
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    writeNewUser(binding.etName.text.toString(), binding.etEmail.text.toString(), binding.etPassword.text.toString())
+                    writeNewUser(
+                        binding.etName.text.toString(),
+                        binding.etEmail.text.toString(),
+                        "Beginner",
+                        false
+                    )
                     showLoading(false)
                     startActivity(Intent(activity, TermActivity::class.java))
                     activity?.finish()
                 } else {
-                    Toast.makeText(requireContext(), "Register failed.",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(), "Register failed.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     showLoading(false)
                 }
             }
 
     }
 
-    private fun writeNewUser(name: String, email: String, password: String) {
-        val uId= auth.currentUser!!.uid
-        val user = UserEntity(uId, name, email, password )
+    private fun writeNewUser(name: String, email: String, level: String, status: Boolean) {
+        val uId = auth.currentUser!!.uid
+        val user = UserEntity(name, email, level, status)
 
         database.child("users").child(uId).setValue(user)
     }

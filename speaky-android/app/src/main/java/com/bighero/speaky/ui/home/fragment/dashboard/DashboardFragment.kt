@@ -1,15 +1,11 @@
 package com.bighero.speaky.ui.home.fragment.dashboard
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.bighero.speaky.R
 import com.bighero.speaky.databinding.FragmentDashboardBinding
-import com.bighero.speaky.ui.assesment.AssesmentActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -24,7 +20,12 @@ class DashboardFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var database: DatabaseReference
-    private lateinit var uId : String
+    private lateinit var uId: String
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,13 +44,20 @@ class DashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         showLoading(true)
         auth = Firebase.auth
-        uId= auth.currentUser!!.uid
-        database.child("users").child(uId).child("name").get().addOnSuccessListener {
-            Log.i("firebase", "Got value ${it.value}")
-            showLoading(false)
-        }.addOnFailureListener {
-            Log.e("firebase", "Error getting data", it)
-            showLoading(false)
+        uId = auth.currentUser!!.uid
+        showLoading(false)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.notif_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_notif -> {
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
@@ -58,7 +66,7 @@ class DashboardFragment : Fragment() {
         _binding = null
     }
 
-    fun showLoading(i:Boolean) {
+    fun showLoading(i: Boolean) {
         if (i) {
             binding.progressBar.visibility = View.VISIBLE
             binding.content.visibility = View.INVISIBLE
