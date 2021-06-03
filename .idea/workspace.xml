@@ -22,17 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec8e32b8-1ed4-4689-be1b-c11ed0cd24ef" name="Default Changelist" comment="adding model into flask api">
-      <change afterPath="$PROJECT_DIR$/speaky-ml/Blink and Gaze Detection/blink_model.h5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/speaky-ml/Blink and Gaze Detection/gaze_model.h5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/speaky-ml/api/shape_predictor_68_face_landmarks.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/speaky-ml/api/sound.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/speaky-ml/api/subsound.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/speaky-ml/api/video.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/speaky-ml/api/video_smallTEMP_MPY_wvf_snd.mp3" afterDir="false" />
+    <list default="true" id="ec8e32b8-1ed4-4689-be1b-c11ed0cd24ef" name="Default Changelist" comment="flask web server done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/api/audioFile.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/api/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/api/index.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -303,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622691546352</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="flask web server done">
+      <created>1622715870556</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1622715870556</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -325,6 +323,7 @@
     <MESSAGE value="adding three model" />
     <MESSAGE value="change workspace" />
     <MESSAGE value="adding model into flask api" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding model into flask api" />
+    <MESSAGE value="flask web server done" />
+    <option name="LAST_COMMIT_MESSAGE" value="flask web server done" />
   </component>
 </project>
