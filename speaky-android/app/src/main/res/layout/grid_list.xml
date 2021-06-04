@@ -23,7 +23,7 @@
 
         <TextView
             style="@style/regularText"
-            android:text="@string/title_module"
+            android:text="@string/xxx"
             android:textSize="14sp"
             android:layout_margin="10dp"
             app:layout_constraintBottom_toBottomOf="@id/img_module"

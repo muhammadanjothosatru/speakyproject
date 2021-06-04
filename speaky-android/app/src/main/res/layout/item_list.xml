@@ -22,7 +22,7 @@
             <TextView
                 android:id="@+id/tv_item_date"
                 style="@style/regularTextGrayThin"
-                android:text="@string/date"
+                android:text="@string/xxx"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
@@ -31,7 +31,7 @@
                 style="@style/regularTextGrayThin"
                 android:textSize="12sp"
                 android:layout_marginStart="5dp"
-                android:text="@string/time"
+                android:text="@string/xxx"
                 app:layout_constraintStart_toEndOf="@id/tv_item_date"
                 app:layout_constraintTop_toTopOf="parent"/>
             <TextView
@@ -43,7 +43,7 @@
             <TextView
                 style="@style/regularTextBlueThin"
                 android:textSize="12sp"
-                android:text="@string/kategori"
+                android:text="@string/xxx"
                 app:layout_constraintTop_toTopOf="@id/tv_item_date"
                 app:layout_constraintEnd_toEndOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>

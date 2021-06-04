@@ -46,9 +46,18 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showLoading(true)
-        database.child("users").child(uId).child("name").get().addOnSuccessListener {
-            Log.i("firebase", "Got value ${it.value}")
-            detailBinding.profileName.text = it.value.toString()
+
+        database.child("users").child(uId).get().addOnSuccessListener {
+            Log.i("firebase", "Got value ${it.child("name").value}")
+            Log.i("firebase", "Got value ${it.child("status").value}")
+
+            detailBinding.profileName.text = it.child("name").value.toString()
+            val status = it.child("status").value
+            if (status == false) {
+                detailBinding.profileStatus.text = getString(R.string.free_user)
+            } else {
+                detailBinding.profileStatus.text = getString(R.string.premium_user)
+            }
             showLoading(false)
         }.addOnFailureListener {
             Log.e("firebase", "Error getting data", it)

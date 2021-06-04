@@ -28,8 +28,6 @@
     <string name="your_last_score">Skor Terakhir Kamu</string>
     <string name="score">0</string>
     <string name="mulai_tes">Ikuti ujian lagi</string>
-    <string name="date">Date</string>
-    <string name="time">Time</string>
     <string name="nama">Nama</string>
     <string name="sign_out">Keluar</string>
     <string name="agree">Setuju dan Lanjut</string>
@@ -43,7 +41,10 @@
     <string name="drawer_open">Open Navigation Drawer</string>
     <string name="drawer_close">Close Navigation Drawer</string>
     <string name="level">Level:</string>
-    <string name="detail_level">Intermediate</string>
+    <string name="xxx">xxx</string>
+    <string name="beginner">Beginner</string>
+    <string name="intermediate">Intermediate</string>
+    <string name="advanced">Advanced</string>
     <string name="peringkat">Peringkat</string>
     <string name="weekly_schedule">Jadwal mingguan</string>
     <string name="teori">Teori</string>
@@ -58,8 +59,6 @@
     <string name="search_another_module">Cari modul lainnya</string>
     <string name="title_practice_fragment">Praktik Secara Langsung</string>
     <string name="desc_practice_fragment">Latih teknik public speakingmu dengan mengikuti instruksi yang tersedia.</string>
-    <string name="kategori">Kategori</string>
-    <string name="status">Status</string>
     <string name="edit_profil">Edit Profil</string>
     <string name="subscribe">Langganan</string>
     <string name="pengaturan">Pengaturan</string>
@@ -68,6 +67,9 @@
     <string name="search">Search</string>
     <string name="notification">Notification</string>
     <string name="hapus_akun">Hapus akun</string>
-    <string name="beginner">Beginner</string>
+    <string name="free_user">Free</string>
+    <string name="premium_user">Premium</string>
+    <string name="_30">30</string>
+
 
 </resources>

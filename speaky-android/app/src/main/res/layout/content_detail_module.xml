@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.SearchView
-        android:id="@+id/search_practive"
+        android:id="@+id/search_module"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/search_custom" />
@@ -54,13 +54,14 @@
             android:layout_margin="10dp">
             <TextView
                 style="@style/regularTextGrayThin"
-                android:text="@string/title_module"
+                android:text="@string/xxx"
                 android:textSize="10sp"
                 tools:ignore="SmallSp" />
+
             <TextView
                 style="@style/regularText"
                 android:textSize="14sp"
-                android:text="@string/title_submodule"/>
+                android:text="@string/xxx" />
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

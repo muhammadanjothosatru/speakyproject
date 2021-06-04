@@ -16,17 +16,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 style="@style/regularTextBlue"
-                android:text="@string/teori"/>
+                android:text="@string/xxx" />
+
             <TextView
                 style="@style/regularText"
                 android:textSize="20sp"
-                android:text="@string/judul_teori"/>
+                android:text="@string/xxx" />
+
             <TextView
                 style="@style/regularTextGray"
                 android:textSize="14sp"
-                android:text="@string/complete_teori"/>
+                android:text="@string/complete_teori" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

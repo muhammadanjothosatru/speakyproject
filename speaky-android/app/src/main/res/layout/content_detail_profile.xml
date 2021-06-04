@@ -25,7 +25,7 @@
                 android:id="@+id/profile_name"
                 style="@style/regularTextWhite"
                 android:layout_marginTop="10dp"
-                android:text="@string/nama"
+                android:text="@string/xxx"
                 android:textSize="20sp"/>
 
             <TextView
@@ -33,7 +33,7 @@
                 style="@style/regularTextWhite"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/tv_custom"
-                android:text="@string/status"
+                android:text="@string/xxx"
                 android:paddingTop="7dp"
                 android:paddingBottom="7dp"
                 android:paddingStart="15dp"

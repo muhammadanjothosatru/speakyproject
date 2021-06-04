@@ -80,7 +80,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
                     writeNewUser(
                         binding.etName.text.toString(),
                         binding.etEmail.text.toString(),
-                        "Beginner",
+                        getString(R.string.beginner),
                         false
                     )
                     showLoading(false)
@@ -176,7 +176,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         binding.etConfirmPassword.error = if (isNotValid) getString(R.string.password_not_same) else null
     }
 
-    fun showLoading(i:Boolean) {
+    private fun showLoading(i: Boolean) {
         if (i) {
             binding.progressBar.visibility = View.VISIBLE
             binding.btnRegister.isClickable = false
