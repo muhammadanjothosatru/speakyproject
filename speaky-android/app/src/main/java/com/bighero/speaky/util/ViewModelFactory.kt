@@ -3,12 +3,13 @@ package com.bighero.speaky.util
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.bighero.speaky.data.source.HistoryRepository
+import com.bighero.speaky.data.source.FirebaseRepository
 import com.bighero.speaky.domain.di.Injection
 import com.bighero.speaky.ui.home.fragment.history.HistoryViewModel
+import com.bighero.speaky.ui.home.fragment.module.ModuleViewModel
 
 
-class ViewModelFactory private constructor(private val mHistoryRepository: HistoryRepository) : ViewModelProvider.NewInstanceFactory() {
+class ViewModelFactory private constructor(private val mFirebaseRepository: FirebaseRepository) : ViewModelProvider.NewInstanceFactory() {
 
     companion object {
         @Volatile
@@ -26,7 +27,10 @@ class ViewModelFactory private constructor(private val mHistoryRepository: Histo
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(HistoryViewModel::class.java) -> {
-                HistoryViewModel(mHistoryRepository) as T
+                HistoryViewModel(mFirebaseRepository) as T
+            }
+            modelClass.isAssignableFrom(ModuleViewModel::class.java) -> {
+                ModuleViewModel(mFirebaseRepository) as T
             }
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }

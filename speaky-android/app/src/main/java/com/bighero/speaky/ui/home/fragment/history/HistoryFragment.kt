@@ -32,10 +32,10 @@ class HistoryFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        getResponseUsingLiveData()
+        gethistory()
     }
 
-    private fun getResponseUsingLiveData() {
+    private fun gethistory() {
         homeViewModel.getResponseUsingLiveData().observe(viewLifecycleOwner, {
             printa(it)
         })
