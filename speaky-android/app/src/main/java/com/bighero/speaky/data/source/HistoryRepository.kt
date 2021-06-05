@@ -3,12 +3,9 @@ package com.bighero.speaky.data.source
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.bighero.speaky.data.entity.HistoryEntity
-import com.bighero.speaky.data.source.remote.response.PractiveResponse
-import com.bighero.speaky.domain.UseCase.FirebaseCallback
+import com.bighero.speaky.data.source.remote.response.HistoryResponse
 import com.bighero.speaky.domain.UseCase.IHistoryRepository
-import com.google.android.gms.common.api.Response
 import com.google.firebase.database.*
-import java.util.concurrent.ExecutorService
 
 class HistoryRepository(
     rootRef: DatabaseReference,
@@ -25,11 +22,11 @@ class HistoryRepository(
             }
     }
 
-    override fun getResponseFromRealtimeDatabaseUsingLiveData() : MutableLiveData<PractiveResponse> {
-        val mutableLiveData = MutableLiveData<PractiveResponse>()
+    override fun getResponseFromRealtimeDatabaseUsingLiveData() : MutableLiveData<HistoryResponse> {
+        val mutableLiveData = MutableLiveData<HistoryResponse>()
         val history = ArrayList<HistoryEntity>()
         historyRef.get().addOnSuccessListener {
-            val response = PractiveResponse()
+            val response = HistoryResponse()
                 response.history = it.children.map { it ->
                     it.getValue(HistoryEntity::class.java)!!
                 }

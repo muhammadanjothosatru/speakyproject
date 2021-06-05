@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bighero.speaky.data.source.remote.response.PractiveResponse
+import com.bighero.speaky.data.source.remote.response.HistoryResponse
 import com.bighero.speaky.databinding.FragmentHistoryBinding
 import com.bighero.speaky.util.ViewModelFactory
 
@@ -41,7 +41,7 @@ class HistoryFragment : Fragment() {
         })
     }
 
-    private fun printa(response: PractiveResponse) {
+    private fun printa(response: HistoryResponse) {
         response.history?.let {
           binding.rvHistory.layoutManager = LinearLayoutManager(context)
             historyAdapter.setHistory(it)

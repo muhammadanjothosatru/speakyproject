@@ -10,7 +10,9 @@
     <androidx.core.widget.NestedScrollView
         android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="53dp">
 
         <include
             android:id="@+id/detail_content"
