@@ -3,6 +3,7 @@ from os.path import isdir, join
 import librosa
 import random
 import numpy as np
+import sklearn.preprocessing as sp
 
 dataset_path = "dataset2"
 target_all = [name for name in listdir(dataset_path) if isdir(join(dataset_path, name))]
@@ -52,11 +53,17 @@ y_orig_test = y[val_set_size:(val_set_size + test_set_size)]
 y_orig_train = y[(val_set_size + test_set_size):]
 
 
+def normalize(audio, axis=0):
+    return sp.minmax_scale(audio, axis=axis)
+
+
 def calc_mfcc(path):
     signal, fs = librosa.load(path, sr=sample_rate)
 
-    mfccs = librosa.feature.mfcc(y=signal, sr=fs, n_fft=2048, n_mfcc=num_mfcc,
-                                 n_mels=26, hop_length=int(fs * 0.050), htk=False)
+    signal = normalize(signal)
+
+    mfccs = librosa.feature.mfcc(y=signal, sr=fs, n_fft=2048, n_mfcc=num_mfcc, fmin=0, fmax=int(fs / 2),
+                                 n_mels=26, hop_length=520, htk=False)
 
     # mfccs = python_speech_features.base.mfcc(signal,
     #                                          samplerate=fs,

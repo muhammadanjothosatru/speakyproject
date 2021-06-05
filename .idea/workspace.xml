@@ -22,11 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec8e32b8-1ed4-4689-be1b-c11ed0cd24ef" name="Default Changelist" comment="create requirements.txt">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="ec8e32b8-1ed4-4689-be1b-c11ed0cd24ef" name="Default Changelist" comment="update the model">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/disfluency_model.h5" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/disfluency_model.h5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/mfcc_set.npz" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/mfcc_set.npz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/preprocess_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/preprocess_dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/training_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/training_model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,8 +241,8 @@
       <list>
         <item itemvalue="Python.predict_value" />
         <item itemvalue="Python.training_model" />
-        <item itemvalue="Python.preprocess_dataset" />
         <item itemvalue="Python.prepare_dataset" />
+        <item itemvalue="Python.preprocess_dataset" />
         <item itemvalue="Python.index" />
       </list>
     </recent_temporary>
@@ -312,7 +312,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622720087195</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="update the model">
+      <created>1622893653469</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1622893653469</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -336,6 +343,7 @@
     <MESSAGE value="adding model into flask api" />
     <MESSAGE value="flask web server done" />
     <MESSAGE value="create requirements.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="create requirements.txt" />
+    <MESSAGE value="update the model" />
+    <option name="LAST_COMMIT_MESSAGE" value="update the model" />
   </component>
 </project>
