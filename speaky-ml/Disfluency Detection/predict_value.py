@@ -10,7 +10,7 @@ model_filename = 'disfluency_model.h5'
 
 model = models.load_model(model_filename)
 
-mfccs = np.expand_dims(x_test[1], 0)
+mfccs = np.expand_dims(x_test[0], 0)
 
 # mfcc_reshape = mfccs.reshape(1, 1024)
 # np.savetxt("mfcc", mfcc_reshape)
@@ -20,4 +20,4 @@ mfccs = np.expand_dims(x_test[1], 0)
 #print(mfcc_reshape.shape)
 
 print(model.predict(mfccs))
-print(y_test[1])
+print(y_test[0])

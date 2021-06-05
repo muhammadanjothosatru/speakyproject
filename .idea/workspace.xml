@@ -23,7 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec8e32b8-1ed4-4689-be1b-c11ed0cd24ef" name="Default Changelist" comment="create requirements.txt">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/preprocess_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/preprocess_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/training_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/training_model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +59,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/speaky-ml/api/model/gaze" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -66,7 +70,7 @@
       <recent name="D:\Documents\Kuliah\Mata Kuliah\Semester 6\1. Bangkit\Capstone\speakyproject\speaky-ml\api\model\blink" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.index">
+  <component name="RunManager" selected="Python.predict_value">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -126,27 +130,6 @@
       <option name="ACTIVITY_CLASS" value="" />
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration name="gaze and blink detection" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="speakyproject" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/speaky-ml/Blink and Gaze Detection" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/speaky-ml/Blink and Gaze Detection/gaze and blink detection.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <configuration name="index" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -233,13 +216,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="training_model" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="speakyproject" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/speaky-ml/Disfluency Detection" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/speaky-ml/Disfluency Detection/training_model.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.index" />
-        <item itemvalue="Python.gaze and blink detection" />
         <item itemvalue="Python.predict_value" />
-        <item itemvalue="Python.prepare_dataset" />
+        <item itemvalue="Python.training_model" />
         <item itemvalue="Python.preprocess_dataset" />
+        <item itemvalue="Python.prepare_dataset" />
+        <item itemvalue="Python.index" />
       </list>
     </recent_temporary>
   </component>

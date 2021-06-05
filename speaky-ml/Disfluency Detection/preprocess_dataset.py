@@ -3,7 +3,6 @@ from os.path import isdir, join
 import librosa
 import random
 import numpy as np
-import python_speech_features
 
 dataset_path = "dataset2"
 target_all = [name for name in listdir(dataset_path) if isdir(join(dataset_path, name))]
@@ -56,18 +55,21 @@ y_orig_train = y[(val_set_size + test_set_size):]
 def calc_mfcc(path):
     signal, fs = librosa.load(path, sr=sample_rate)
 
-    mfccs = python_speech_features.base.mfcc(signal,
-                                             samplerate=fs,
-                                             winlen=0.256,
-                                             winstep=0.050,
-                                             numcep=num_mfcc,
-                                             nfilt=26,
-                                             nfft=2048,
-                                             preemph=0.0,
-                                             ceplifter=0,
-                                             appendEnergy=False,
-                                             winfunc=np.hanning)
-    return mfccs.transpose()
+    mfccs = librosa.feature.mfcc(y=signal, sr=fs, n_fft=2048, n_mfcc=num_mfcc,
+                                 n_mels=26, hop_length=int(fs * 0.050), htk=False)
+
+    # mfccs = python_speech_features.base.mfcc(signal,
+    #                                          samplerate=fs,
+    #                                          winlen=0.256,
+    #                                          winstep=0.050,
+    #                                          numcep=num_mfcc,
+    #                                          nfilt=26,
+    #                                          nfft=2048,
+    #                                          preemph=0.0,
+    #                                          ceplifter=0,
+    #                                          appendEnergy=False,
+    #                                          winfunc=np.hanning)
+    return mfccs
 
 
 def extract_feature(in_files, in_y):
