@@ -15,6 +15,9 @@ data class AssesementResponse(
     @field:SerializedName("disfluency")
     val disfluency:Disfluency,
 
+    @field:SerializedName("eyegaze")
+    val eyegaze:EyeGaze,
+
     @field:SerializedName("urlvideo")
     val urlvideo:String ,
 ) {
@@ -23,6 +26,10 @@ data class AssesementResponse(
         val value:Long , )
 
     data class Blink (
+        @field:SerializedName("value")
+        val value:Long , )
+
+    data class EyeGaze (
         @field:SerializedName("value")
         val value:Long , )
 }
