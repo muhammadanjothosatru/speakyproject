@@ -11,7 +11,7 @@ import com.bighero.speaky.data.source.remote.response.ModuleResponse
 import com.bighero.speaky.data.source.remote.response.UserAssesmentResponse
 import com.bighero.speaky.data.source.remote.response.UserModuleResponse
 import com.bighero.speaky.domain.useCase.IHistoryRepository
-import com.google.firebase.database.*
+import com.google.firebase.database.DatabaseReference
 
 class FirebaseRepository(
     rootRef: DatabaseReference,
@@ -20,7 +20,7 @@ class FirebaseRepository(
     private val historyRef: DatabaseReference = rootRef.child("UserModul")
     private val moduleRef: DatabaseReference = rootRef.child("ResModul")
     private val userModuleRef: DatabaseReference = rootRef.child("userModul")
-    private val userAssesmentRef: DatabaseReference = rootRef.child("UserAssessment")
+    private val userAssessmentRef: DatabaseReference = rootRef.child("UserAssessment")
 
     companion object {
         @Volatile
@@ -90,14 +90,14 @@ class FirebaseRepository(
 
     override fun userAssesment(): MutableLiveData<UserAssesmentResponse> {
         val mutableLiveData = MutableLiveData<UserAssesmentResponse>()
-        val userAssesment = ArrayList<AssessmentEntity>()
-        userAssesmentRef.get().addOnSuccessListener {
+        val userAssessment = ArrayList<AssessmentEntity>()
+        userAssessmentRef.get().addOnSuccessListener {
             val response = UserAssesmentResponse()
 //            response.module = it.children.map { it ->
 //                it.getValue(ModuleEntity::class.java)!!
 //            }
             it.children.map {
-                Log.e("Usermodule",  it.toString())
+                Log.e("Usermodule", it.toString())
             }
             mutableLiveData.value = response
         }.addOnFailureListener {

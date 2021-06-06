@@ -7,31 +7,34 @@ data class AssesementResponse(
     val timestamp: String,
 
     @field:SerializedName("score")
-    val score:Long ,
+    val score: Long,
 
     @field:SerializedName("blink")
     val blink: Blink,
 
     @field:SerializedName("disfluency")
-    val disfluency:Disfluency,
+    val disfluency: Disfluency,
 
-    @field:SerializedName("eyegaze")
-    val eyegaze:EyeGaze,
+    @field:SerializedName("gaze")
+    val gaze: EyeGaze,
 
     @field:SerializedName("urlvideo")
-    val urlvideo:String ,
+    val urlvideo: String
 ) {
-    data class Disfluency (
+    data class Disfluency(
         @field:SerializedName("value")
-        val value:Long , )
+        val value: Long
+    )
 
-    data class Blink (
+    data class Blink(
         @field:SerializedName("value")
-        val value:Long , )
+        val value: Long
+    )
 
-    data class EyeGaze (
+    data class EyeGaze(
         @field:SerializedName("value")
-        val value:Long , )
+        val value: Long
+    )
 }
 
 

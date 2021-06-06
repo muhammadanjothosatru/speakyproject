@@ -1,0 +1,59 @@
+package com.bighero.speaky.ui.assessment.result
+
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import com.bighero.speaky.data.source.remote.network.ApiConfig
+import com.bighero.speaky.data.source.remote.response.AssesementResponse
+import retrofit2.Call
+import retrofit2.Response
+
+class ResultViewModel : ViewModel() {
+
+    private val _assessment = MutableLiveData<AssesementResponse>()
+    val assessment: LiveData<AssesementResponse> = _assessment
+
+    private val _disfluency = MutableLiveData<AssesementResponse.Disfluency>()
+    val disfluency: LiveData<AssesementResponse.Disfluency> = _disfluency
+
+    private val _blink = MutableLiveData<AssesementResponse.Blink>()
+    val blink: LiveData<AssesementResponse.Blink> = _blink
+
+    private val _gaze = MutableLiveData<AssesementResponse.EyeGaze>()
+    val gaze: LiveData<AssesementResponse.EyeGaze> = _gaze
+
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
+    companion object {
+        private const val TAG = "ResultViewModel"
+    }
+
+    fun findAssessment(url: String, id: String) {
+
+        val client = ApiConfig.getApiService().getAssessment(url, id)
+        client.enqueue(object : retrofit2.Callback<AssesementResponse> {
+            override fun onResponse(
+                call: Call<AssesementResponse>,
+                response: Response<AssesementResponse>
+            ) {
+                _isLoading.value = false
+                if (response.isSuccessful) {
+                    _assessment.value = response.body()
+                    _disfluency.value = response.body()?.disfluency
+                    _blink.value = response.body()?.blink
+                    _gaze.value = response.body()?.gaze
+
+                } else {
+                    Log.e(TAG, "onFailure: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<AssesementResponse>, t: Throwable) {
+                _isLoading.value = false
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+    }
+}

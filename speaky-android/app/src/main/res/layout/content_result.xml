@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        style="@style/regularText"
+        android:text="Selamat! Score kamu :"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/score"
+        style="@style/regularText"
+        android:text="@string/xxx"
+        android:textSize="60sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/dis"
+            style="@style/regularText"
+            android:text="Disfluency :"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/score" />
+
+        <TextView
+            android:id="@+id/dis_value"
+            style="@style/regularTextBlue"
+            android:textSize="20sp"
+            android:text="@string/xxx"
+            android:layout_marginStart="5dp"
+            app:layout_constraintTop_toBottomOf="@id/score"
+            app:layout_constraintStart_toEndOf="@id/dis" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/blink"
+            style="@style/regularText"
+            android:text="Blink :"
+            android:textSize="20sp"
+            android:layout_marginStart="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dis" />
+
+        <TextView
+            android:id="@+id/blink_value"
+            style="@style/regularTextBlue"
+            android:textSize="20sp"
+            android:text="@string/xxx"
+            android:layout_marginStart="5dp"
+            app:layout_constraintTop_toBottomOf="@id/dis"
+            app:layout_constraintStart_toEndOf="@id/blink" />
+    </LinearLayout>
+
+</LinearLayout>
