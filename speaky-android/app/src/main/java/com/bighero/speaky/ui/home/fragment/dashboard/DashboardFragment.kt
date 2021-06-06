@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bighero.speaky.R
 import com.bighero.speaky.databinding.ContentDetailDashboardBinding
 import com.bighero.speaky.databinding.FragmentDashboardBinding
-import com.bighero.speaky.ui.assesment.AssessmentActivity
+import com.bighero.speaky.ui.assessment.AssessmentActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference

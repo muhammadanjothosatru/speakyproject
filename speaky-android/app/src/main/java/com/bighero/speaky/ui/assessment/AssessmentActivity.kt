@@ -1,4 +1,4 @@
-package com.bighero.speaky.ui.assesment
+package com.bighero.speaky.ui.assessment
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
+import android.util.Size
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -17,8 +18,9 @@ import androidx.camera.core.VideoCapture
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import com.bighero.speaky.databinding.ActivityAssessmentBinding
-import com.bighero.speaky.ui.assesment.result.ResultActivity
+import com.bighero.speaky.ui.assessment.result.ResultActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -41,7 +43,7 @@ class AssessmentActivity : AppCompatActivity() {
 
     private var videoCapture: VideoCapture? = null
     private lateinit var cameraExecutor: ExecutorService
-    var recording: Boolean = false
+    //var recording: Boolean = false
 
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
@@ -67,86 +69,20 @@ class AssessmentActivity : AppCompatActivity() {
         }
 
         // Set up the listener for take photo button
-        binding.cameraCaptureButton.setOnClickListener { takePhoto() }
+        binding.cameraCaptureButton.setOnClickListener { takeVideo() }
 
         cameraExecutor = Executors.newSingleThreadExecutor()
     }
 
     @SuppressLint("RestrictedApi")
-    private fun takePhoto() {
-        Log.d(TAG, "start")
-        // Get a stable reference of the modifiable image capture use case
-        val videoCapture = videoCapture ?: return
-
-        timer = object : CountDownTimer(5000, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                binding.countDown.text = (millisUntilFinished / 1000).toString()
-            }
-
-            override fun onFinish() {
-                videoCapture.stopRecording()
-                recording = false
-                startActivity(Intent(this@AssessmentActivity, ResultActivity::class.java))
-                finish()
-            }
-        }
-
-        //startCountDown()
-
-        // Create time-stamped output file to hold the image
-        val cacheFile = File(
-            externalCacheDir?.absolutePath, SimpleDateFormat(
-                FILENAME_FORMAT, Locale.US
-            ).format(System.currentTimeMillis()) + ".mp4"
-        )
-
-        // Create output options object which contains file + metadata
-        val outputOptions = VideoCapture.OutputFileOptions.Builder(cacheFile).build()
-
-        // Set up image capture listener, which is triggered after photo has
-        // been taken
-        videoCapture.startRecording(
-            outputOptions,
-            ContextCompat.getMainExecutor(this),
-            object : VideoCapture.OnVideoSavedCallback {
-                override fun onVideoSaved(outputFileResults: VideoCapture.OutputFileResults) {
-                    val savedUri = Uri.fromFile(cacheFile)
-                    val uploadRef = storageRef.child("${uId}/${savedUri.lastPathSegment}")
-                    val msg = "Photo capture succeeded: $savedUri"
-                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-                    Log.d(TAG, msg)
-                    val uploadTask = uploadRef.putFile(savedUri)
-                    val downloadUri = uploadRef.downloadUrl.toString()
-
-                    Log.i("upload", downloadUri)
-
-                    uploadTask.addOnFailureListener {
-                        Log.e(TAG, msg)
-                    }.addOnSuccessListener { taskSnapshot ->
-                        val meta = taskSnapshot.metadata
-                        Log.i(TAG, meta.toString())
-                    }
-                }
-
-                override fun onError(videoCaptureError: Int, message: String, cause: Throwable?) {
-                    Log.e(TAG, "Photo capture failed: $message")
-                }
-            })
-        recording = true
-        binding.cameraCaptureButton.visibility = View.GONE
-
-        timer.start()
-
-    }
-
-
     private fun startCamera() {
 
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
 
         cameraProviderFuture.addListener({
             // Used to bind the lifecycle of cameras to the lifecycle owner
-            val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
+            val cameraProvider: ProcessCameraProvider = cameraProviderFuture
+                .get()
 
             // Preview
             val preview = Preview.Builder()
@@ -155,9 +91,13 @@ class AssessmentActivity : AppCompatActivity() {
                     it.setSurfaceProvider(binding.viewFinder.surfaceProvider)
                 }
             videoCapture = VideoCapture.Builder()
+                .setTargetResolution(Size(256, 144))
+                .setMaxResolution(Size(256, 144))
+                .setVideoFrameRate(25)
                 .build()
 
-            // Select back camera as a default
+
+            // Select front camera as a default
             val cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
 
             try {
@@ -178,6 +118,88 @@ class AssessmentActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("RestrictedApi", "MissingPermission")
+    private fun takeVideo() {
+        Log.d(TAG, "start")
+        // Get a stable reference of the modifiable image capture use case
+        val videoCapture = videoCapture ?: return
+
+        timer = object : CountDownTimer(30000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                binding.countDown.text = (millisUntilFinished / 1000).toString()
+            }
+
+            override fun onFinish() {
+                videoCapture.stopRecording()
+                binding.progressBar.isVisible
+
+            }
+        }
+        // Create time-stamped output file to hold the image
+        val date = SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(System.currentTimeMillis())
+        val formatTes = "TES${date}"
+        val cacheFile = File(
+            externalCacheDir?.absolutePath, "video-" + date + ".mp4"
+        )
+
+        // Create output options object which contains file + metadata
+        val outputOptions = VideoCapture.OutputFileOptions.Builder(cacheFile).build()
+
+        // Set up image capture listener, which is triggered after photo has
+        // been taken
+        videoCapture.startRecording(
+            outputOptions,
+            ContextCompat.getMainExecutor(this),
+            object : VideoCapture.OnVideoSavedCallback {
+                override fun onVideoSaved(outputFileResults: VideoCapture.OutputFileResults) {
+                    val savedUri = Uri.fromFile(cacheFile)
+                    val uploadRef = storageRef.child("${uId}/${savedUri.lastPathSegment}")
+                    val msg = "Video capture succeeded: $savedUri"
+                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                    Log.d(TAG, msg)
+                    val uploadTask = uploadRef.putFile(savedUri)
+                    uploadTask.addOnFailureListener {
+                        Log.e(TAG, msg)
+                    }.addOnSuccessListener { taskSnapshot ->
+                        val meta = taskSnapshot.metadata
+                        Log.i(TAG, meta.toString())
+                    }
+
+                    val urlTask = uploadTask.continueWithTask { task ->
+                        if (!task.isSuccessful) {
+                            task.exception?.let {
+                                throw  it
+                            }
+                        }
+                        uploadRef.downloadUrl
+                    }.addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            val downloadUri = task.result.toString()
+                            Log.i(TAG, downloadUri)
+                            database.child("UserAssessment").child(uId).child(formatTes)
+                                .child("url").setValue(downloadUri)
+                            val intent = Intent(this@AssessmentActivity, ResultActivity::class.java)
+                            intent.putExtra(ResultActivity.EXTRA_TES, downloadUri)
+                            startActivity(intent)
+                        } else {
+                            Log.e(TAG, "failed")
+                        }
+                        finish()
+                    }
+                    Log.i("firebase url", urlTask.toString())
+                    cacheFile.delete()
+                }
+
+                override fun onError(videoCaptureError: Int, message: String, cause: Throwable?) {
+                    Log.e(TAG, "Photo capture failed: $message")
+                }
+            })
+        //recording = true
+        binding.cameraCaptureButton.visibility = View.GONE
+
+        timer.start()
+    }
+
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(
             baseContext, it
@@ -191,7 +213,7 @@ class AssessmentActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "CameraXBasic"
-        private const val FILENAME_FORMAT = "yyyy-MM-dd HH:mm"
+        private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm"
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS =
             arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
