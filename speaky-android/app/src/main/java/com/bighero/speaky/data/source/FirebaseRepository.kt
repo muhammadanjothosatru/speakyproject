@@ -41,7 +41,8 @@ class FirebaseRepository(
 //                    it.getValue(HistoryEntity::class.java)!!
 //                }
             it.children.map {
-                Log.e("module",  it.toString())
+                Log.e("historyKey",  it.key.toString())
+                Log.e("historyValue",  it.value.toString())
             }
             mutableLiveData.value = response
         }.addOnFailureListener {
@@ -53,13 +54,14 @@ class FirebaseRepository(
     override fun getModule(): MutableLiveData<ModuleResponse> {
         val mutableLiveData = MutableLiveData<ModuleResponse>()
         val module = ArrayList<ModuleEntity>()
-        moduleRef.get().addOnSuccessListener {
+        moduleRef.orderByKey().get().addOnSuccessListener {
             val response = ModuleResponse()
 //            response.module = it.children.map { it ->
 //                it.getValue(ModuleEntity::class.java)!!
 //            }
             it.children.map {
-                Log.e("module",  it.toString())
+                Log.e("moduleKey",  it.key.toString())
+                Log.e("moduleValue",  it.value.toString())
             }
             mutableLiveData.value = response
         }.addOnFailureListener {
