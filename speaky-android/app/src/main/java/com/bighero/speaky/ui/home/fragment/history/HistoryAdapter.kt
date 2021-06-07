@@ -4,22 +4,23 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bighero.speaky.data.entity.AssessmentEntity
 import com.bighero.speaky.data.entity.HistoryEntity
 import com.bighero.speaky.databinding.ItemListBinding
 
 
 class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
-    private val listHistory = ArrayList<HistoryEntity>()
-    fun setHistory(film: List<HistoryEntity>){
+    private val listHistory = ArrayList<AssessmentEntity>()
+    fun setHistory(film: List<AssessmentEntity>){
         this.listHistory.clear()
         this.listHistory.addAll(film)
     }
 
     class ViewHolder(private val binding: ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(historyList: HistoryEntity) {
+        fun bind(historyList: AssessmentEntity) {
             with(binding) {
-               tvItemDate.text = historyList.tanggal
-                tvItemTime.text = historyList.point.toString()
+               tvItemDate.text = historyList.timeStamp
+                tvItemTime.text = historyList.score.toString()
             }
         }
     }

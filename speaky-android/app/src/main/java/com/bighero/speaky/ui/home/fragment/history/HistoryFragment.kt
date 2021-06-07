@@ -7,9 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.bighero.speaky.data.source.remote.response.AssesementResponse
-import com.bighero.speaky.data.source.remote.response.HistoryResponse
 import com.bighero.speaky.data.source.remote.response.UserAssesmentResponse
 import com.bighero.speaky.databinding.FragmentHistoryBinding
 import com.bighero.speaky.util.ViewModelFactory

@@ -3,10 +3,8 @@ package com.bighero.speaky.data.source
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.bighero.speaky.data.entity.AssessmentEntity
-import com.bighero.speaky.data.entity.HistoryEntity
 import com.bighero.speaky.data.entity.module.ModuleEntity
 import com.bighero.speaky.data.entity.module.UserModuleEntity
-import com.bighero.speaky.data.source.remote.response.HistoryResponse
 import com.bighero.speaky.data.source.remote.response.ModuleResponse
 import com.bighero.speaky.data.source.remote.response.UserAssesmentResponse
 import com.bighero.speaky.data.source.remote.response.UserModuleResponse
@@ -20,7 +18,6 @@ class FirebaseRepository(
     rootRef: DatabaseReference,
 ) : IHistoryRepository {
 
-    private val historyModulRef: DatabaseReference = rootRef.child("UserModul")
     private val moduleRef: DatabaseReference = rootRef.child("ResModul")
     private val userModuleRef: DatabaseReference = rootRef.child("userModul")
     private val userAssessmentRef: DatabaseReference = rootRef.child("UserAssessment")
@@ -42,7 +39,12 @@ class FirebaseRepository(
             val response = UserAssesmentResponse()
                 response.history = it.children.map { it ->
                     AssessmentEntity(
-                        it.child("donwloadUrl").value.toString()
+                        donwloadUrl = it.child("donwloadUrl").value.toString(),
+                        score = it.child("score").value as Long,
+                        timeStamp = it.child("timestamp").value.toString(),
+                        gaze = it.child("gaze").child("value").value as Long,
+                        blink = it.child("blink").child("value").value as Long,
+                        disfluency = it.child("disfluency").child("value").value as Long
                     )
                 }
             mutableLiveData.value = response
@@ -54,15 +56,16 @@ class FirebaseRepository(
 
     override fun getModule(): MutableLiveData<ModuleResponse> {
         val mutableLiveData = MutableLiveData<ModuleResponse>()
-        val module = ArrayList<ModuleEntity>()
         moduleRef.orderByKey().get().addOnSuccessListener {
             val response = ModuleResponse()
-//            response.module = it.children.map { it ->
-//                it.getValue(ModuleEntity::class.java)!!
-//            }
-            it.children.map {
-                Log.e("moduleKey",  it.key.toString())
-                Log.e("moduleValue",  it.value.toString())
+            response.module = it.children.map { it ->
+                ModuleEntity(
+                    key = it.key.toString(),
+                    bab = ModuleEntity.Bab(
+                        gambar = it.child("gambar").value.toString(),
+                        judul = it.child("judul").value.toString(),
+                    )
+                )
             }
             mutableLiveData.value = response
         }.addOnFailureListener {
@@ -73,14 +76,16 @@ class FirebaseRepository(
 
     override fun userModule(): MutableLiveData<UserModuleResponse> {
         val mutableLiveData = MutableLiveData<UserModuleResponse>()
-        val userModule = ArrayList<UserModuleEntity>()
-        userModuleRef.get().addOnSuccessListener {
+        userModuleRef.child(uId).get().addOnSuccessListener {
             val response = UserModuleResponse()
-//            response.module = it.children.map { it ->
-//                it.getValue(ModuleEntity::class.java)!!
-//            }
-            it.children.map {
-                Log.e("Usermodule",  it.toString())
+            response.UserModule = it.children.map { it ->
+                UserModuleEntity(
+                    key = it.key.toString(),
+                    bab = UserModuleEntity.Bab(
+                        key = it.child("bab").child("bab1").key.toString(),
+                        status = it.child("judul").child("bab1").child("status").toString(),
+                    )
+                )
             }
             mutableLiveData.value = response
         }.addOnFailureListener {

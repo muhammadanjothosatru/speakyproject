@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bighero.speaky.data.source.FirebaseRepository
-import com.bighero.speaky.data.source.remote.response.HistoryResponse
 import com.bighero.speaky.data.source.remote.response.UserAssesmentResponse
 
 class HistoryViewModel(
