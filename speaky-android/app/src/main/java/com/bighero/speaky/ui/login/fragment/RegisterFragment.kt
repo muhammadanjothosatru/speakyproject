@@ -41,22 +41,14 @@ class RegisterFragment : Fragment(), View.OnClickListener {
 
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         validateInput()
-        binding.btnRegister.setOnClickListener {
-            registerUser()
-        }
-
+        binding.btnRegister.setOnClickListener (this)
+        binding.masukDisini.setOnClickListener(this)
     }
 
     private fun registerUser() {
-        if (binding.etName.text.toString().isEmpty()) {
-            binding.etName.error = "Please input your name"
-            binding.etName.requestFocus()
-            return
-        }
         if (binding.etEmail.text.toString().isEmpty()) {
             binding.etEmail.error = "Please input your email"
             binding.etEmail.requestFocus()
@@ -77,15 +69,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         auth.createUserWithEmailAndPassword(binding.etEmail.text.toString(), binding.etPassword.text.toString())
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    writeNewUser(
-                        binding.etName.text.toString(),
-                        binding.etEmail.text.toString(),
-                        getString(R.string.beginner),
-                        false
-                    )
                     showLoading(false)
-                    startActivity(Intent(activity, TermActivity::class.java))
-                    activity?.finish()
                 } else {
                     Toast.makeText(
                         requireContext(), "Register failed.",
@@ -95,13 +79,6 @@ class RegisterFragment : Fragment(), View.OnClickListener {
                 }
             }
 
-    }
-
-    private fun writeNewUser(name: String, email: String, level: String, status: Boolean) {
-        val uId = auth.currentUser!!.uid
-        val user = UserEntity(name, email, level, status)
-
-        database.child("users").child(uId).setValue(user)
     }
 
     @SuppressLint("CheckResult")
@@ -149,8 +126,6 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         invalidFieldsStream.subscribe { isValid ->
             binding.btnRegister.isEnabled = isValid
         }
-
-        binding.masukDisini.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -159,6 +134,22 @@ class RegisterFragment : Fragment(), View.OnClickListener {
             val mFragmentManager = fragmentManager
             mFragmentManager?.beginTransaction()?.apply {
                 replace(R.id.frame_container, mLoginFragment,LoginFragment::class.java.simpleName)
+                commit()
+            }
+        }
+        if (v.id == R.id.btn_register) {
+            registerUser()
+            val mUserFragment = UserInfoFragment()
+
+            val mBundle = Bundle()
+            mBundle.putString(UserInfoFragment.EXTRA_EMAIL, binding.etEmail.text.toString())
+
+            mUserFragment.arguments = mBundle
+
+            val mFragmentManager = fragmentManager
+            mFragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frame_container, mUserFragment, UserInfoFragment::class.java.simpleName)
+                addToBackStack(null)
                 commit()
             }
         }
@@ -185,5 +176,4 @@ class RegisterFragment : Fragment(), View.OnClickListener {
             binding.btnRegister.isClickable = true
         }
     }
-
 }

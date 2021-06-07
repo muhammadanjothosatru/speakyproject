@@ -15,6 +15,7 @@ class TermActivity : AppCompatActivity() {
 
         binding.btAccept.setOnClickListener {
             startActivity(Intent(this,HomeActivity::class.java))
+            finish()
         }
     }
 }

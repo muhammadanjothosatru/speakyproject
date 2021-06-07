@@ -9,6 +9,7 @@ import com.bighero.speaky.R
 import com.bighero.speaky.databinding.ContentDetailProfileBinding
 import com.bighero.speaky.databinding.FragmentProfileBinding
 import com.bighero.speaky.ui.login.LoginActivity
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -58,6 +59,12 @@ class ProfileFragment : Fragment() {
             } else {
                 detailBinding.profileStatus.text = getString(R.string.premium_user)
             }
+            val imgUrl = it.child("imgPhoto").value
+            if (imgUrl != null) {
+                Glide.with(requireContext())
+                    .load(it.child("imgPhoto").value.toString())
+                    .into(detailBinding.profileImage)
+            }
             showLoading(false)
         }.addOnFailureListener {
             Log.e("firebase", "Error getting data", it)
@@ -79,7 +86,7 @@ class ProfileFragment : Fragment() {
             }
             R.id.action_delete -> {
                 showLoading(true)
-                //database.child("users").child(uId).removeValue()
+                database.child("users").child(uId).removeValue()
                 auth.currentUser!!.delete()
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {

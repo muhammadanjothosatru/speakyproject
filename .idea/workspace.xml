@@ -22,12 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec8e32b8-1ed4-4689-be1b-c11ed0cd24ef" name="Default Changelist" comment="update the model">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/disfluency_model.h5" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/disfluency_model.h5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/mfcc_set.npz" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/mfcc_set.npz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/preprocess_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/speaky-ml/Disfluency Detection/preprocess_dataset.py" afterDir="false" />
-    </list>
+    <list default="true" id="ec8e32b8-1ed4-4689-be1b-c11ed0cd24ef" name="Default Changelist" comment="update the model" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,7 +65,7 @@
       <recent name="D:\Documents\Kuliah\Mata Kuliah\Semester 6\1. Bangkit\Capstone\speakyproject\speaky-ml\api\model\blink" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.predict_value">
+  <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -237,15 +232,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.predict_value" />
-        <item itemvalue="Python.training_model" />
-        <item itemvalue="Python.prepare_dataset" />
-        <item itemvalue="Python.preprocess_dataset" />
-        <item itemvalue="Python.index" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

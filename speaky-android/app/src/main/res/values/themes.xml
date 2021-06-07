@@ -119,6 +119,14 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+    <style name="regularTextWhiteThin">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/vision_regular</item>
+    </style>
+
     <style name="titleText">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>

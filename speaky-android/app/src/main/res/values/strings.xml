@@ -70,6 +70,52 @@
     <string name="free_user">Free</string>
     <string name="premium_user">Premium</string>
     <string name="_30">30</string>
+    <string name="username">Username</string>
+    <string name="next">Lanjut</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="detail_tes">Pilih paket tes yang ingin kamu coba.</string>
+    <string name="your_score">Skor kamu</string>
+    <string name="rekomendasi_modul">Rekomendasi Modul</string>
+    <string name="rekomendasi_praktek">Rekomendasi Praktek</string>
+
+    <string-array name="data_tes">
+        <item>Bicara Bebas (Impromptu)</item>
+        <item>Jawab Pertanyaan (Story Telling)</item>
+        <item>Mendeskripsikan benda (Story Telling)</item>
+        <item>Memimpin acara (Master of Ceremony)</item>
+    </string-array>
+
+    <string-array name="data_detail_tes">
+        <item>Pada ujian kali ini, diberi kebebasan untuk berbicara, kami tidak menentukan topik apapun, agar kamu bisa fous untuk berbicara.\n
+        \n
+        \nKamu akan dinilai dari kelancaran kamu dalam menyampaikan penjelasan.\n
+        \n
+        \nSelalu arahkan kamera ke wajah kamu agar kami bisa melakukan penilaian dengan baik.\n
+        \n
+        \nGunakan suara yang lantang seolah-olah sedang melakukan Public Speaking.</item>
+        <item>Pada ujian kali ini, diberi kebebasan untuk berbicara, kami tidak menentukan topik apapun, agar kamu bisa fous untuk berbicara.\n
+        \n
+        \nKamu akan dinilai dari kelancaran kamu dalam menyampaikan penjelasan.\n
+        \n
+        \nSelalu arahkan kamera ke wajah kamu agar kami bisa melakukan penilaian dengan baik.\n
+        \n
+        \nGunakan suara yang lantang seolah-olah sedang melakukan Public Speaking.</item>
+        <item>Pada ujian kali ini, diberi kebebasan untuk berbicara, kami tidak menentukan topik apapun, agar kamu bisa fous untuk berbicara.\n
+        \n
+        \nKamu akan dinilai dari kelancaran kamu dalam menyampaikan penjelasan.\n
+        \n
+        \nSelalu arahkan kamera ke wajah kamu agar kami bisa melakukan penilaian dengan baik.\n
+        \n
+        \nGunakan suara yang lantang seolah-olah sedang melakukan Public Speaking.</item>
+        <item>Pada ujian kali ini, diberi kebebasan untuk berbicara, kami tidak menentukan topik apapun, agar kamu bisa fous untuk berbicara.\n
+        \n
+        \nKamu akan dinilai dari kelancaran kamu dalam menyampaikan penjelasan.\n
+        \n
+        \nSelalu arahkan kamera ke wajah kamu agar kami bisa melakukan penilaian dengan baik.\n
+        \n
+        \nGunakan suara yang lantang seolah-olah sedang melakukan Public Speaking.</item>
+    </string-array>
 
 
 </resources>

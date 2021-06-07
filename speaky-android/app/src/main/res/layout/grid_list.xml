@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
         <ImageView
             android:id="@+id/img_module"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="180dp"
             android:src="@color/blue_500"
             app:layout_constraintTop_toTopOf="parent"

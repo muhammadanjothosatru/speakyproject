@@ -4,27 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/blue_200"
-    tools:context=".ui.assessment.result.ResultActivity">
+    android:padding="20dp"
+    android:background="@color/blue_200"
+    tools:context=".ui.assessment.PraAssessmentActivity">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <include
-            android:id="@+id/detail_content"
-            layout="@layout/content_result" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp">
+        <include android:id="@+id/detail_content"
+            layout="@layout/content_detail_pra"/>
     </androidx.core.widget.NestedScrollView>
 
+    <Button
+        android:id="@+id/bt_select"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:layout_gravity=""
+        android:text="Pilih"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <ProgressBar
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

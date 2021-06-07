@@ -10,6 +10,7 @@ import com.bighero.speaky.R
 import com.bighero.speaky.databinding.ContentDetailDashboardBinding
 import com.bighero.speaky.databinding.FragmentDashboardBinding
 import com.bighero.speaky.ui.assessment.AssessmentActivity
+import com.bighero.speaky.ui.assessment.PraAssessmentActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -60,7 +61,7 @@ class DashboardFragment : Fragment() {
             showLoading(false)
         }
         detailBinding.btTest.setOnClickListener {
-            startActivity(Intent(activity, AssessmentActivity::class.java))
+            startActivity(Intent(activity, PraAssessmentActivity::class.java))
         }
     }
 
