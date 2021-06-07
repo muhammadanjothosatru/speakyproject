@@ -29,14 +29,16 @@ Speaky is a self learning public speaking machine learning based. The machine le
 - Deploy flask in virtual machine
 
 
-# VM Setting
-
+#Github Clone 
 ```bash
 sudo apt-get update
 sudo apt-get install python3.9 python3-pip
 git clone https://github.com/mluthfi3d/speaky_deploy
 cd speaky_deploy
+```
 
+#Setting virtualenv
+```bash
 sudo pip3 install virtualenv
 virtualenv venv
 source venv/bin/activate
@@ -46,7 +48,9 @@ pip install --upgrade pip setuptools wheel
 pip install -r requirements.txt
 sudo apt-get install libsndfile1
 sudo apt install libgl1-mesa-glx
-
+```
+#Setting NGINX and GUNICORN
+```bash
 cd
 sudo apt-get install nginx-full
 sudo /etc/init.d/nginx start
@@ -65,7 +69,9 @@ server {
 }
 
 sudo /etc/init.d/nginx restart
-
+```
+#Run FLASK APP
+```bash
 cd speaky_deploy
 gunicorn --bind 0.0.0.0:5000 app:app --daemon
 ```
