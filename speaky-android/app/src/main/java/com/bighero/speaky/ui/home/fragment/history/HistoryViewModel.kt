@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bighero.speaky.data.source.FirebaseRepository
 import com.bighero.speaky.data.source.remote.response.HistoryResponse
+import com.bighero.speaky.data.source.remote.response.UserAssesmentResponse
 
 class HistoryViewModel(
     private val firebaseRepository: FirebaseRepository
@@ -15,7 +16,7 @@ class HistoryViewModel(
     }
     val text: LiveData<String> = _text
 
-    fun getResponseUsingLiveData() : LiveData<HistoryResponse> {
+    fun getResponseUsingLiveData() : LiveData<UserAssesmentResponse> {
         return firebaseRepository.getHistory()
     }
 }

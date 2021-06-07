@@ -7,8 +7,7 @@ import com.bighero.speaky.data.source.remote.response.UserAssesmentResponse
 import com.bighero.speaky.data.source.remote.response.UserModuleResponse
 
 interface IHistoryRepository {
-    fun getHistory() : MutableLiveData<HistoryResponse>
+    fun getHistory() : MutableLiveData<UserAssesmentResponse>
     fun getModule() : MutableLiveData<ModuleResponse>
     fun userModule() : MutableLiveData<UserModuleResponse>
-    fun userAssesment() : MutableLiveData<UserAssesmentResponse>
 }

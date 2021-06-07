@@ -5,5 +5,5 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class AssessmentEntity(
-    val tesId : String
+    val donwloadUrl : String
 ) : Parcelable

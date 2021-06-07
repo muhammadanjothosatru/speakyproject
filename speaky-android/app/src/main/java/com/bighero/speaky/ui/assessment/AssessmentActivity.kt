@@ -36,15 +36,9 @@ import java.util.concurrent.Executors
 
 class AssessmentActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAssessmentBinding
-
     private lateinit var timer: CountDownTimer
-
-    //var counter = 0
-
     private var videoCapture: VideoCapture? = null
     private lateinit var cameraExecutor: ExecutorService
-    //var recording: Boolean = false
-
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
     private lateinit var uId: String
@@ -67,10 +61,7 @@ class AssessmentActivity : AppCompatActivity() {
                 this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
             )
         }
-
-        // Set up the listener for take photo button
         binding.cameraCaptureButton.setOnClickListener { takeVideo() }
-
         cameraExecutor = Executors.newSingleThreadExecutor()
     }
 
@@ -96,8 +87,6 @@ class AssessmentActivity : AppCompatActivity() {
                 .setVideoFrameRate(25)
                 .build()
 
-
-            // Select front camera as a default
             val cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
 
             try {
