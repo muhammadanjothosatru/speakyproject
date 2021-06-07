@@ -14,16 +14,17 @@ data class ModuleEntity(
     data class Bab(
         val gambar: String,
         val judul: String,
-//        val bab1: babdetail,
-//        val bab2: babdetail,
+      val bab: List<babdetail>,
     ) : Parcelable
 //    {
-//        @Parcelize
-//        data class babdetail(
-//            val konten: String,
-//            val judul: String,
+        @Parcelize
+        data class babdetail(
+            val konten: String,
+            val judul: String,
+            val video: String,
 //            val practice: practices,
-//        ) : Parcelable {
+        ) : Parcelable
+//        {
 //            @Parcelize
 //            data class practices (
 //                val PRA0001 : praticedetail,

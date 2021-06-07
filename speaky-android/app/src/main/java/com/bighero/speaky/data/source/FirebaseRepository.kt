@@ -41,14 +41,6 @@ class FirebaseRepository(
         userAssessmentRef.child(uId).get().addOnSuccessListener {
             val response = UserAssesmentResponse()
                 response.history = it.children.map { it ->
-//                    AssessmentEntity(
-//                        donwloadUrl = it.child("donwloadUrl").value.toString(),
-//                        score = it.child("score").value as Long,
-//                        timeStamp = it.child("timestamp").value.toString(),
-//                        gaze = it.child("gaze").child("value").value as Long,
-//                        blink = it.child("blink").child("value").value as Long,
-//                        disfluency = it.child("disfluency").child("value").value as Long,
-//                    )
                         AssessmentEntity(
                             donwloadUrl = it.child("donwloadUrl").value.toString(),
                             score = it.child("score").value as Long,
@@ -75,6 +67,13 @@ class FirebaseRepository(
                     bab = ModuleEntity.Bab(
                         gambar = it.child("gambar").value.toString(),
                         judul = it.child("judul").value.toString(),
+                        bab = it.children.map {
+                            ModuleEntity.babdetail(
+                                konten = it.child("content").value.toString(),
+                                judul = it.child("judul").value.toString(),
+                                video = it.child("video").value.toString(),
+                            )
+                        }
                     )
                 )
             }

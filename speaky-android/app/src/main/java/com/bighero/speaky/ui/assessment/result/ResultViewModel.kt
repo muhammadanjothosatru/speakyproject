@@ -12,6 +12,8 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import retrofit2.Call
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ResultViewModel(
     private val firebaseRepository: FirebaseRepository
@@ -36,7 +38,7 @@ class ResultViewModel(
     }
 
     fun findAssessment(url: String, id: String) {
-
+        val date = SimpleDateFormat("yyyy-MM-dd-HH-mm", Locale.US).format(System.currentTimeMillis()).toString()
         val client = ApiConfig.getApiService().getAssessment(url, id)
         client.enqueue(object : retrofit2.Callback<AssesementResponse> {
             override fun onResponse(
@@ -53,7 +55,7 @@ class ResultViewModel(
                     val assesmet =  AssessmentEntity(
                         donwloadUrl = url,
                         score = response.body()!!.score,
-                        timeStamp = response.body()!!.timestamp,
+                        timeStamp = date,
                         gaze = response.body()?.gaze!!.value,
                         blink = response.body()?.blink!!.value,
                         disfluency = response.body()?.disfluency!!.value,
