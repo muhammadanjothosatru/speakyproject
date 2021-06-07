@@ -5,8 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bighero.speaky.data.source.remote.response.UserAssesmentResponse
 import com.bighero.speaky.databinding.FragmentHistoryBinding
 import com.bighero.speaky.util.ViewModelFactory
@@ -42,12 +44,16 @@ class HistoryFragment : Fragment() {
 
     private fun printa(response: UserAssesmentResponse) {
         response.history?.let {
-            Log.e("donwloadUrl", it.toString())
-//          binding.rvHistory.layoutManager = LinearLayoutManager(context)
-//            historyAdapter.setHistory(it)
-//            historyAdapter.notifyDataSetChanged()
-//            binding.rvHistory.setHasFixedSize(true)
-//            binding.rvHistory.adapter = historyAdapter
+                if (it.isEmpty()) {
+                    Toast.makeText(activity,"Kamu belum pernah Test",Toast.LENGTH_LONG).show()
+                } else {
+                    binding.rvHistory.layoutManager = LinearLayoutManager(context)
+            historyAdapter.setHistory(it)
+            historyAdapter.notifyDataSetChanged()
+            binding.rvHistory.setHasFixedSize(true)
+            binding.rvHistory.adapter = historyAdapter
+                }
+
 
         }
         response.exception?.let { exception ->

@@ -35,16 +35,17 @@ class FirebaseRepository(
 
     override fun getHistory() : MutableLiveData<UserAssesmentResponse> {
         val mutableLiveData = MutableLiveData<UserAssesmentResponse>()
-        userAssessmentRef.child(uId).get().addOnSuccessListener {
+        userAssessmentRef.child("makan").get().addOnSuccessListener {
             val response = UserAssesmentResponse()
                 response.history = it.children.map { it ->
+                    Log.e("check",  it.toString())
                     AssessmentEntity(
                         donwloadUrl = it.child("donwloadUrl").value.toString(),
                         score = it.child("score").value as Long,
                         timeStamp = it.child("timestamp").value.toString(),
                         gaze = it.child("gaze").child("value").value as Long,
                         blink = it.child("blink").child("value").value as Long,
-                        disfluency = it.child("disfluency").child("value").value as Long
+                        disfluency = it.child("disfluency").child("value").value as Long,
                     )
                 }
             mutableLiveData.value = response

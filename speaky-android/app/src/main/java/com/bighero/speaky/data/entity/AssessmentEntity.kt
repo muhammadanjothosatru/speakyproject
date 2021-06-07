@@ -10,5 +10,5 @@ data class AssessmentEntity(
     val timeStamp : String,
     val blink : Long,
     val disfluency : Long,
-    val gaze : Long
+    val gaze : Long,
 ) : Parcelable
