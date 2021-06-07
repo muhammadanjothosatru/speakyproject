@@ -44,9 +44,6 @@ pip install cmake
 sudo apt install python-testresources
 pip install --upgrade pip setuptools wheel
 pip install -r requirements.txt
-
-change pyasn1-modules~=0.2.8 to 0.2.1
-
 sudo apt-get install libsndfile1
 sudo apt install libgl1-mesa-glx
 
