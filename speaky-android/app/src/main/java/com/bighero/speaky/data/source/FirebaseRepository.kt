@@ -9,10 +9,13 @@ import com.bighero.speaky.data.source.remote.response.ModuleResponse
 import com.bighero.speaky.data.source.remote.response.UserAssesmentResponse
 import com.bighero.speaky.data.source.remote.response.UserModuleResponse
 import com.bighero.speaky.domain.useCase.IHistoryRepository
+import com.bighero.speaky.ui.assessment.AssessmentActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.ktx.Firebase
+import java.text.SimpleDateFormat
+import java.util.*
 
 class FirebaseRepository(
     rootRef: DatabaseReference,
@@ -35,18 +38,25 @@ class FirebaseRepository(
 
     override fun getHistory() : MutableLiveData<UserAssesmentResponse> {
         val mutableLiveData = MutableLiveData<UserAssesmentResponse>()
-        userAssessmentRef.child("makan").get().addOnSuccessListener {
+        userAssessmentRef.child(uId).get().addOnSuccessListener {
             val response = UserAssesmentResponse()
                 response.history = it.children.map { it ->
-                    Log.e("check",  it.toString())
-                    AssessmentEntity(
-                        donwloadUrl = it.child("donwloadUrl").value.toString(),
-                        score = it.child("score").value as Long,
-                        timeStamp = it.child("timestamp").value.toString(),
-                        gaze = it.child("gaze").child("value").value as Long,
-                        blink = it.child("blink").child("value").value as Long,
-                        disfluency = it.child("disfluency").child("value").value as Long,
-                    )
+//                    AssessmentEntity(
+//                        donwloadUrl = it.child("donwloadUrl").value.toString(),
+//                        score = it.child("score").value as Long,
+//                        timeStamp = it.child("timestamp").value.toString(),
+//                        gaze = it.child("gaze").child("value").value as Long,
+//                        blink = it.child("blink").child("value").value as Long,
+//                        disfluency = it.child("disfluency").child("value").value as Long,
+//                    )
+                        AssessmentEntity(
+                            donwloadUrl = it.child("donwloadUrl").value.toString(),
+                            score = it.child("score").value as Long,
+                            timeStamp = it.child("timestamp").value.toString(),
+                            gaze = it.child("gaze").value as Long,
+                            blink = it.child("blink").value as Long,
+                            disfluency = it.child("disfluency").value as Long,
+                        )
                 }
             mutableLiveData.value = response
         }.addOnFailureListener {
@@ -75,7 +85,7 @@ class FirebaseRepository(
         return mutableLiveData
     }
 
-    override fun userModule(): MutableLiveData<UserModuleResponse> {
+    override fun getUserModule(): MutableLiveData<UserModuleResponse> {
         val mutableLiveData = MutableLiveData<UserModuleResponse>()
         userModuleRef.child(uId).get().addOnSuccessListener {
             val response = UserModuleResponse()
@@ -93,6 +103,11 @@ class FirebaseRepository(
             Log.e("firebase", "Error getting data", it)
         }
         return mutableLiveData
+    }
+
+    override fun setUser(assessmentEntity: AssessmentEntity) {
+        val date = SimpleDateFormat("yyyy-MM-dd-HH-mm", Locale.US).format(System.currentTimeMillis()).toString()
+        userAssessmentRef.child(uId).child("Tes $date").setValue(assessmentEntity)
     }
 
 }

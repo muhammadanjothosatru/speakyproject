@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.bighero.speaky.data.source.FirebaseRepository
 import com.bighero.speaky.domain.di.Injection
+import com.bighero.speaky.ui.assessment.result.ResultViewModel
 import com.bighero.speaky.ui.home.fragment.history.HistoryViewModel
 import com.bighero.speaky.ui.home.fragment.module.ModuleViewModel
 
@@ -31,6 +32,9 @@ class ViewModelFactory private constructor(private val mFirebaseRepository: Fire
             }
             modelClass.isAssignableFrom(ModuleViewModel::class.java) -> {
                 ModuleViewModel(mFirebaseRepository) as T
+            }
+            modelClass.isAssignableFrom(ResultViewModel::class.java) -> {
+                ResultViewModel(mFirebaseRepository) as T
             }
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }

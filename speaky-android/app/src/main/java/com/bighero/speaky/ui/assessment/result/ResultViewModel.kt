@@ -4,13 +4,18 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.bighero.speaky.data.entity.AssessmentEntity
+import com.bighero.speaky.data.source.FirebaseRepository
 import com.bighero.speaky.data.source.remote.network.ApiConfig
 import com.bighero.speaky.data.source.remote.response.AssesementResponse
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import retrofit2.Call
 import retrofit2.Response
 
-class ResultViewModel : ViewModel() {
-
+class ResultViewModel(
+    private val firebaseRepository: FirebaseRepository
+) : ViewModel() {
     private val _assessment = MutableLiveData<AssesementResponse>()
     val assessment: LiveData<AssesementResponse> = _assessment
 
@@ -45,6 +50,15 @@ class ResultViewModel : ViewModel() {
                     _blink.value = response.body()?.blink
                     _gaze.value = response.body()?.gaze
 
+                    val assesmet =  AssessmentEntity(
+                        donwloadUrl = url,
+                        score = response.body()!!.score,
+                        timeStamp = response.body()!!.timestamp,
+                        gaze = response.body()?.gaze!!.value,
+                        blink = response.body()?.blink!!.value,
+                        disfluency = response.body()?.disfluency!!.value,
+                    )
+                    setHistory(assesmet)
                 } else {
                     Log.e(TAG, "onFailure: ${response.message()}")
                 }
@@ -55,5 +69,9 @@ class ResultViewModel : ViewModel() {
                 Log.e(TAG, "onFailure: ${t.message.toString()}")
             }
         })
+    }
+
+    fun setHistory(assessmentEntity: AssessmentEntity) {
+        return firebaseRepository.setUser(assessmentEntity)
     }
 }

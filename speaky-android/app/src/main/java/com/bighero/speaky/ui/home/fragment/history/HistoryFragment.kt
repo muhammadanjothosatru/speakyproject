@@ -9,13 +9,14 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bighero.speaky.data.entity.AssessmentEntity
 import com.bighero.speaky.data.source.remote.response.UserAssesmentResponse
 import com.bighero.speaky.databinding.FragmentHistoryBinding
 import com.bighero.speaky.util.ViewModelFactory
 
 class HistoryFragment : Fragment() {
 
-    private lateinit var homeViewModel: HistoryViewModel
+    private lateinit var historyViewModel: HistoryViewModel
     private var _binding: FragmentHistoryBinding? = null
     private val binding get() = _binding!!
     private lateinit var historyAdapter: HistoryAdapter
@@ -25,7 +26,7 @@ class HistoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val factory = ViewModelFactory.getInstance(requireContext())
-        homeViewModel = ViewModelProvider(this,factory)[HistoryViewModel::class.java]
+        historyViewModel = ViewModelProvider(this,factory)[HistoryViewModel::class.java]
         _binding = FragmentHistoryBinding.inflate(inflater, container, false)
         val root: View = binding.root
         historyAdapter = HistoryAdapter()
@@ -37,7 +38,7 @@ class HistoryFragment : Fragment() {
     }
 
     private fun gethistory() {
-        homeViewModel.getResponseUsingLiveData().observe(viewLifecycleOwner, {
+        historyViewModel.getResponseUsingLiveData().observe(viewLifecycleOwner, {
             printa(it)
         })
     }
@@ -47,14 +48,13 @@ class HistoryFragment : Fragment() {
                 if (it.isEmpty()) {
                     Toast.makeText(activity,"Kamu belum pernah Test",Toast.LENGTH_LONG).show()
                 } else {
-                    binding.rvHistory.layoutManager = LinearLayoutManager(context)
-            historyAdapter.setHistory(it)
-            historyAdapter.notifyDataSetChanged()
-            binding.rvHistory.setHasFixedSize(true)
-            binding.rvHistory.adapter = historyAdapter
+                    Log.e("exception", it.toString())
+//                    binding.rvHistory.layoutManager = LinearLayoutManager(context)
+//            historyAdapter.setHistory(it)
+//            historyAdapter.notifyDataSetChanged()
+//            binding.rvHistory.setHasFixedSize(true)
+//            binding.rvHistory.adapter = historyAdapter
                 }
-
-
         }
         response.exception?.let { exception ->
             exception.message?.let {

@@ -165,8 +165,8 @@ class AssessmentActivity : AppCompatActivity() {
                         if (task.isSuccessful) {
                             val downloadUri = task.result.toString()
                             Log.i(TAG, downloadUri)
-                            database.child("UserAssessment").child(uId).child(formatTes)
-                                .child("url").setValue(downloadUri)
+//                            database.child("UserAssessment").child(uId).child(formatTes)
+//                                .child("url").setValue(downloadUri)
                             val intent = Intent(this@AssessmentActivity, ResultActivity::class.java)
                             intent.putExtra(ResultActivity.EXTRA_TES, downloadUri)
                             startActivity(intent)
