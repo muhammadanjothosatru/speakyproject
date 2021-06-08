@@ -11,7 +11,6 @@ import com.bighero.speaky.data.source.remote.response.ModuleResponse
 import com.bighero.speaky.data.source.remote.response.UserAssesmentResponse
 import com.bighero.speaky.data.source.remote.response.UserModuleResponse
 import com.bighero.speaky.domain.useCase.IHistoryRepository
-import com.bighero.speaky.ui.assessment.AssessmentActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -41,13 +40,13 @@ class FirebaseRepository(
 
     override fun getHistory() : MutableLiveData<UserAssesmentResponse> {
         val mutableLiveData = MutableLiveData<UserAssesmentResponse>()
-        userAssessmentRef.child(uId).get().addOnSuccessListener {
+        userAssessmentRef.child(uId).get().addOnSuccessListener { asessement ->
             val response = UserAssesmentResponse()
-                response.history = it.children.map { it ->
+                response.history = asessement.children.map {
                         AssessmentEntity(
                             donwloadUrl = it.child("donwloadUrl").value.toString(),
                             score = it.child("score").value as Long,
-                            timeStamp = it.child("timestamp").value.toString(),
+                            timeStamp = it.child("timeStamp").value.toString(),
                             gaze = it.child("gaze").value as Long,
                             blink = it.child("blink").value as Long,
                             disfluency = it.child("disfluency").value as Long,
@@ -62,23 +61,27 @@ class FirebaseRepository(
 
     override fun getModule(): MutableLiveData<ModuleResponse> {
         val mutableLiveData = MutableLiveData<ModuleResponse>()
-        moduleRef.orderByKey().get().addOnSuccessListener {
+        moduleRef.orderByKey().get().addOnSuccessListener { mod ->
             val response = ModuleResponse()
-            response.module = it.children.map { it ->
+            response.module = mod.children.map {
                 ModuleEntity(
                     key = it.key.toString(),
-                    bab = ModuleEntity.Bab(
-                        gambar = it.child("gambar").value.toString(),
-                        judul = it.child("judul").value.toString(),
-                        bab = it.children.map {
-                            ModuleEntity.babdetail(
-                                konten = it.child("content").value.toString(),
-                                judul = it.child("judul").value.toString(),
-                                video = it.child("video").value.toString(),
+                    gambar = it.child("gambar").value.toString(),
+                    judul = it.child("judul").value.toString(),
+                    bab = it.child("bab").children.map { module ->
+                        ModuleEntity.Bab(
+                                konten = module.child("konten").value.toString(),
+                                judul = module.child("judul").value.toString(),
+                                video = module.child("video").value.toString(),
+                                practice = module.child("practice").children.map { prac ->
+                                    ModuleEntity.Bab.practices(
+                                        key = prac.key.toString(),
+                                        time = prac.child("time").value as Long
+                                    )
+                                }
                             )
                         }
                     )
-                )
             }
             mutableLiveData.value = response
         }.addOnFailureListener {
@@ -108,12 +111,12 @@ class FirebaseRepository(
         val mutableLiveData = MutableLiveData<UserModuleResponse>()
         userModuleRef.child(uId).get().addOnSuccessListener {
             val response = UserModuleResponse()
-            response.UserModule = it.children.map { it ->
+            response.UserModule = it.children.map { mod ->
                 UserModuleEntity(
-                    key = it.key.toString(),
+                    key = mod.key.toString(),
                     bab = UserModuleEntity.Bab(
-                        key = it.child("bab").child("bab1").key.toString(),
-                        status = it.child("judul").child("bab1").child("status").toString(),
+                        key = mod.child("bab").child("bab1").key.toString(),
+                        status = mod.child("judul").child("bab1").child("status").toString(),
                     )
                 )
             }
@@ -126,7 +129,7 @@ class FirebaseRepository(
 
     override fun setUser(assessmentEntity: AssessmentEntity) {
         val date = SimpleDateFormat("yyyy-MM-dd-HH-mm", Locale.US).format(System.currentTimeMillis()).toString()
-        userAssessmentRef.child(uId).child("Tes $date").setValue(assessmentEntity)
+        userAssessmentRef.child(uId).child("Tes$date").setValue(assessmentEntity)
     }
 
 }

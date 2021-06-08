@@ -48,12 +48,11 @@ class HistoryFragment : Fragment() {
                 if (it.isEmpty()) {
                     Toast.makeText(activity,"Kamu belum pernah Test",Toast.LENGTH_LONG).show()
                 } else {
-                    Log.e("exception", it.toString())
-//                    binding.rvHistory.layoutManager = LinearLayoutManager(context)
-//            historyAdapter.setHistory(it)
-//            historyAdapter.notifyDataSetChanged()
-//            binding.rvHistory.setHasFixedSize(true)
-//            binding.rvHistory.adapter = historyAdapter
+                    binding.rvHistory.layoutManager = LinearLayoutManager(context)
+                    historyAdapter.setHistory(it)
+                    historyAdapter.notifyDataSetChanged()
+                    binding.rvHistory.setHasFixedSize(true)
+                    binding.rvHistory.adapter = historyAdapter
                 }
         }
         response.exception?.let { exception ->

@@ -8,35 +8,25 @@ import java.util.*
 @Parcelize
 data class ModuleEntity(
     val key : String,
-    val bab : Bab
+    val gambar: String,
+    val judul: String,
+    val bab : List< Bab>
 ) : Parcelable {
     @Parcelize
     data class Bab(
-        val gambar: String,
+        val konten: String,
         val judul: String,
-      val bab: List<babdetail>,
+        val video: String,
+       val practice: List<practices>,
     ) : Parcelable
-//    {
-        @Parcelize
-        data class babdetail(
-            val konten: String,
-            val judul: String,
-            val video: String,
-//            val practice: practices,
-        ) : Parcelable
-//        {
-//            @Parcelize
-//            data class practices (
-//                val PRA0001 : praticedetail,
-//                val PRA0002 : praticedetail,
-//                val PRA0005 : praticedetail,
-//            ) : Parcelable {
-//                @Parcelize
-//                data class praticedetail (
-//                    val time : Int
-//                        ) : Parcelable
-//            }
+        {
+            @Parcelize
+            data class practices (
+                val key : String,
+                val time : Long
+            ) : Parcelable
+
 //        }
-//    }
+    }
 }
 

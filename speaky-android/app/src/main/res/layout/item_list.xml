@@ -35,12 +35,14 @@
                 app:layout_constraintStart_toEndOf="@id/tv_item_date"
                 app:layout_constraintTop_toTopOf="parent"/>
             <TextView
+                android:id="@+id/point"
                 style="@style/regularText"
                 android:textSize="20sp"
                 android:text="@string/score"
                 app:layout_constraintTop_toBottomOf="@id/tv_item_date"
                 app:layout_constraintStart_toStartOf="@id/tv_item_date"/>
             <TextView
+                android:id="@+id/kategory"
                 style="@style/regularTextBlueThin"
                 android:textSize="12sp"
                 android:text="@string/xxx"
