@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bighero.speaky.data.entity.AssessmentEntity
+import com.bighero.speaky.data.entity.assesment.AssessmentEntity
 import com.bighero.speaky.databinding.ItemListBinding
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter

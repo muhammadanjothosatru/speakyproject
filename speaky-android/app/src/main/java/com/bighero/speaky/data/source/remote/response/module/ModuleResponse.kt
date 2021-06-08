@@ -1,4 +1,4 @@
-package com.bighero.speaky.data.source.remote.response
+package com.bighero.speaky.data.source.remote.response.module
 
 import android.os.Parcelable
 import com.bighero.speaky.data.entity.HistoryEntity

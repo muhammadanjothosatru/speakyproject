@@ -3,17 +3,21 @@ package com.bighero.speaky.ui.assessment
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bighero.speaky.R
-import com.bighero.speaky.data.entity.AssessmentPackEntity
+import com.bighero.speaky.data.entity.assesment.AssessmentPackEntity
+import com.bighero.speaky.data.source.remote.response.assesment.APackResponse
 import com.bighero.speaky.databinding.ActivityPraAssessmentBinding
 import com.bighero.speaky.databinding.ContentDetailPraBinding
-import com.bighero.speaky.ui.assessment.result.ResultActivity
+import com.bighero.speaky.util.ViewModelFactory
 
 class PraAssessmentActivity : AppCompatActivity() {
     private lateinit var binding : ActivityPraAssessmentBinding
     private lateinit var detailBinding: ContentDetailPraBinding
+    private lateinit var assesment :AssessmentViewModel
     private var list = ArrayList<AssessmentPackEntity>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,29 +27,33 @@ class PraAssessmentActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         detailBinding.rvTes.setHasFixedSize(true)
-
-        list.addAll(getListPack())
-        showRecyclerList()
-
+        val factory = ViewModelFactory.getInstance(this)
+        assesment = ViewModelProvider(this,factory)[AssessmentViewModel::class.java]
+        getPack()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
     }
 
-    private fun getListPack(): ArrayList<AssessmentPackEntity> {
-        val dataName = resources.getStringArray(R.array.data_tes)
-        val dataId = resources.getStringArray(R.array.data_id_tes)
-        val dataGuide = resources.getStringArray(R.array.data_detail_tes)
+    private fun getPack() {
+        assesment.getAssesmentPack().observe(this, {
+            printa(it)
+        })
+    }
 
-        val listPack = ArrayList<AssessmentPackEntity>()
-        for (position in dataName.indices) {
-            val pack = AssessmentPackEntity(
-                dataName[position],
-                dataId[position],
-                dataGuide[position]
-            )
-            listPack.add(pack)
+    private fun printa(response: APackResponse) {
+        response.pack?.let {
+            if (it.isEmpty()) {
+                Toast.makeText(this,"Kamu belum pernah Test", Toast.LENGTH_LONG).show()
+            } else {
+                list.addAll(it)
+                showRecyclerList()
+            }
         }
-        return listPack
+        response.exception?.let { exception ->
+            exception.message?.let {
+                Log.e("exception", it)
+            }
+        }
     }
 
     private fun showRecyclerList() {
@@ -62,7 +70,7 @@ class PraAssessmentActivity : AppCompatActivity() {
     }
 
     private fun showSelectedPack(data: AssessmentPackEntity) {
-        detailBinding.detailPetunjuk.text = data.guide
+        detailBinding.detailPetunjuk.text = data.petunjuk
         binding.btSelect.isEnabled = true
         binding.btSelect.setOnClickListener {
             val intent = Intent(this, AssessmentActivity::class.java)

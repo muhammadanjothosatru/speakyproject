@@ -1,4 +1,4 @@
-package com.bighero.speaky.data.source.remote.response
+package com.bighero.speaky.data.source.remote.response.assesment
 
 import com.google.gson.annotations.SerializedName
 

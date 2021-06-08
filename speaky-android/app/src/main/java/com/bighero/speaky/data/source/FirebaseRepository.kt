@@ -2,14 +2,16 @@ package com.bighero.speaky.data.source
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.bighero.speaky.data.entity.AssessmentEntity
-import com.bighero.speaky.data.entity.AssessmentPackEntity
+import com.bighero.speaky.data.entity.assesment.AssementInstruction
+import com.bighero.speaky.data.entity.assesment.AssessmentEntity
+import com.bighero.speaky.data.entity.assesment.AssessmentPackEntity
 import com.bighero.speaky.data.entity.module.ModuleEntity
 import com.bighero.speaky.data.entity.module.UserModuleEntity
-import com.bighero.speaky.data.source.remote.response.APackResponse
-import com.bighero.speaky.data.source.remote.response.ModuleResponse
-import com.bighero.speaky.data.source.remote.response.UserAssesmentResponse
-import com.bighero.speaky.data.source.remote.response.UserModuleResponse
+import com.bighero.speaky.data.source.remote.response.assesment.APackResponse
+import com.bighero.speaky.data.source.remote.response.assesment.InstructionResponse
+import com.bighero.speaky.data.source.remote.response.module.ModuleResponse
+import com.bighero.speaky.data.source.remote.response.assesment.UserAssesmentResponse
+import com.bighero.speaky.data.source.remote.response.module.UserModuleResponse
 import com.bighero.speaky.domain.useCase.IHistoryRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -17,6 +19,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.reflect.typeOf
 
 class FirebaseRepository(
     rootRef: DatabaseReference,
@@ -90,23 +93,6 @@ class FirebaseRepository(
         return mutableLiveData
     }
 
-    /*
-    override fun getAssessmentPack(id: String): MutableLiveData<APackResponse> {
-        val mutableLiveData = MutableLiveData<APackResponse>()
-        userAssessmentRef.get().addOnSuccessListener {
-            val response = APackResponse()
-            response.id = it.child(id).children.map { it ->
-                APackResponse(
-                    title = it.child("title").toString(),
-                    type = it.child("type".toString()),
-                    instruction = it.child()
-                )
-            }
-        }
-    }
-
-     */
-
     override fun getUserModule(): MutableLiveData<UserModuleResponse> {
         val mutableLiveData = MutableLiveData<UserModuleResponse>()
         userModuleRef.child(uId).get().addOnSuccessListener {
@@ -120,6 +106,47 @@ class FirebaseRepository(
                     )
                 )
             }
+            mutableLiveData.value = response
+        }.addOnFailureListener {
+            Log.e("firebase", "Error getting data", it)
+        }
+        return mutableLiveData
+    }
+
+    override fun getAssesmentPack(): MutableLiveData<APackResponse> {
+        val mutableLiveData = MutableLiveData<APackResponse>()
+        packAssessmentRef.get().addOnSuccessListener {
+            val response = APackResponse()
+            response.pack = it.children.map { it ->
+                AssessmentPackEntity(
+                    id = it.key.toString(),
+                    title = it.child("title").value.toString(),
+                    type = it.child("type").value.toString(),
+                    petunjuk = it.child("petunjuk").value.toString(),
+                    guide = it.child("instruction").children.map {
+                        it.value.toString()
+                    }
+                )
+            }
+            mutableLiveData.value = response
+        }.addOnFailureListener {
+            Log.e("firebase", "Error getting data", it)
+        }
+        return mutableLiveData
+    }
+
+    override fun getInstruction(id:String): MutableLiveData<InstructionResponse> {
+        val mutableLiveData = MutableLiveData<InstructionResponse>()
+        packAssessmentRef.get().addOnSuccessListener {
+            val response = InstructionResponse()
+            response.intruction =
+                AssementInstruction(
+                    type = it.child(id).child("type").value.toString(),
+                    intruksi = it.child(id).child("instruction").children.map {
+                            it ->it.value.toString()
+                    }
+                )
+
             mutableLiveData.value = response
         }.addOnFailureListener {
             Log.e("firebase", "Error getting data", it)

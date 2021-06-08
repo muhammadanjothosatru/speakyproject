@@ -69,10 +69,10 @@ class AssessmentActivity : AppCompatActivity() {
         if (extras != null) {
             val packId = extras.getString(EXTRA_ID).toString()
             Log.i("formatTes", packId)
-            viewModel.findAssessmentPack(packId)
+            showPack(packId)
         }
 
-        showPack()
+
 
         if (allPermissionsGranted()) {
             startCamera()
@@ -85,8 +85,20 @@ class AssessmentActivity : AppCompatActivity() {
 
     }
 
-    private fun showPack() {
-        TODO("Not yet implemented")
+    private fun showPack(packId:String) {
+        val urutanisntruksi = ArrayList<String>()
+        viewModel.findAssessmentPack(packId).observe(this, { response ->
+            response.intruction?.let { it ->
+                        binding.jenisTes.text = it.type
+                        binding.topik.text = it.intruksi.random().toString()
+                }
+
+            response.exception?.let { exception ->
+                exception.message?.let {
+                    Log.e("exception", it)
+                }
+            }
+        })
     }
 
     @SuppressLint("RestrictedApi")

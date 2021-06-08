@@ -4,10 +4,10 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bighero.speaky.data.entity.AssessmentEntity
+import com.bighero.speaky.data.entity.assesment.AssessmentEntity
 import com.bighero.speaky.data.source.FirebaseRepository
 import com.bighero.speaky.data.source.remote.network.ApiConfig
-import com.bighero.speaky.data.source.remote.response.AssesementResponse
+import com.bighero.speaky.data.source.remote.response.assesment.AssesementResponse
 import retrofit2.Call
 import retrofit2.Response
 import java.text.SimpleDateFormat

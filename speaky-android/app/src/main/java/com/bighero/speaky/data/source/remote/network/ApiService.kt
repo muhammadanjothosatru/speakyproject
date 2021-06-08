@@ -1,6 +1,6 @@
 package com.bighero.speaky.data.source.remote.network
 
-import com.bighero.speaky.data.source.remote.response.AssesementResponse
+import com.bighero.speaky.data.source.remote.response.assesment.AssesementResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

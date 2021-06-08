@@ -9,8 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bighero.speaky.data.entity.AssessmentEntity
-import com.bighero.speaky.data.source.remote.response.UserAssesmentResponse
+import com.bighero.speaky.data.source.remote.response.assesment.UserAssesmentResponse
 import com.bighero.speaky.databinding.FragmentHistoryBinding
 import com.bighero.speaky.util.ViewModelFactory
 

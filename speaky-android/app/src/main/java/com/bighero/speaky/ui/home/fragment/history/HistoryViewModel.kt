@@ -3,9 +3,8 @@ package com.bighero.speaky.ui.home.fragment.history
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bighero.speaky.data.entity.AssessmentEntity
 import com.bighero.speaky.data.source.FirebaseRepository
-import com.bighero.speaky.data.source.remote.response.UserAssesmentResponse
+import com.bighero.speaky.data.source.remote.response.assesment.UserAssesmentResponse
 
 class HistoryViewModel(
     private val firebaseRepository: FirebaseRepository
