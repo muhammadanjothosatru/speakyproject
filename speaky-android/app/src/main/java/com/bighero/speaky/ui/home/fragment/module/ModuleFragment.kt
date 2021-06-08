@@ -18,13 +18,11 @@ class ModuleFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    ): View {
         val factory = ViewModelFactory.getInstance(requireContext())
-        moduleViewModel = ViewModelProvider(this,factory)[ModuleViewModel::class.java]
+        moduleViewModel = ViewModelProvider(this, factory)[ModuleViewModel::class.java]
         _binding = FragmentModuleBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
