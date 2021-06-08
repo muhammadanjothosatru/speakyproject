@@ -11,6 +11,7 @@ import com.bighero.speaky.data.source.remote.response.assesment.APackResponse
 import com.bighero.speaky.data.source.remote.response.assesment.InstructionResponse
 import com.bighero.speaky.data.source.remote.response.module.ModuleResponse
 import com.bighero.speaky.data.source.remote.response.assesment.UserAssesmentResponse
+import com.bighero.speaky.data.source.remote.response.module.ModuleByIdResponse
 import com.bighero.speaky.data.source.remote.response.module.UserModuleResponse
 import com.bighero.speaky.domain.useCase.IHistoryRepository
 import com.google.firebase.auth.FirebaseAuth
@@ -148,6 +149,36 @@ class FirebaseRepository(
                     }
                 )
 
+            mutableLiveData.value = response
+        }.addOnFailureListener {
+            Log.e("firebase", "Error getting data", it)
+        }
+        return mutableLiveData
+    }
+
+    override fun getModuleById(id:String): MutableLiveData<ModuleByIdResponse> {
+        val mutableLiveData = MutableLiveData<ModuleByIdResponse>()
+        moduleRef.orderByKey().get().addOnSuccessListener {
+            val response = ModuleByIdResponse()
+            response.module = ModuleEntity(
+                    key = it.child(id).key.toString(),
+                    deskripsi = it.child(id).child("deskripsi").value.toString(),
+                    gambar = it.child(id).child("gambar").value.toString(),
+                    judul = it.child(id).child("judul").value.toString(),
+                    bab = it.child(id).child("bab").children.map { module ->
+                        ModuleEntity.Bab(
+                            konten = module.child("deskripsi").value.toString(),
+                            judul = module.child("judul").value.toString(),
+                            video = module.child("video").value.toString(),
+                            practice = module.child("practice").children.map { prac ->
+                                ModuleEntity.Bab.practices(
+                                    key = prac.key.toString(),
+                                    time = prac.child("time").value as Long
+                                )
+                            }
+                        )
+                    }
+                )
             mutableLiveData.value = response
         }.addOnFailureListener {
             Log.e("firebase", "Error getting data", it)

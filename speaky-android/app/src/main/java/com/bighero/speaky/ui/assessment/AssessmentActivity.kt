@@ -88,7 +88,6 @@ class AssessmentActivity : AppCompatActivity() {
     }
 
     private fun showPack(packId:String) {
-        val urutanisntruksi = ArrayList<String>()
         viewModel.findAssessmentPack(packId).observe(this, { response ->
             response.intruction?.let { it ->
                         binding.jenisTes.text = it.type

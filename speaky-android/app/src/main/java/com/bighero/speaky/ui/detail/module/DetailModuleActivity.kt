@@ -2,6 +2,7 @@ package com.bighero.speaky.ui.detail.module
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import com.bighero.speaky.R
 import com.bighero.speaky.databinding.ActivityDetailModuleBinding
@@ -22,28 +23,25 @@ class DetailModuleActivity : AppCompatActivity(), ModuleReaderCallback {
         binding = ActivityDetailModuleBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val factory = ViewModelFactory.getInstance(this)
-        val viewModel = ViewModelProvider(this, factory)[DetailModuleViewModel::class.java]
-
         val bundle = intent.extras
         if (bundle != null) {
             val moduleId = bundle.getString(EXTRA_TITLE)
             if (moduleId != null) {
-                viewModel.setSelectedModule(moduleId)
-                populateFragment()
+                populateFragment(moduleId)
             }
         }
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
 
 
-    private fun populateFragment() {
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
+
+    private fun populateFragment(moduleId: String) {
+
         var fragment = supportFragmentManager.findFragmentByTag(ListBabFragment.TAG)
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
         if (fragment == null) {
-            fragment = ListBabFragment.newInstance()
+            fragment = ListBabFragment.newInstance(moduleId)
             fragmentTransaction.add(R.id.frame_container, fragment, ListBabFragment.TAG)
             fragmentTransaction.addToBackStack(null)
         }

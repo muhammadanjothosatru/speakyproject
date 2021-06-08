@@ -1,6 +1,7 @@
 package com.bighero.speaky.ui.detail.module.list
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,8 @@ import android.view.ViewGroup
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bighero.speaky.R
 import com.bighero.speaky.databinding.FragmentHistoryBinding
 import com.bighero.speaky.databinding.FragmentListBabBinding
@@ -27,8 +30,16 @@ class ListBabFragment : Fragment() {
     private lateinit var listAdapter: BabAdapter
 
     companion object {
+        var EXTRA_ID = "extra_id"
         val TAG: String = ListBabFragment::class.java.simpleName
-        fun newInstance(): ListBabFragment = ListBabFragment()
+        fun newInstance(moduleId : String): ListBabFragment  {
+            val fragment = ListBabFragment()
+            val bundle = Bundle().apply {
+                putString(EXTRA_ID, moduleId)
+            }
+            fragment.arguments = bundle
+            return fragment
+        }
     }
 
     override fun onCreateView(
@@ -36,6 +47,12 @@ class ListBabFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentListBabBinding.inflate(inflater, container, false)
+        val factory = ViewModelFactory.getInstance(requireContext())
+        viewModel = ViewModelProvider(this, factory)[DetailModuleViewModel::class.java]
+        val moduleId = arguments?.getString(EXTRA_ID)
+        if (moduleId != null) {
+            showbab(moduleId)
+        }
         return binding.root
     }
 
@@ -44,36 +61,40 @@ class ListBabFragment : Fragment() {
         showLoading(true)
         val factory = ViewModelFactory.getInstance(requireContext())
         viewModel = ViewModelProvider(this, factory)[DetailModuleViewModel::class.java]
-
         galleryAdapter = GalleryAdapter()
         listAdapter = BabAdapter()
-        getBab()
     }
 
-    private fun getBab() {
-        viewModel.getBab().observe(requireActivity(), {
-            //printa(it)
-        })
-    }
-/*
-    private fun printa(it: ModuleResponse?) {
-        it?.module?.let {
-            detailBinding.rvGalleryModule.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
-            galleryAdapter.setModule()
-            moduleAdapter.notifyDataSetChanged()
-            moduleAdapter.setOnClickCallback(this)
-            _binding?.detailContent?.rvAnotherModule?.setHasFixedSize(true)
-            _binding?.detailContent?.rvAnotherModule?.adapter = moduleAdapter
-        }
+    private fun showbab(moduleId: String) {
+        viewModel.setSelectedModule(moduleId).observe(viewLifecycleOwner, { response ->
+            response.module?.let {
+                Log.d("modul id", it.toString())
+                binding.detailContent.judulmodul.text = it.judul
+                binding.detailContent.deskripsimodul.text = it.deskripsi
 
-        response.exception?.let { exception ->
-            exception.message?.let {
-                Log.e("exception", it)
+                binding.detailContent.rvListModule.layoutManager = LinearLayoutManager(context)
+                listAdapter.setModule(it.bab)
+                listAdapter.notifyDataSetChanged()
+                binding.detailContent.rvListModule.setHasFixedSize(true)
+                binding.detailContent.rvListModule.adapter = listAdapter
+
+                binding.detailContent.rvGalleryModule.layoutManager = GridLayoutManager(context,2)
+                galleryAdapter.setModule(it.bab)
+                galleryAdapter.notifyDataSetChanged()
+                binding.detailContent.rvGalleryModule.setHasFixedSize(true)
+                binding.detailContent.rvGalleryModule.adapter = galleryAdapter
+
+                showLoading(false)
             }
-        }
-    }
 
- */
+            response.exception?.let { exception ->
+                exception.message?.let {
+                    Log.e("exception", it)
+                }
+            }
+        })
+
+    }
 
     private fun showLoading(i: Boolean) {
         binding.progressBar.isVisible = i

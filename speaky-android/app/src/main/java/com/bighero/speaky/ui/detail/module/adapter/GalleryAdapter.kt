@@ -31,7 +31,7 @@ class GalleryAdapter: RecyclerView.Adapter<GalleryAdapter.ViewHolder>() {
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
                     .error(R.drawable.ic_error)
                     .into(imgGalleryModule)
-                itemView.setOnClickListener { onItemClickCallback?.onItemClicked(bab.judul) }
+                itemView.setOnClickListener { onItemClickCallback?.onItemClicked(bab.video) }
             }
         }
 

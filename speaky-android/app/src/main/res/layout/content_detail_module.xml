@@ -6,10 +6,12 @@
     android:layout_height="match_parent">
     
     <TextView
+        android:id="@+id/judulmodul"
         style="@style/regularText"
         android:textSize="16sp"
         android:text="Gaya Pembawaan Public Speaking"/>
     <TextView
+        android:id="@+id/deskripsimodul"
         style="@style/regularTextThin"
         android:textSize="14sp"
         android:text="Di modul ini kamu akan belajar bagaimana cara menjadi pembawa acara dengan berbagai macam kondisi atau situasi yang menarik"/>
