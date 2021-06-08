@@ -5,7 +5,7 @@ from prepare_dataset import *
 
 model_filename = 'disfluency_model.h5'
 
-input_shape = (16, 16, 1)
+input_shape = (32, 32, 1)
 model = models.Sequential()
 model.add(layers.Conv2D(32,
                         (2, 2),
@@ -25,10 +25,10 @@ model.add(layers.Dense(1, activation='sigmoid'))
 model.summary()
 
 model.compile(loss='binary_crossentropy',
-              optimizer='rmsprop',
+              optimizer='adam',
               metrics=['acc'])
 
-history = model.fit(x_train, y_train, epochs=500, batch_size=4, validation_data=(x_val, y_val))
+history = model.fit(x_train, y_train, epochs=11, batch_size=8, validation_data=(x_val, y_val))
 
 acc = history.history['acc']
 val_acc = history.history['val_acc']
@@ -37,15 +37,15 @@ val_loss = history.history['val_loss']
 
 epochs = range(1, len(acc) + 1)
 
-plt.plot(epochs, acc, 'r', label='Training acc')
-plt.plot(epochs, val_acc, 'b', label='Validation acc')
+plt.plot(epochs, acc, label='Training acc')
+plt.plot(epochs, val_acc, label='Validation acc')
 plt.title('Training and Validation accuracy')
 plt.legend()
 
 plt.figure()
 
-plt.plot(epochs, loss, 'r', label='Training loss')
-plt.plot(epochs, val_loss, 'b', label='Validation loss')
+plt.plot(epochs, loss, label='Training loss')
+plt.plot(epochs, val_loss, label='Validation loss')
 plt.title('Training and Validation loss')
 plt.legend()
 
