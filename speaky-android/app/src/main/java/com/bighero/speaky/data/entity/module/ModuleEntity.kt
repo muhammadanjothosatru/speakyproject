@@ -8,6 +8,7 @@ import java.util.*
 @Parcelize
 data class ModuleEntity(
     val key : String,
+    val deskripsi : String,
     val gambar: String,
     val judul: String,
     val bab : List< Bab>

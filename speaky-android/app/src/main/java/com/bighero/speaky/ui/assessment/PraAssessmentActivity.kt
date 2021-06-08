@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bighero.speaky.data.entity.assesment.AssessmentPackEntity
 import com.bighero.speaky.data.source.remote.response.assesment.APackResponse
 import com.bighero.speaky.databinding.ActivityPraAssessmentBinding
-import com.bighero.speaky.databinding.ContentDetailPraBinding
+import com.bighero.speaky.databinding.ContentPraBinding
 import com.bighero.speaky.util.ViewModelFactory
 
 class PraAssessmentActivity : AppCompatActivity() {
     private lateinit var binding : ActivityPraAssessmentBinding
-    private lateinit var detailBinding: ContentDetailPraBinding
+    private lateinit var detailBinding: ContentPraBinding
     private lateinit var assesment :AssessmentViewModel
     private var list = ArrayList<AssessmentPackEntity>()
 

@@ -53,7 +53,7 @@ class EditProfileActivity : AppCompatActivity() {
             startActivityForResult(pIntent, 0)
         }
 
-        binding.btPicture.setOnClickListener {
+        binding.gantiFoto.setOnClickListener {
             val pIntent = Intent(Intent.ACTION_PICK)
             pIntent.type = "image/*"
             startActivityForResult(pIntent, 0)
@@ -170,15 +170,9 @@ class EditProfileActivity : AppCompatActivity() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Log.d("firebase","User profile updated")
-                        writeNewUser(
-                            binding.etName.text.toString(),
-                            binding.etUsername.text.toString(),
-                            email.toString(),
-                            "",
-                            getString(R.string.beginner),
-                            false
-                        )
-                        startActivity(Intent(this, TermActivity::class.java))
+                        database.child("users").child(uId).child("name").setValue(binding.etName.text.toString())
+                        database.child("users").child(uId).child("username").setValue(binding.etUsername.text.toString())
+                        startActivity(Intent(this, HomeActivity::class.java))
                         showLoading(false)
                         finish()
                     }
@@ -201,10 +195,10 @@ class EditProfileActivity : AppCompatActivity() {
     private fun showLoading(i: Boolean) {
         if (i) {
             binding.progressBar.visibility = View.VISIBLE
-            binding.btPicture.isClickable = false
+            binding.btNext.isClickable = false
         } else {
             binding.progressBar.visibility = View.INVISIBLE
-            binding.btPicture.isClickable = true
+            binding.btNext.isClickable = true
         }
     }
 }

@@ -15,7 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Speaky"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.user.EditProfileActivity"></activity>
+        <activity android:name=".ui.detail.module.content.MainActivity"></activity>
+        <activity
+            android:name=".ui.detail.module.DetailModuleActivity"
+            android:parentActivityName=".ui.home.HomeActivity" />
+        <activity
+            android:name=".ui.user.EditProfileActivity"
+            android:theme="@style/Theme.Speaky.NoActionBar" />
         <activity
             android:name=".ui.assessment.PraAssessmentActivity"
             android:parentActivityName=".ui.home.HomeActivity" />

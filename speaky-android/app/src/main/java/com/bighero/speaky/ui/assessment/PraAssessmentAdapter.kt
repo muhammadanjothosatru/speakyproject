@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bighero.speaky.data.entity.assesment.AssessmentPackEntity
 import com.bighero.speaky.databinding.PraListBinding
 
-class PraAssessmentAdapter(private val listTest: ArrayList<AssessmentPackEntity>): RecyclerView.Adapter<PraAssessmentAdapter.ListViewHolder>() {
+class PraAssessmentAdapter
+    (private val listTest: ArrayList<AssessmentPackEntity>):
+    RecyclerView.Adapter<PraAssessmentAdapter.ListViewHolder>() {
 
     private var onItemClickCallback: OnItemClickCallback? = null
 

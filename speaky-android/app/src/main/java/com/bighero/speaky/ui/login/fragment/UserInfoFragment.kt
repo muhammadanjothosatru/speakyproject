@@ -63,7 +63,7 @@ class UserInfoFragment : Fragment() {
             startActivityForResult(pIntent, 0)
         }
 
-        binding.btPicture.setOnClickListener {
+        binding.gantiFoto.setOnClickListener {
             val pIntent = Intent(Intent.ACTION_PICK)
             pIntent.type = "image/*"
             startActivityForResult(pIntent, 0)
@@ -201,10 +201,10 @@ class UserInfoFragment : Fragment() {
     private fun showLoading(i: Boolean) {
         if (i) {
             binding.progressBar.visibility = View.VISIBLE
-            binding.btPicture.isClickable = false
+            binding.btNext.isClickable = false
         } else {
             binding.progressBar.visibility = View.INVISIBLE
-            binding.btPicture.isClickable = true
+            binding.btNext.isClickable = true
         }
     }
 }

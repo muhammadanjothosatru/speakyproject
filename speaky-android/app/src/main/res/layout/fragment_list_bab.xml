@@ -4,27 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
-    android:background="@color/blue_200"
-    tools:context=".ui.assessment.PraAssessmentActivity">
+    android:backgroundTint="@color/blue_200"
+    tools:context=".ui.detail.module.DetailModuleActivity">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="50dp">
+        android:layout_margin="20dp">
         <include android:id="@+id/detail_content"
-            layout="@layout/content_pra"/>
+            layout="@layout/content_detail_module"/>
     </androidx.core.widget.NestedScrollView>
 
+    <ImageView
+        android:id="@+id/gradient"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_gradient"/>
+
+    <ImageView
+        android:id="@+id/img_lock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_lock"
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="90dp"
+        app:layout_constraintStart_toStartOf="@id/bt_unlock"
+        app:layout_constraintBottom_toTopOf="@id/bt_unlock" />
+
+    <TextView
+        style="@style/regularTextThin"
+        android:text="Modul terkunci"
+        android:textSize="14sp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintStart_toEndOf="@id/img_lock"
+        app:layout_constraintTop_toTopOf="@id/img_lock"
+        app:layout_constraintBottom_toBottomOf="@id/img_lock"/>
+
     <Button
-        android:id="@+id/bt_select"
+        android:id="@+id/bt_unlock"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:layout_gravity=""
-        android:text="@string/start"
-        android:enabled="false"
+        android:text="Buka modul"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

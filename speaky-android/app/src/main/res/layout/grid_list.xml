@@ -26,7 +26,9 @@
             style="@style/regularText"
             android:text="@string/xxx"
             android:textSize="14sp"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="20dp"
             app:layout_constraintBottom_toBottomOf="@id/img_module"
             app:layout_constraintStart_toStartOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

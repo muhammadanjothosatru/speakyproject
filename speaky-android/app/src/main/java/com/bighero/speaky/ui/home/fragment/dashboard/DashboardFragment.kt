@@ -4,12 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bighero.speaky.R
-import com.bighero.speaky.databinding.ContentDetailDashboardBinding
+import com.bighero.speaky.databinding.ContentDashboardBinding
 import com.bighero.speaky.databinding.FragmentDashboardBinding
-import com.bighero.speaky.ui.assessment.AssessmentActivity
 import com.bighero.speaky.ui.assessment.PraAssessmentActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -20,7 +20,7 @@ import com.google.firebase.ktx.Firebase
 class DashboardFragment : Fragment() {
 
     private lateinit var dashboardViewModel: DashboardViewModel
-    private lateinit var detailBinding: ContentDetailDashboardBinding
+    private lateinit var detailBinding: ContentDashboardBinding
 
     private var _binding: FragmentDashboardBinding? = null
     private lateinit var auth: FirebaseAuth
@@ -72,6 +72,7 @@ class DashboardFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_notif -> {
+                Toast.makeText(requireContext(), "Coming Soon", Toast.LENGTH_SHORT).show()
                 true
             }
             else -> super.onOptionsItemSelected(item)

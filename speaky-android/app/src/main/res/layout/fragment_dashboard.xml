@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <include android:id="@+id/detail_content"
-            layout="@layout/content_detail_dashboard"/>
+            layout="@layout/content_dashboard"/>
     </androidx.core.widget.NestedScrollView>
 
     <ProgressBar

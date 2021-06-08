@@ -16,7 +16,7 @@
 
         <include
             android:id="@+id/detail_content"
-            layout="@layout/content_detail_module" />
+            layout="@layout/content_module" />
     </androidx.core.widget.NestedScrollView>
 
     <ProgressBar

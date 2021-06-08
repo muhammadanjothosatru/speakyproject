@@ -72,7 +72,9 @@ class AssessmentActivity : AppCompatActivity() {
             showPack(packId)
         }
 
-
+        binding.btBack.setOnClickListener {
+            onBackPressed()
+        }
 
         if (allPermissionsGranted()) {
             startCamera()

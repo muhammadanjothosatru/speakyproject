@@ -7,10 +7,9 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bighero.speaky.R
-import com.bighero.speaky.databinding.ContentDetailProfileBinding
+import com.bighero.speaky.databinding.ContentProfileBinding
 import com.bighero.speaky.databinding.FragmentProfileBinding
 import com.bighero.speaky.ui.login.LoginActivity
-import com.bighero.speaky.ui.login.fragment.LoginFragment
 import com.bighero.speaky.ui.user.EditProfileActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -24,7 +23,7 @@ class ProfileFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentProfileBinding? = null
     private lateinit var auth: FirebaseAuth
     private val binding get() = _binding!!
-    private lateinit var detailBinding: ContentDetailProfileBinding
+    private lateinit var detailBinding: ContentProfileBinding
 
     private lateinit var database: DatabaseReference
     private lateinit var uId: String

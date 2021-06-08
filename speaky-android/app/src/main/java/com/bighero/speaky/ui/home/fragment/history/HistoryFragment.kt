@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,6 +35,7 @@ class HistoryFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        showLoading(true)
         gethistory()
     }
 
@@ -59,7 +62,14 @@ class HistoryFragment : Fragment() {
                 Log.e("exception", it)
             }
         }
+        showLoading(false)
     }
+
+    private fun showLoading(i: Boolean) {
+        binding.progressBar.isVisible = i
+        binding.rvHistory.isInvisible = i
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

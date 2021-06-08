@@ -69,11 +69,12 @@ class FirebaseRepository(
             response.module = mod.children.map {
                 ModuleEntity(
                     key = it.key.toString(),
+                    deskripsi = it.child("deskripsi").value.toString(),
                     gambar = it.child("gambar").value.toString(),
                     judul = it.child("judul").value.toString(),
                     bab = it.child("bab").children.map { module ->
                         ModuleEntity.Bab(
-                                konten = module.child("konten").value.toString(),
+                                konten = module.child("deskripsi").value.toString(),
                                 judul = module.child("judul").value.toString(),
                                 video = module.child("video").value.toString(),
                                 practice = module.child("practice").children.map { prac ->

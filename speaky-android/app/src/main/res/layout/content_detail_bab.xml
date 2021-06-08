@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <VideoView
+        android:id="@+id/video_bab"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+
+    <TextView
+        android:id="@+id/title_bab"
+        style="@style/regularText"
+        android:text="Jenis-jenis Pembawaan"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        style="@style/regularTextGrayThin"
+        android:text="@string/xxx"
+        android:textSize="12sp"
+        android:layout_marginTop="15dp"/>
+
+</LinearLayout>
