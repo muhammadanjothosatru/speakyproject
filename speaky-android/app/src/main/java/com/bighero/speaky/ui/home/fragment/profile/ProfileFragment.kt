@@ -13,6 +13,7 @@ import com.bighero.speaky.ui.login.LoginActivity
 import com.bighero.speaky.ui.login.fragment.LoginFragment
 import com.bighero.speaky.ui.user.EditProfileActivity
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -70,6 +71,8 @@ class ProfileFragment : Fragment(), View.OnClickListener {
             if (imgUrl != null) {
                 Glide.with(requireContext())
                     .load(it.child("imgPhoto").value.toString())
+                    .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
+                    .error(R.drawable.avatar_default)
                     .into(detailBinding.profileImage)
             }
             showLoading(false)

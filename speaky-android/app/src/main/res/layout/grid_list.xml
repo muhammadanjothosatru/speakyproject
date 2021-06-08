@@ -22,6 +22,7 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
+            android:id="@+id/judul"
             style="@style/regularText"
             android:text="@string/xxx"
             android:textSize="14sp"
