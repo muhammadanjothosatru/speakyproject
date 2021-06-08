@@ -18,10 +18,10 @@ print("Total samples: ", num_samples)
 target_list = target_all
 feature_save_file = 'mfcc_set.npz'
 perc_keep_samples = 1.0
-val_ratio = 0.1
+val_ratio = 0.3
 test_ratio = 0.1
 sample_rate = 8000
-num_mfcc = 16
+num_mfcc = 32
 
 filenames = []
 y = []
@@ -63,7 +63,7 @@ def calc_mfcc(path):
     signal = normalize(signal)
 
     mfccs = librosa.feature.mfcc(y=signal, sr=fs, n_fft=2048, n_mfcc=num_mfcc, fmin=0, fmax=int(fs / 2),
-                                 n_mels=26, hop_length=520, htk=False)
+                                 n_mels=32, hop_length=255, htk=False)
 
     # mfccs = python_speech_features.base.mfcc(signal,
     #                                          samplerate=fs,

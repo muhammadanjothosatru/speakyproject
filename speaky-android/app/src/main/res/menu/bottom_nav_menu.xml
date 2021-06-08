@@ -3,17 +3,17 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/ic_dashboard"
         android:title="@string/title_dashboard" />
 
     <item
         android:id="@+id/navigation_module"
-        android:icon="@drawable/ic_modules"
+        android:icon="@drawable/ic_study"
         android:title="@string/title_module"/>
 
     <item
         android:id="@+id/navigation_practice"
-        android:icon="@drawable/ic_praktik_active"
+        android:icon="@drawable/ic_train"
         android:title="@string/title_practice" />
 
     <item
