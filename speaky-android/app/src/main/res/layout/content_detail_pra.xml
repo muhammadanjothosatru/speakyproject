@@ -20,7 +20,7 @@
         android:id="@+id/title_petunjuk"
         style="@style/regularText"
         android:textSize="20sp"
-        android:text="Petunjuk Ujian"
+        android:text="@string/title_guide"
         android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@id/rv_tes"
         app:layout_constraintStart_toStartOf="@id/rv_tes"/>

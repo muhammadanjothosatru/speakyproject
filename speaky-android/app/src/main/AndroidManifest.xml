@@ -15,8 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Speaky"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.assessment.PraAssessmentActivity"
-            android:parentActivityName=".ui.home.HomeActivity"/>
+        <activity android:name=".ui.user.EditProfileActivity"></activity>
+        <activity
+            android:name=".ui.assessment.PraAssessmentActivity"
+            android:parentActivityName=".ui.home.HomeActivity" />
         <activity android:name=".ui.assessment.result.ResultActivity" />
         <activity
             android:name=".ui.assessment.AssessmentActivity"

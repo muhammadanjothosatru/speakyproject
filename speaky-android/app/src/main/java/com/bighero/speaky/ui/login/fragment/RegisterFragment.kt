@@ -69,6 +69,19 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         auth.createUserWithEmailAndPassword(binding.etEmail.text.toString(), binding.etPassword.text.toString())
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
+                    val mUserFragment = UserInfoFragment()
+
+                    val mBundle = Bundle()
+                    mBundle.putString(UserInfoFragment.EXTRA_EMAIL, binding.etEmail.text.toString())
+
+                    mUserFragment.arguments = mBundle
+
+                    val mFragmentManager = fragmentManager
+                    mFragmentManager?.beginTransaction()?.apply {
+                        replace(R.id.frame_container, mUserFragment, UserInfoFragment::class.java.simpleName)
+                        addToBackStack(null)
+                        commit()
+                    }
                     showLoading(false)
                 } else {
                     Toast.makeText(
@@ -139,19 +152,6 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         }
         if (v.id == R.id.btn_register) {
             registerUser()
-            val mUserFragment = UserInfoFragment()
-
-            val mBundle = Bundle()
-            mBundle.putString(UserInfoFragment.EXTRA_EMAIL, binding.etEmail.text.toString())
-
-            mUserFragment.arguments = mBundle
-
-            val mFragmentManager = fragmentManager
-            mFragmentManager?.beginTransaction()?.apply {
-                replace(R.id.frame_container, mUserFragment, UserInfoFragment::class.java.simpleName)
-                addToBackStack(null)
-                commit()
-            }
         }
     }
 

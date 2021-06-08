@@ -11,6 +11,7 @@ import android.util.Log
 import android.util.Size
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.Preview
@@ -19,8 +20,12 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModelProvider
+import com.bighero.speaky.R
 import com.bighero.speaky.databinding.ActivityAssessmentBinding
 import com.bighero.speaky.ui.assessment.result.ResultActivity
+import com.bighero.speaky.ui.assessment.result.ResultViewModel
+import com.bighero.speaky.util.ViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -36,9 +41,12 @@ import java.util.concurrent.Executors
 
 class AssessmentActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAssessmentBinding
+    private lateinit var viewModel: AssessmentViewModel
+
     private lateinit var timer: CountDownTimer
     private var videoCapture: VideoCapture? = null
     private lateinit var cameraExecutor: ExecutorService
+
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
     private lateinit var uId: String
@@ -48,11 +56,23 @@ class AssessmentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAssessmentBinding.inflate(layoutInflater)
+
+        val factory = ViewModelFactory.getInstance(this)
+        viewModel = ViewModelProvider(this,factory)[AssessmentViewModel::class.java]
         setContentView(binding.root)
 
         auth = Firebase.auth
         uId = auth.currentUser!!.uid
         database = Firebase.database.reference
+
+        val extras = intent.extras
+        if (extras != null) {
+            val packId = extras.getString(EXTRA_ID).toString()
+            Log.i("formatTes", packId)
+            viewModel.findAssessmentPack(packId)
+        }
+
+        showPack()
 
         if (allPermissionsGranted()) {
             startCamera()
@@ -61,8 +81,12 @@ class AssessmentActivity : AppCompatActivity() {
                 this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
             )
         }
-        binding.cameraCaptureButton.setOnClickListener { takeVideo() }
         cameraExecutor = Executors.newSingleThreadExecutor()
+
+    }
+
+    private fun showPack() {
+        TODO("Not yet implemented")
     }
 
     @SuppressLint("RestrictedApi")
@@ -104,6 +128,17 @@ class AssessmentActivity : AppCompatActivity() {
 
         }, ContextCompat.getMainExecutor(this))
 
+        timer = object : CountDownTimer(5000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                binding.countDown.text = (millisUntilFinished / 1000).toString()
+            }
+
+            override fun onFinish() {
+                takeVideo()
+            }
+        }
+        timer.start()
+
 
     }
 
@@ -115,18 +150,18 @@ class AssessmentActivity : AppCompatActivity() {
 
         timer = object : CountDownTimer(30000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
+                binding.startTime.text = getString(R.string.sisa_waktu)
                 binding.countDown.text = (millisUntilFinished / 1000).toString()
             }
 
             override fun onFinish() {
                 videoCapture.stopRecording()
-                binding.progressBar.isVisible
+                binding.progressBar.visibility = View.VISIBLE
 
             }
         }
         // Create time-stamped output file to hold the image
         val date = SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(System.currentTimeMillis())
-        val formatTes = "TES${date}"
         val cacheFile = File(
             externalCacheDir?.absolutePath, "video-" + date + ".mp4"
         )
@@ -144,7 +179,6 @@ class AssessmentActivity : AppCompatActivity() {
                     val savedUri = Uri.fromFile(cacheFile)
                     val uploadRef = storageRef.child("${uId}/${savedUri.lastPathSegment}")
                     val msg = "Video capture succeeded: $savedUri"
-                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     Log.d(TAG, msg)
                     val uploadTask = uploadRef.putFile(savedUri)
                     uploadTask.addOnFailureListener {
@@ -165,8 +199,7 @@ class AssessmentActivity : AppCompatActivity() {
                         if (task.isSuccessful) {
                             val downloadUri = task.result.toString()
                             Log.i(TAG, downloadUri)
-//                            database.child("UserAssessment").child(uId).child(formatTes)
-//                                .child("url").setValue(downloadUri)
+                            binding.progressBar.visibility = View.INVISIBLE
                             val intent = Intent(this@AssessmentActivity, ResultActivity::class.java)
                             intent.putExtra(ResultActivity.EXTRA_TES, downloadUri)
                             startActivity(intent)
@@ -183,9 +216,6 @@ class AssessmentActivity : AppCompatActivity() {
                     Log.e(TAG, "Photo capture failed: $message")
                 }
             })
-        //recording = true
-        binding.cameraCaptureButton.visibility = View.GONE
-
         timer.start()
     }
 
@@ -201,11 +231,31 @@ class AssessmentActivity : AppCompatActivity() {
     }
 
     companion object {
+        const val EXTRA_ID = "extra_title"
+        const val EXTRA_DETAIL = "extra_detail"
         private const val TAG = "CameraXBasic"
         private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm"
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS =
             arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
+    }
+
+    override fun onBackPressed() {
+        showAlertDialog()
+    }
+
+    private fun showAlertDialog() {
+        val alertDialogBuilder = AlertDialog.Builder(this)
+
+        alertDialogBuilder.setTitle("Keluar")
+            .setMessage("Kamu yakin ingin keluar dari tes?")
+            .setCancelable(false)
+            .setPositiveButton("Ya") {_,_->
+                finish()
+            }.setNegativeButton("Tidak") {dialog, _ -> dialog.cancel()}
+
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
     }
 
 
@@ -227,26 +277,4 @@ class AssessmentActivity : AppCompatActivity() {
             }
         }
     }
-
-    /*private fun startCountDown() {
-        val countTime: TextView = binding.countDown
-        val videoCapture = videoCapture ?: return
-
-        object  : CountDownTimer(30000,1000) {
-            @SuppressLint("RestrictedApi")
-            override fun onFinish() {
-                videoCapture.stopRecording()
-                recording = false
-                startActivity(Intent(this@AssessmentActivity, ResultActivity::class.java))
-                finish()
-            }
-
-            override fun onTick(millisUntilFinished: Long) {
-                countTime.text = counter.toString()
-                counter++
-            }
-        }.start()
-    }
-
-     */
 }

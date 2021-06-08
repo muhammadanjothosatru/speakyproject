@@ -8,8 +8,6 @@ import com.bighero.speaky.data.entity.AssessmentEntity
 import com.bighero.speaky.data.source.FirebaseRepository
 import com.bighero.speaky.data.source.remote.network.ApiConfig
 import com.bighero.speaky.data.source.remote.response.AssesementResponse
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 import retrofit2.Call
 import retrofit2.Response
 import java.text.SimpleDateFormat
@@ -45,14 +43,13 @@ class ResultViewModel(
                 call: Call<AssesementResponse>,
                 response: Response<AssesementResponse>
             ) {
-                _isLoading.value = false
                 if (response.isSuccessful) {
                     _assessment.value = response.body()
                     _disfluency.value = response.body()?.disfluency
                     _blink.value = response.body()?.blink
                     _gaze.value = response.body()?.gaze
 
-                    val assesmet =  AssessmentEntity(
+                    val assessment =  AssessmentEntity(
                         donwloadUrl = url,
                         score = response.body()!!.score,
                         timeStamp = date,
@@ -60,7 +57,8 @@ class ResultViewModel(
                         blink = response.body()?.blink!!.value,
                         disfluency = response.body()?.disfluency!!.value,
                     )
-                    setHistory(assesmet)
+                    setHistory(assessment)
+                    _isLoading.value = false
                 } else {
                     Log.e(TAG, "onFailure: ${response.message()}")
                 }

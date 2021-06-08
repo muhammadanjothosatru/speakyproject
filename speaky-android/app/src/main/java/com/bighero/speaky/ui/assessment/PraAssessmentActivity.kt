@@ -9,6 +9,7 @@ import com.bighero.speaky.R
 import com.bighero.speaky.data.entity.AssessmentPackEntity
 import com.bighero.speaky.databinding.ActivityPraAssessmentBinding
 import com.bighero.speaky.databinding.ContentDetailPraBinding
+import com.bighero.speaky.ui.assessment.result.ResultActivity
 
 class PraAssessmentActivity : AppCompatActivity() {
     private lateinit var binding : ActivityPraAssessmentBinding
@@ -28,20 +29,18 @@ class PraAssessmentActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        binding.btSelect.setOnClickListener {
-            startActivity(Intent(this, AssessmentActivity::class.java))
-            finish()
-        }
     }
 
     private fun getListPack(): ArrayList<AssessmentPackEntity> {
         val dataName = resources.getStringArray(R.array.data_tes)
+        val dataId = resources.getStringArray(R.array.data_id_tes)
         val dataGuide = resources.getStringArray(R.array.data_detail_tes)
 
         val listPack = ArrayList<AssessmentPackEntity>()
         for (position in dataName.indices) {
             val pack = AssessmentPackEntity(
                 dataName[position],
+                dataId[position],
                 dataGuide[position]
             )
             listPack.add(pack)
@@ -64,5 +63,12 @@ class PraAssessmentActivity : AppCompatActivity() {
 
     private fun showSelectedPack(data: AssessmentPackEntity) {
         detailBinding.detailPetunjuk.text = data.guide
+        binding.btSelect.isEnabled = true
+        binding.btSelect.setOnClickListener {
+            val intent = Intent(this, AssessmentActivity::class.java)
+            intent.putExtra(AssessmentActivity.EXTRA_ID, data.id)
+            startActivity(intent)
+            finish()
+        }
     }
 }

@@ -78,12 +78,27 @@
     <string name="your_score">Skor kamu</string>
     <string name="rekomendasi_modul">Rekomendasi Modul</string>
     <string name="rekomendasi_praktek">Rekomendasi Praktek</string>
+    <string name="title_guide">Petunjuk Ujian</string>
+    <string name="start">Mulai</string>
+    <string name="sisa_waktu">Sisa Waktu</string>
+    <string name="dimulai_dalam">Dimulai dalam</string>
+    <string name="_5">5</string>
+    <string name="detik">Detik</string>
+    <string name="complete_your_profile">Lengkapi profilmu</string>
+    <string name="edit_your_profile">Edit profilmu</string>
 
     <string-array name="data_tes">
         <item>Bicara Bebas (Impromptu)</item>
         <item>Jawab Pertanyaan (Story Telling)</item>
         <item>Mendeskripsikan benda (Story Telling)</item>
         <item>Memimpin acara (Master of Ceremony)</item>
+    </string-array>
+
+    <string-array name="data_id_tes">
+        <item>P01</item>
+        <item>P02</item>
+        <item>P03</item>
+        <item>P04</item>
     </string-array>
 
     <string-array name="data_detail_tes">
@@ -93,28 +108,36 @@
         \n
         \nSelalu arahkan kamera ke wajah kamu agar kami bisa melakukan penilaian dengan baik.\n
         \n
-        \nGunakan suara yang lantang seolah-olah sedang melakukan Public Speaking.</item>
+        \nGunakan suara yang lantang seolah-olah sedang melakukan Public Speaking.\n
+        \n
+        \nSelamat mencoba Impromptu! Siap?</item>
         <item>Pada ujian kali ini, diberi kebebasan untuk berbicara, kami tidak menentukan topik apapun, agar kamu bisa fous untuk berbicara.\n
         \n
         \nKamu akan dinilai dari kelancaran kamu dalam menyampaikan penjelasan.\n
         \n
         \nSelalu arahkan kamera ke wajah kamu agar kami bisa melakukan penilaian dengan baik.\n
         \n
-        \nGunakan suara yang lantang seolah-olah sedang melakukan Public Speaking.</item>
+        \nGunakan suara yang lantang seolah-olah sedang melakukan Public Speaking.\n
+        \n
+        \nSelamat mencoba Story Telling! Siap?</item>
         <item>Pada ujian kali ini, diberi kebebasan untuk berbicara, kami tidak menentukan topik apapun, agar kamu bisa fous untuk berbicara.\n
         \n
         \nKamu akan dinilai dari kelancaran kamu dalam menyampaikan penjelasan.\n
         \n
         \nSelalu arahkan kamera ke wajah kamu agar kami bisa melakukan penilaian dengan baik.\n
         \n
-        \nGunakan suara yang lantang seolah-olah sedang melakukan Public Speaking.</item>
+        \nGunakan suara yang lantang seolah-olah sedang melakukan Public Speaking.\n
+        \n
+        \nSelamat mencoba Story Telling! Siap?</item>
         <item>Pada ujian kali ini, diberi kebebasan untuk berbicara, kami tidak menentukan topik apapun, agar kamu bisa fous untuk berbicara.\n
         \n
         \nKamu akan dinilai dari kelancaran kamu dalam menyampaikan penjelasan.\n
         \n
         \nSelalu arahkan kamera ke wajah kamu agar kami bisa melakukan penilaian dengan baik.\n
         \n
-        \nGunakan suara yang lantang seolah-olah sedang melakukan Public Speaking.</item>
+        \nGunakan suara yang lantang seolah-olah sedang melakukan Public Speaking.\n
+        \n
+        \nSelamat mencoba Master of Ceremony! Siap?</item>
     </string-array>
 
 

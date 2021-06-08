@@ -3,8 +3,10 @@ package com.bighero.speaky.data.source
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.bighero.speaky.data.entity.AssessmentEntity
+import com.bighero.speaky.data.entity.AssessmentPackEntity
 import com.bighero.speaky.data.entity.module.ModuleEntity
 import com.bighero.speaky.data.entity.module.UserModuleEntity
+import com.bighero.speaky.data.source.remote.response.APackResponse
 import com.bighero.speaky.data.source.remote.response.ModuleResponse
 import com.bighero.speaky.data.source.remote.response.UserAssesmentResponse
 import com.bighero.speaky.data.source.remote.response.UserModuleResponse
@@ -24,6 +26,7 @@ class FirebaseRepository(
     private val moduleRef: DatabaseReference = rootRef.child("ResModul")
     private val userModuleRef: DatabaseReference = rootRef.child("userModul")
     private val userAssessmentRef: DatabaseReference = rootRef.child("UserAssessment")
+    private val packAssessmentRef: DatabaseReference = rootRef.child("AssessmentPack")
     private var auth: FirebaseAuth = Firebase.auth
     private var uId = auth.currentUser!!.uid
     companion object {
@@ -83,6 +86,23 @@ class FirebaseRepository(
         }
         return mutableLiveData
     }
+
+    /*
+    override fun getAssessmentPack(id: String): MutableLiveData<APackResponse> {
+        val mutableLiveData = MutableLiveData<APackResponse>()
+        userAssessmentRef.get().addOnSuccessListener {
+            val response = APackResponse()
+            response.id = it.child(id).children.map { it ->
+                APackResponse(
+                    title = it.child("title").toString(),
+                    type = it.child("type".toString()),
+                    instruction = it.child()
+                )
+            }
+        }
+    }
+
+     */
 
     override fun getUserModule(): MutableLiveData<UserModuleResponse> {
         val mutableLiveData = MutableLiveData<UserModuleResponse>()

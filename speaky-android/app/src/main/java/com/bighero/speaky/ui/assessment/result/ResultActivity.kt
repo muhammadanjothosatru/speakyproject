@@ -51,15 +51,19 @@ class ResultActivity : AppCompatActivity() {
             viewModel.findAssessment(url, uId)
         }
 
+        setResult()
+    }
+
+    private fun setResult() {
         viewModel.assessment.observe(this, { assessment ->
 
             detailBinding.score.text = assessment.score.toString()
         })
         viewModel.disfluency.observe(this, { disfluency ->
-            detailBinding.disValue.text = disfluency.value.toString()
+            //detailBinding.disValue.text = disfluency.value.toString()
         })
         viewModel.blink.observe(this, { blink ->
-            detailBinding.blinkValue.text = blink.value.toString()
+            //detailBinding.blinkValue.text = blink.value.toString()
         })
         viewModel.isLoading.observe(this, {
             binding.progressBar.isVisible = it

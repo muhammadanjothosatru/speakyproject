@@ -1,18 +1,19 @@
-package com.bighero.speaky.ui.login.fragment
+package com.bighero.speaky.ui.user
 
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.bighero.speaky.R
 import com.bighero.speaky.data.entity.UserEntity
-import com.bighero.speaky.databinding.FragmentUserInfoBinding
+import com.bighero.speaky.databinding.ActivityEditProfileBinding
+import com.bighero.speaky.ui.home.HomeActivity
 import com.bighero.speaky.ui.login.TermActivity
+import com.bighero.speaky.ui.login.fragment.UserInfoFragment
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
@@ -23,39 +24,28 @@ import com.google.firebase.storage.FirebaseStorage
 import java.text.SimpleDateFormat
 import java.util.*
 
+class EditProfileActivity : AppCompatActivity() {
 
-class UserInfoFragment : Fragment() {
-    private var _binding : FragmentUserInfoBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: ActivityEditProfileBinding
 
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
 
     private lateinit var uId: String
 
-    var uri: Uri? = null
+    private var uri: Uri? = null
 
     private var email: String? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityEditProfileBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-    companion object {
-        const val EXTRA_EMAIL = "extra_email"
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentUserInfoBinding.inflate(inflater, container, false)
         auth = Firebase.auth
         database = Firebase.database.reference
+        uId = auth.currentUser?.uid.toString()
 
-        return binding.root
-
-    }
-
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        showProfile(uId)
 
         binding.avatar.setOnClickListener {
             val pIntent = Intent(Intent.ACTION_PICK)
@@ -74,6 +64,26 @@ class UserInfoFragment : Fragment() {
         }
     }
 
+    private fun showProfile(uId: String) {
+        database.child("users").child(uId).get().addOnSuccessListener {
+            Log.i("firebase", "Got value ${it.child("name").value}")
+            Log.i("firebase", "Got value ${it.child("status").value}")
+
+            binding.etName.setText(it.child("name").value.toString())
+            binding.etUsername.setText(it.child("username").value.toString())
+            val imgUrl = it.child("imgPhoto").value
+            if (imgUrl != null) {
+                Glide.with(this)
+                    .load(it.child("imgPhoto").value.toString())
+                    .into(binding.avatar)
+            }
+            showLoading(false)
+        }.addOnFailureListener {
+            Log.e("firebase", "Error getting data", it)
+            showLoading(false)
+        }
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -84,15 +94,6 @@ class UserInfoFragment : Fragment() {
             binding.avatar.setImageURI(uri)
         }
 
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        if (arguments != null) {
-            email = arguments?.getString(EXTRA_EMAIL)
-            Log.i("Get email", email.toString())
-        }
     }
 
     private fun registerUser() {
@@ -110,7 +111,6 @@ class UserInfoFragment : Fragment() {
         showLoading(true)
 
         if (uri != null) {
-            uId = auth.currentUser?.uid.toString()
             Log.i("uId", "Get $uId")
             val formatter = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
             val now = Date()
@@ -151,9 +151,9 @@ class UserInfoFragment : Fragment() {
                                     getString(R.string.beginner),
                                     false
                                 )
-                                startActivity(Intent(activity, TermActivity::class.java))
+                                startActivity(Intent(this, HomeActivity::class.java))
                                 showLoading(false)
-                                activity?.finish()
+                                finish()
                             }
                         }
                 } else {
@@ -169,7 +169,7 @@ class UserInfoFragment : Fragment() {
             auth.currentUser!!.updateProfile(profileUpdates)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        Log.d("firebase","User profil updated")
+                        Log.d("firebase","User profile updated")
                         writeNewUser(
                             binding.etName.text.toString(),
                             binding.etUsername.text.toString(),
@@ -178,9 +178,9 @@ class UserInfoFragment : Fragment() {
                             getString(R.string.beginner),
                             false
                         )
-                        startActivity(Intent(activity, TermActivity::class.java))
+                        startActivity(Intent(this, TermActivity::class.java))
                         showLoading(false)
-                        activity?.finish()
+                        finish()
                     }
                 }
         }

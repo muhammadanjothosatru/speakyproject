@@ -4,11 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bighero.speaky.R
 import com.bighero.speaky.databinding.ContentDetailProfileBinding
 import com.bighero.speaky.databinding.FragmentProfileBinding
 import com.bighero.speaky.ui.login.LoginActivity
+import com.bighero.speaky.ui.login.fragment.LoginFragment
+import com.bighero.speaky.ui.user.EditProfileActivity
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -16,7 +19,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentProfileBinding? = null
     private lateinit var auth: FirebaseAuth
     private val binding get() = _binding!!
@@ -47,7 +50,11 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showLoading(true)
+        showProfile()
+        detailBinding.cvEdit.setOnClickListener(this)
+    }
 
+    private fun showProfile() {
         database.child("users").child(uId).get().addOnSuccessListener {
             Log.i("firebase", "Got value ${it.child("name").value}")
             Log.i("firebase", "Got value ${it.child("status").value}")
@@ -99,6 +106,15 @@ class ProfileFragment : Fragment() {
                 true
             }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onClick(v: View) {
+        if (v.id == R.id.cv_edit) {
+            startActivity(Intent(activity, EditProfileActivity::class.java))
+        }
+        else {
+            Toast.makeText(requireContext(), "Coming Soon", Toast.LENGTH_SHORT ).show()
         }
     }
 
