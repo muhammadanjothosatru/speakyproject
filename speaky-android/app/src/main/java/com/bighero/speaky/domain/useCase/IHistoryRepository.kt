@@ -7,6 +7,7 @@ import com.bighero.speaky.data.source.remote.response.assesment.APackResponse
 import com.bighero.speaky.data.source.remote.response.assesment.InstructionResponse
 import com.bighero.speaky.data.source.remote.response.module.ModuleResponse
 import com.bighero.speaky.data.source.remote.response.assesment.UserAssesmentResponse
+import com.bighero.speaky.data.source.remote.response.assesment.UserResultResponse
 import com.bighero.speaky.data.source.remote.response.module.BabByIdResponse
 import com.bighero.speaky.data.source.remote.response.module.ModuleByIdResponse
 import com.bighero.speaky.data.source.remote.response.module.UserModuleResponse
@@ -21,6 +22,7 @@ interface IHistoryRepository {
     fun getInstruction(id:String) : MutableLiveData<InstructionResponse>
     fun getModuleById(id:String) : MutableLiveData<ModuleByIdResponse>
     fun getPraticeById(id:String) : MutableLiveData<PracticeByIdResponse>
+    fun getResult(id:String) : MutableLiveData<UserResultResponse>
     fun getBabById(id: String, moduleId: String) : MutableLiveData<BabByIdResponse>
-    fun setUser(assessmentEntity: AssessmentEntity)
+    fun setUser(assessmentEntity: AssessmentEntity, date:String)
 }

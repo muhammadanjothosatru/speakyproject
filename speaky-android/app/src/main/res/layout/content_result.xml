@@ -81,6 +81,7 @@
             android:layout_height="wrap_content"
             tools:listitem="@layout/dashboard_list"/>
         <Button
+            android:id="@+id/detailbutton"
             style="@style/customButtonRect"
             android:text="Detail Hasil Ujian"
             android:layout_marginTop="20dp"/>

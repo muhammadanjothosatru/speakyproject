@@ -14,6 +14,7 @@ import com.bighero.speaky.data.source.remote.response.assesment.APackResponse
 import com.bighero.speaky.data.source.remote.response.assesment.InstructionResponse
 import com.bighero.speaky.data.source.remote.response.module.ModuleResponse
 import com.bighero.speaky.data.source.remote.response.assesment.UserAssesmentResponse
+import com.bighero.speaky.data.source.remote.response.assesment.UserResultResponse
 import com.bighero.speaky.data.source.remote.response.module.BabByIdResponse
 import com.bighero.speaky.data.source.remote.response.module.ModuleByIdResponse
 import com.bighero.speaky.data.source.remote.response.module.UserModuleResponse
@@ -244,6 +245,26 @@ class FirebaseRepository(
         return mutableLiveData
     }
 
+    override fun getResult(id: String): MutableLiveData<UserResultResponse> {
+        val mutableLiveData = MutableLiveData<UserResultResponse>()
+        userAssessmentRef.child(uId).get().addOnSuccessListener {
+            val response = UserResultResponse()
+            response.history = AssessmentEntity(
+                    donwloadUrl = it.child(id).child("donwloadUrl").value.toString(),
+                    score = it.child(id).child("score").value as Long,
+                    timeStamp = it.child(id).child("timeStamp").value.toString(),
+                    gaze = it.child(id).child("gaze").value as Long,
+                    blink = it.child(id).child("blink").value as Long,
+                    disfluency = it.child(id).child("disfluency").value as Long,
+                )
+
+            mutableLiveData.value = response
+        }.addOnFailureListener {
+            Log.e("firebase", "Error getting data", it)
+        }
+        return mutableLiveData
+    }
+
     override fun getBabById(id: String, moduleId: String): MutableLiveData<BabByIdResponse> {
         val mutableLiveData = MutableLiveData<BabByIdResponse>()
         moduleRef.child(moduleId).child("bab").child(id).get().addOnSuccessListener { module ->
@@ -269,9 +290,8 @@ class FirebaseRepository(
         return mutableLiveData
     }
 
-    override fun setUser(assessmentEntity: AssessmentEntity) {
-        val date = SimpleDateFormat("yyyy-MM-dd-HH-mm", Locale.US).format(System.currentTimeMillis()).toString()
-        userAssessmentRef.child(uId).child("Tes$date").setValue(assessmentEntity)
+    override fun setUser(assessmentEntity: AssessmentEntity, date:String) {
+        userAssessmentRef.child(uId).child(date).setValue(assessmentEntity)
     }
 
 }

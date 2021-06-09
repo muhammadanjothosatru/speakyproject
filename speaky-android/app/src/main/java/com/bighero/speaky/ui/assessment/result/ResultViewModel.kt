@@ -16,6 +16,7 @@ import java.util.*
 class ResultViewModel(
     private val firebaseRepository: FirebaseRepository
 ) : ViewModel() {
+
     private val _assessment = MutableLiveData<AssesementResponse>()
     val assessment: LiveData<AssesementResponse> = _assessment
 
@@ -35,8 +36,7 @@ class ResultViewModel(
         private const val TAG = "ResultViewModel"
     }
 
-    fun findAssessment(url: String, id: String) {
-        val date = SimpleDateFormat("yyyy-MM-dd-HH-mm", Locale.US).format(System.currentTimeMillis()).toString()
+    fun findAssessment(url: String, id: String, date: String) {
         val client = ApiConfig.getApiService().getAssessment(url, id)
         client.enqueue(object : retrofit2.Callback<AssesementResponse> {
             override fun onResponse(
@@ -57,7 +57,7 @@ class ResultViewModel(
                         blink = response.body()?.blink!!.value,
                         disfluency = response.body()?.disfluency!!.value,
                     )
-                    setHistory(assessment)
+                    setHistory(assessment, date)
                     _isLoading.value = false
                 } else {
                     Log.e(TAG, "onFailure: ${response.message()}")
@@ -71,7 +71,7 @@ class ResultViewModel(
         })
     }
 
-    fun setHistory(assessmentEntity: AssessmentEntity) {
-        return firebaseRepository.setUser(assessmentEntity)
+    fun setHistory(assessmentEntity: AssessmentEntity, date: String) {
+        return firebaseRepository.setUser(assessmentEntity, date)
     }
 }
