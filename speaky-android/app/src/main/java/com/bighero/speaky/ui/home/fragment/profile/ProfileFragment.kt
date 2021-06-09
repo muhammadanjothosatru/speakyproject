@@ -10,7 +10,8 @@ import com.bighero.speaky.R
 import com.bighero.speaky.databinding.ContentProfileBinding
 import com.bighero.speaky.databinding.FragmentProfileBinding
 import com.bighero.speaky.ui.login.LoginActivity
-import com.bighero.speaky.ui.user.EditProfileActivity
+import com.bighero.speaky.ui.detail.user.EditProfileActivity
+import com.bighero.speaky.ui.detail.user.TouActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.auth.FirebaseAuth
@@ -27,10 +28,12 @@ class ProfileFragment : Fragment(), View.OnClickListener {
 
     private lateinit var database: DatabaseReference
     private lateinit var uId: String
+    private var status: Boolean = false
 
     companion object{
         const val ALERT_DIALOG_OUT = 10
         const val ALERT_DIALOG_DELETE = 20
+        const val ALERT_DIALOG_SUBS = 30
         const val REQUEST_DELETE = 100
         const val RESULT_DELETE = 200
     }
@@ -59,6 +62,8 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         showLoading(true)
         showProfile()
         detailBinding.cvEdit.setOnClickListener(this)
+        detailBinding.cvSubs.setOnClickListener(this)
+        detailBinding.cvToc.setOnClickListener(this)
     }
 
     private fun showProfile() {
@@ -67,8 +72,8 @@ class ProfileFragment : Fragment(), View.OnClickListener {
             Log.i("firebase", "Got value ${it.child("status").value}")
 
             detailBinding.profileName.text = it.child("name").value.toString()
-            val status = it.child("status").value
-            if (status == false) {
+            status = it.child("status").value as Boolean
+            if (!status) {
                 detailBinding.profileStatus.text = getString(R.string.free_user)
             } else {
                 detailBinding.profileStatus.text = getString(R.string.premium_user)
@@ -102,15 +107,26 @@ class ProfileFragment : Fragment(), View.OnClickListener {
     }
 
     private fun showAlertDialog(type: Int) {
-        val isLogout = type == ALERT_DIALOG_OUT
+
         val dialogTitle: String
         val dialogMessage: String
-        if (isLogout){
-            dialogTitle = getString(R.string.sign_out)
-            dialogMessage = getString(R.string.sign_out_message)
-        } else {
-            dialogTitle = getString(R.string.delete)
-            dialogMessage = getString(R.string.delete_message)
+        when (type) {
+            ALERT_DIALOG_OUT -> {
+                dialogTitle = getString(R.string.sign_out)
+                dialogMessage = getString(R.string.sign_out_message)
+            }
+            ALERT_DIALOG_DELETE -> {
+                dialogTitle = getString(R.string.delete)
+                dialogMessage = getString(R.string.delete_message)
+            }
+            else -> {
+                dialogTitle = getString(R.string.subscribe)
+                dialogMessage = if (!status) {
+                    getString(R.string.subscribe_message)
+                } else {
+                    "Kamu sudah berlangganan."
+                }
+            }
         }
         val alertDialogBuilder = AlertDialog.Builder(activity)
 
@@ -118,28 +134,38 @@ class ProfileFragment : Fragment(), View.OnClickListener {
             setTitle(dialogTitle)
             setMessage(dialogMessage)
             setCancelable(false)
-            setPositiveButton(getString(R.string.yes)) {_,_->
-                if (!isLogout) {
-                    database.child("users").child(uId).removeValue()
-                    database.child("UserAssessment").child(uId).removeValue()
-                    database.child("UserModule").child(uId).removeValue()
-                    database.child("UserPractice").child(uId).removeValue()
-                    auth.currentUser!!.delete()
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                Log.d("auth", "User account deleted.")
+            setPositiveButton(getString(R.string.yes)) {dialog,_->
+                when (type) {
+                    ALERT_DIALOG_DELETE -> {
+                        database.child("users").child(uId).removeValue()
+                        database.child("UserAssessment").child(uId).removeValue()
+                        database.child("UserModule").child(uId).removeValue()
+                        database.child("UserPractice").child(uId).removeValue()
+                        auth.currentUser!!.delete()
+                            .addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    Log.d("auth", "User account deleted.")
+                                }
                             }
+                        startActivity(Intent(activity, LoginActivity::class.java))
+                        showLoading(false)
+                        activity?.finish()
+
+                    }
+                    ALERT_DIALOG_OUT -> {
+                        Firebase.auth.signOut()
+                        startActivity(Intent(activity, LoginActivity::class.java))
+                        showLoading(false)
+                        activity?.finish()
+                    }
+                    else -> {
+                        if (!status) {
+                            database.child("users").child(uId).child("status").setValue(true)
+                            activity?.recreate()
+                        } else {
+                            dialog.dismiss()
                         }
-                    startActivity(Intent(activity, LoginActivity::class.java))
-                    showLoading(false)
-                    activity?.finish()
-
-                } else {
-                    Firebase.auth.signOut()
-                    startActivity(Intent(activity, LoginActivity::class.java))
-                    showLoading(false)
-                    activity?.finish()
-
+                    }
                 }
             }
         }.setNegativeButton(getString(R.string.tidak)) {dialog, _ -> dialog.cancel()}
@@ -152,6 +178,12 @@ class ProfileFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View) {
         if (v.id == R.id.cv_edit) {
             startActivity(Intent(activity, EditProfileActivity::class.java))
+        }
+        if (v.id == R.id.cv_subs) {
+            showAlertDialog(ALERT_DIALOG_SUBS)
+        }
+        if (v.id == R.id.cv_toc) {
+            startActivity(Intent(activity, TouActivity::class.java))
         }
     }
 

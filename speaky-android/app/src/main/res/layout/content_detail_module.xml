@@ -27,7 +27,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_gallery_module"
         android:layout_width="match_parent"
-        android:layout_height="125dp"
+        android:layout_height="150dp"
         android:orientation="horizontal"
         tools:listitem="@layout/gallery_list"/>
 

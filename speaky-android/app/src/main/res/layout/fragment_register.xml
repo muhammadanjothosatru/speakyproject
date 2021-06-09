@@ -9,11 +9,11 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="288dp"
-        android:layout_height="96dp"
+        android:layout_width="238dp"
+        android:layout_height="200dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="140dp"
-        android:src="@drawable/speaky"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,7 +22,7 @@
     <EditText
         android:id="@+id/et_email"
         style="@style/inputBox"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:hint="@string/e_mail"
         android:importantForAutofill="auto"
         android:autofillHints="@string/e_mail"

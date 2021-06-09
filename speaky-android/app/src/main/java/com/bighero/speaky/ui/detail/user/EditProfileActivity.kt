@@ -1,4 +1,4 @@
-package com.bighero.speaky.ui.user
+package com.bighero.speaky.ui.detail.user
 
 import android.app.Activity
 import android.content.Intent
@@ -11,8 +11,6 @@ import com.bighero.speaky.R
 import com.bighero.speaky.data.entity.UserEntity
 import com.bighero.speaky.databinding.ActivityEditProfileBinding
 import com.bighero.speaky.ui.home.HomeActivity
-import com.bighero.speaky.ui.login.TermActivity
-import com.bighero.speaky.ui.login.fragment.UserInfoFragment
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth

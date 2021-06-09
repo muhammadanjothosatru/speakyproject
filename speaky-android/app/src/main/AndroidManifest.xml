@@ -15,13 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Speaky"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.detail.assessment.DetailResultActivity"></activity>
+        <activity android:name=".ui.detail.user.TouActivity"/>
+        <activity android:name=".ui.detail.assessment.DetailResultActivity" />
         <activity android:name=".ui.detail.praktik.DetailPracticeActivity" />
         <activity
             android:name=".ui.detail.module.DetailModuleActivity"
             android:parentActivityName=".ui.home.HomeActivity" />
         <activity
-            android:name=".ui.user.EditProfileActivity"
+            android:name=".ui.detail.user.EditProfileActivity"
             android:theme="@style/Theme.Speaky.NoActionBar" />
         <activity
             android:name=".ui.assessment.PraAssessmentActivity"

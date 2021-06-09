@@ -15,21 +15,43 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
-                style="@style/titleText"
+                style="@style/regularText"
                 android:textSize="20sp"
                 android:text="@string/term"/>
             <TextView
-                style="@style/regularText"
+                style="@style/regularTextThin"
+                android:lineSpacingExtra="5dp"
+                android:layout_marginTop="5dp"
                 android:text="@string/detail_term"
                 android:textSize="14sp"/>
             <TextView
-                style="@style/titleText"
+                style="@style/regularText"
                 android:textSize="20sp"
-                android:text="@string/term"/>
+                android:text="@string/term2"/>
+            <TextView
+                style="@style/regularTextThin"
+                android:textSize="14sp"
+                android:lineSpacingExtra="5dp"
+                android:text="@string/detail_term2"/>
             <TextView
                 style="@style/regularText"
+                android:textSize="20sp"
+                android:text="@string/term3"/>
+            <TextView
+                style="@style/regularTextThin"
                 android:textSize="14sp"
-                android:text="@string/detail_term"/>
+                android:lineSpacingExtra="5dp"
+                android:text="@string/detail_term3"/>
+            <TextView
+                style="@style/regularText"
+                android:textSize="20sp"
+                android:text="@string/term4"/>
+            <TextView
+                style="@style/regularTextThin"
+                android:textSize="14sp"
+                android:lineSpacingExtra="5dp"
+                android:text="@string/detail_term4"/>
+
         </LinearLayout>
     </ScrollView>
 
