@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bighero.speaky.databinding.ContentPracticeBinding
 import com.bighero.speaky.databinding.FragmentPracticeBinding
-import com.bighero.speaky.ui.detail.module.DetailModuleActivity
 import com.bighero.speaky.ui.detail.praktik.DetailPracticeActivity
 import com.bighero.speaky.util.ViewModelFactory
 
@@ -32,7 +31,7 @@ class PracticeFragment : Fragment(), PracticeAdapter.OnItemClickCallback {
         savedInstanceState: Bundle?
     ): View {
         val factory = ViewModelFactory.getInstance(requireContext())
-        practiceViewModel = ViewModelProvider(this,factory)[PracticeViewModel::class.java]
+        practiceViewModel = ViewModelProvider(this, factory)[PracticeViewModel::class.java]
         _binding = FragmentPracticeBinding.inflate(inflater, container, false)
         detailBinding = binding.detailContent
         practiceAdapter = PracticeAdapter()
@@ -49,10 +48,10 @@ class PracticeFragment : Fragment(), PracticeAdapter.OnItemClickCallback {
         practiceViewModel.getPratice().observe(viewLifecycleOwner, { response ->
             response.pratice?.let {
                 if (it.isEmpty()) {
-                    Toast.makeText(activity,"Practice belum ada", Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity, "Practice belum ada", Toast.LENGTH_LONG).show()
                 } else {
                     Log.e("practice", it.toString())
-                    binding.detailContent.rvPratice.layoutManager = GridLayoutManager(context,2)
+                    binding.detailContent.rvPratice.layoutManager = GridLayoutManager(context, 2)
                     practiceAdapter.setPratice(it)
                     practiceAdapter.notifyDataSetChanged()
                     practiceAdapter.setOnClickCallback(this)

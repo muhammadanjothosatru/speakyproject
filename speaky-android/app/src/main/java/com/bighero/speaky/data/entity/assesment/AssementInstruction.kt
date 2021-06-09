@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class AssementInstruction (
-    var type : String,
-    var intruksi : List<String>
-        ) : Parcelable
+data class AssementInstruction(
+    var type: String,
+    var intruksi: List<String>
+) : Parcelable

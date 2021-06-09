@@ -5,8 +5,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class UserModuleEntity(
-    val key : String,
-    val bab : Bab
+    val key: String,
+    val bab: Bab
 ) : Parcelable {
     @Parcelize
     data class Bab(

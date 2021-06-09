@@ -5,9 +5,9 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class AssessmentPackEntity(
-    var id : String,
+    var id: String,
     var title: String,
     var type: String,
-    var petunjuk : String,
-    var guide : List<String>
-    ): Parcelable
+    var petunjuk: String,
+    var guide: List<String>
+) : Parcelable

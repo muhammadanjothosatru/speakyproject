@@ -2,11 +2,11 @@ package com.bighero.speaky.ui.login.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.bighero.speaky.R
 import com.bighero.speaky.databinding.FragmentLoginBinding
 import com.bighero.speaky.ui.home.HomeActivity
@@ -50,7 +50,10 @@ class LoginFragment : Fragment(), View.OnClickListener {
             return
         }
         showLoading(true)
-        auth.signInWithEmailAndPassword(binding.etEmail.text.toString(), binding.etPassword.text.toString())
+        auth.signInWithEmailAndPassword(
+            binding.etEmail.text.toString(),
+            binding.etPassword.text.toString()
+        )
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser
@@ -70,8 +73,10 @@ class LoginFragment : Fragment(), View.OnClickListener {
             startActivity(Intent(requireActivity(), HomeActivity::class.java))
             activity?.finish()
         } else {
-            Toast.makeText(requireContext(), "Login failed.",
-                Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(), "Login failed.",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
@@ -80,12 +85,17 @@ class LoginFragment : Fragment(), View.OnClickListener {
             val mRegisterFragment = RegisterFragment()
             val mFragmentManager = fragmentManager
             mFragmentManager?.beginTransaction()?.apply {
-                replace(R.id.frame_container, mRegisterFragment,RegisterFragment::class.java.simpleName)
+                replace(
+                    R.id.frame_container,
+                    mRegisterFragment,
+                    RegisterFragment::class.java.simpleName
+                )
                 commit()
             }
         }
     }
-    fun showLoading(i:Boolean) {
+
+    fun showLoading(i: Boolean) {
         if (i) {
             binding.progressBar.visibility = View.VISIBLE
             binding.btnLogin.isClickable = false

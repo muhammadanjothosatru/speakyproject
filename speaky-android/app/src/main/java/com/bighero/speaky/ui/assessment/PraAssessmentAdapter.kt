@@ -7,7 +7,7 @@ import com.bighero.speaky.data.entity.assesment.AssessmentPackEntity
 import com.bighero.speaky.databinding.PraListBinding
 
 class PraAssessmentAdapter
-    (private val listTest: ArrayList<AssessmentPackEntity>):
+    (private val listTest: ArrayList<AssessmentPackEntity>) :
     RecyclerView.Adapter<PraAssessmentAdapter.ListViewHolder>() {
 
     private var onItemClickCallback: OnItemClickCallback? = null
@@ -20,9 +20,10 @@ class PraAssessmentAdapter
         fun onItemClicked(data: AssessmentPackEntity)
     }
 
-    inner class ListViewHolder(private val binding: PraListBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class ListViewHolder(private val binding: PraListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(pack: AssessmentPackEntity) {
-            with(binding){
+            with(binding) {
                 titlePack.text = pack.title
 
                 itemView.setOnClickListener { onItemClickCallback?.onItemClicked(pack) }

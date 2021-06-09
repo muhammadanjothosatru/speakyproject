@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bighero.speaky.data.source.remote.response.assesment.UserAssesmentResponse
 import com.bighero.speaky.databinding.FragmentHistoryBinding
 import com.bighero.speaky.ui.detail.assessment.DetailResultActivity
-import com.bighero.speaky.ui.detail.module.DetailModuleActivity
 import com.bighero.speaky.util.ViewModelFactory
 
 class HistoryFragment : Fragment(), HistoryAdapter.OnItemClickCallback {
@@ -30,7 +29,7 @@ class HistoryFragment : Fragment(), HistoryAdapter.OnItemClickCallback {
         savedInstanceState: Bundle?
     ): View {
         val factory = ViewModelFactory.getInstance(requireContext())
-        historyViewModel = ViewModelProvider(this,factory)[HistoryViewModel::class.java]
+        historyViewModel = ViewModelProvider(this, factory)[HistoryViewModel::class.java]
         _binding = FragmentHistoryBinding.inflate(inflater, container, false)
         val root: View = binding.root
         historyAdapter = HistoryAdapter()
@@ -50,16 +49,16 @@ class HistoryFragment : Fragment(), HistoryAdapter.OnItemClickCallback {
 
     private fun printa(response: UserAssesmentResponse) {
         response.history?.let {
-                if (it.isEmpty()) {
-                    Toast.makeText(activity,"Kamu belum pernah Test",Toast.LENGTH_LONG).show()
-                } else {
-                    binding.rvHistory.layoutManager = LinearLayoutManager(context)
-                    historyAdapter.setHistory(it)
-                    historyAdapter.notifyDataSetChanged()
-                    historyAdapter.setOnClickCallback(this)
-                    binding.rvHistory.setHasFixedSize(true)
-                    binding.rvHistory.adapter = historyAdapter
-                }
+            if (it.isEmpty()) {
+                Toast.makeText(activity, "Kamu belum pernah Test", Toast.LENGTH_LONG).show()
+            } else {
+                binding.rvHistory.layoutManager = LinearLayoutManager(context)
+                historyAdapter.setHistory(it)
+                historyAdapter.notifyDataSetChanged()
+                historyAdapter.setOnClickCallback(this)
+                binding.rvHistory.setHasFixedSize(true)
+                binding.rvHistory.adapter = historyAdapter
+            }
         }
         response.exception?.let { exception ->
             exception.message?.let {

@@ -8,7 +8,7 @@ import com.bighero.speaky.data.source.remote.response.pratice.PracticeByIdRespon
 class DetailPracticeViewModel(private val mFirebaseRepository: FirebaseRepository) : ViewModel() {
 
 
-    fun getPraticeById(id:String) : LiveData<PracticeByIdResponse> {
+    fun getPraticeById(id: String): LiveData<PracticeByIdResponse> {
         return mFirebaseRepository.getPraticeById(id)
     }
 }

@@ -5,14 +5,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bighero.speaky.R
 import com.bighero.speaky.databinding.ContentProfileBinding
 import com.bighero.speaky.databinding.FragmentProfileBinding
-import com.bighero.speaky.ui.login.LoginActivity
 import com.bighero.speaky.ui.detail.user.edit.EditProfileActivity
 import com.bighero.speaky.ui.detail.user.tou.TouActivity
+import com.bighero.speaky.ui.login.LoginActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.auth.FirebaseAuth
@@ -31,7 +30,7 @@ class ProfileFragment : Fragment(), View.OnClickListener {
     private lateinit var uId: String
     private var status: Boolean = false
 
-    companion object{
+    companion object {
         const val ALERT_DIALOG_OUT = 10
         const val ALERT_DIALOG_DELETE = 20
         const val ALERT_DIALOG_SUBS = 30
@@ -136,7 +135,7 @@ class ProfileFragment : Fragment(), View.OnClickListener {
             setTitle(dialogTitle)
             setMessage(dialogMessage)
             setCancelable(false)
-            setPositiveButton(getString(R.string.yes)) {dialog,_->
+            setPositiveButton(getString(R.string.yes)) { dialog, _ ->
                 when (type) {
                     ALERT_DIALOG_DELETE -> {
                         database.child("users").child(uId).removeValue()
@@ -170,7 +169,7 @@ class ProfileFragment : Fragment(), View.OnClickListener {
                     }
                 }
             }
-        }.setNegativeButton(getString(R.string.tidak)) {dialog, _ -> dialog.cancel()}
+        }.setNegativeButton(getString(R.string.tidak)) { dialog, _ -> dialog.cancel() }
         val alertDialog = alertDialogBuilder.create()
         alertDialog.show()
 

@@ -9,7 +9,7 @@ class ModuleViewModel(
     private val firebaseRepository: FirebaseRepository
 ) : ViewModel() {
 
-    fun getModule() : LiveData<ModuleResponse> {
+    fun getModule(): LiveData<ModuleResponse> {
         return firebaseRepository.getModule()
     }
 }

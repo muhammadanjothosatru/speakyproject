@@ -5,10 +5,10 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.bighero.speaky.R
 import com.bighero.speaky.data.entity.UserEntity
 import com.bighero.speaky.databinding.FragmentUserInfoBinding
@@ -25,7 +25,7 @@ import java.util.*
 
 
 class UserInfoFragment : Fragment() {
-    private var _binding : FragmentUserInfoBinding? = null
+    private var _binding: FragmentUserInfoBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var auth: FirebaseAuth
@@ -69,7 +69,7 @@ class UserInfoFragment : Fragment() {
             startActivityForResult(pIntent, 0)
         }
 
-        binding.btNext.setOnClickListener{
+        binding.btNext.setOnClickListener {
             registerUser()
         }
     }
@@ -118,14 +118,13 @@ class UserInfoFragment : Fragment() {
             val storageRef = FirebaseStorage.getInstance().getReference("avatar/${uId}/$filename")
 
             val uploadTask = uri.let { storageRef.putFile(it!!) }
-            uploadTask.
-            addOnSuccessListener {
+            uploadTask.addOnSuccessListener {
                 binding.avatar.setImageURI(null)
-            }.addOnFailureListener{
+            }.addOnFailureListener {
                 Log.e("upload image", "fail")
             }
 
-            uploadTask.continueWithTask{ task ->
+            uploadTask.continueWithTask { task ->
                 if (!task.isSuccessful) {
                     task.exception.let {
                         throw it!!
@@ -142,7 +141,7 @@ class UserInfoFragment : Fragment() {
                     auth.currentUser!!.updateProfile(profileUpdates)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
-                                Log.d("firebase","User profil updated")
+                                Log.d("firebase", "User profil updated")
                                 writeNewUser(
                                     binding.etName.text.toString(),
                                     binding.etUsername.text.toString(),
@@ -169,7 +168,7 @@ class UserInfoFragment : Fragment() {
             auth.currentUser!!.updateProfile(profileUpdates)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        Log.d("firebase","User profil updated")
+                        Log.d("firebase", "User profil updated")
                         writeNewUser(
                             binding.etName.text.toString(),
                             binding.etUsername.text.toString(),
@@ -188,11 +187,17 @@ class UserInfoFragment : Fragment() {
     }
 
 
-
-    private fun writeNewUser(name: String, uname: String, email: String, ava: String, level: String, status: Boolean) {
+    private fun writeNewUser(
+        name: String,
+        uname: String,
+        email: String,
+        ava: String,
+        level: String,
+        status: Boolean
+    ) {
         uId = auth.currentUser?.uid.toString()
         Log.i("uId", "Get ${uId}")
-        val user = UserEntity(name, uname, email, ava, level, status,0)
+        val user = UserEntity(name, uname, email, ava, level, status, 0)
 
         database.child("users").child(uId).setValue(user)
     }

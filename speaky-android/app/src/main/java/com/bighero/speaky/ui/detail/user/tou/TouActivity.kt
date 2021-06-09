@@ -1,7 +1,7 @@
 package com.bighero.speaky.ui.detail.user.tou
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.bighero.speaky.databinding.ActivityTouBinding
 
 class TouActivity : AppCompatActivity() {

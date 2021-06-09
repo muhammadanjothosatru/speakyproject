@@ -1,11 +1,11 @@
 package com.bighero.speaky.ui.assessment
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,9 +16,9 @@ import com.bighero.speaky.databinding.ContentPraBinding
 import com.bighero.speaky.util.ViewModelFactory
 
 class PraAssessmentActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityPraAssessmentBinding
+    private lateinit var binding: ActivityPraAssessmentBinding
     private lateinit var detailBinding: ContentPraBinding
-    private lateinit var assesment :AssessmentViewModel
+    private lateinit var assesment: AssessmentViewModel
     private var list = ArrayList<AssessmentPackEntity>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +31,7 @@ class PraAssessmentActivity : AppCompatActivity() {
 
         detailBinding.rvTes.setHasFixedSize(true)
         val factory = ViewModelFactory.getInstance(this)
-        assesment = ViewModelProvider(this,factory)[AssessmentViewModel::class.java]
+        assesment = ViewModelProvider(this, factory)[AssessmentViewModel::class.java]
         getPack()
         showLoading(false)
 
@@ -48,7 +48,7 @@ class PraAssessmentActivity : AppCompatActivity() {
     private fun printa(response: APackResponse) {
         response.pack?.let {
             if (it.isEmpty()) {
-                Toast.makeText(this,"Kamu belum pernah Test", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Kamu belum pernah Test", Toast.LENGTH_LONG).show()
             } else {
                 list.addAll(it)
                 showRecyclerList()
@@ -62,7 +62,8 @@ class PraAssessmentActivity : AppCompatActivity() {
     }
 
     private fun showRecyclerList() {
-        detailBinding.rvTes.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+        detailBinding.rvTes.layoutManager =
+            LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         val adapter = PraAssessmentAdapter(list)
         detailBinding.rvTes.adapter = adapter
 

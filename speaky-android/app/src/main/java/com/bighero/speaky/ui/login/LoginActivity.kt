@@ -1,14 +1,14 @@
 package com.bighero.speaky.ui.login
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.bighero.speaky.R
 import com.bighero.speaky.databinding.ActivityLoginBinding
 import com.bighero.speaky.ui.login.fragment.LoginFragment
 
 class LoginActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityLoginBinding
+    private lateinit var binding: ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)

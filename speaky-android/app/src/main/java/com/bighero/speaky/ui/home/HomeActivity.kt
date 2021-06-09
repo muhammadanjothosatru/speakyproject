@@ -21,7 +21,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
     //private lateinit var database: DatabaseReference
-    private lateinit var uId : String
+    private lateinit var uId: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

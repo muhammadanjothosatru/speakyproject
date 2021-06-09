@@ -5,7 +5,7 @@ import com.bighero.speaky.data.entity.assesment.AssementInstruction
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-class InstructionResponse (
+class InstructionResponse(
     var intruction: AssementInstruction? = null,
     var exception: Exception? = null
-    ) : Parcelable
+) : Parcelable

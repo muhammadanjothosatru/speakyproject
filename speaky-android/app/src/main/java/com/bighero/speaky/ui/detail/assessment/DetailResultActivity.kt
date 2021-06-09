@@ -1,16 +1,12 @@
 package com.bighero.speaky.ui.detail.assessment
 
 import android.annotation.SuppressLint
-import android.content.Intent
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.core.view.isInvisible
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.bighero.speaky.databinding.ActivityDetailResultBinding
-import com.bighero.speaky.ui.assessment.AssessmentViewModel
 import com.bighero.speaky.util.ViewModelFactory
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
@@ -20,17 +16,19 @@ import java.util.*
 class DetailResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailResultBinding
     private lateinit var detailResultViewModel: DetailResultViewModel
+
     companion object {
         const val EXTRA_ID = "extra_id"
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityDetailResultBinding.inflate(layoutInflater)
+        binding = ActivityDetailResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val id = intent.getStringExtra(EXTRA_ID)
 
         val factory = ViewModelFactory.getInstance(this)
-        detailResultViewModel = ViewModelProvider(this,factory)[DetailResultViewModel::class.java]
+        detailResultViewModel = ViewModelProvider(this, factory)[DetailResultViewModel::class.java]
         showLoading(true)
         setHasil(id.toString())
     }
@@ -43,7 +41,8 @@ class DetailResultActivity : AppCompatActivity() {
                 binding.detailContent.gazeValue.text = it.gaze.toString() + " kali"
                 binding.detailContent.disValue.text = it.disfluency.toString() + " kali"
                 binding.detailContent.skorValue.text = it.score.toString()
-                binding.detailContent.timeValue.text = formatdate(it.timeStamp) + " " + formattime(it.timeStamp)
+                binding.detailContent.timeValue.text =
+                    formatdate(it.timeStamp) + " " + formattime(it.timeStamp)
                 showLoading(false)
             }
 
@@ -56,7 +55,7 @@ class DetailResultActivity : AppCompatActivity() {
     }
 
     private fun formattime(times: String): String {
-        val outputFormat= SimpleDateFormat("HH:mm", Locale.US)
+        val outputFormat = SimpleDateFormat("HH:mm", Locale.US)
         val inputFormat = SimpleDateFormat("yyyy-MM-dd-HH-mm", Locale.US)
         val dateFormat = inputFormat.parse(times)
         val date: String = outputFormat.format(dateFormat)
@@ -65,7 +64,7 @@ class DetailResultActivity : AppCompatActivity() {
 
     private fun formatdate(times: String): String {
         val formater = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm", Locale.US)
-        val date = LocalDate.parse(times,formater).toString()
+        val date = LocalDate.parse(times, formater).toString()
         return date
     }
 

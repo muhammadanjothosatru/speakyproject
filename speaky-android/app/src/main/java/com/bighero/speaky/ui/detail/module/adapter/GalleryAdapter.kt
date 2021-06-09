@@ -9,15 +9,17 @@ import com.bighero.speaky.databinding.GalleryListBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class GalleryAdapter(private val listener: GalleryAdapterClickListener): RecyclerView.Adapter<GalleryAdapter.ViewHolder>() {
+class GalleryAdapter(private val listener: GalleryAdapterClickListener) :
+    RecyclerView.Adapter<GalleryAdapter.ViewHolder>() {
     private val listBab = ArrayList<ModuleEntity.Bab>()
 
-    fun setModule(bab: List<ModuleEntity.Bab>){
+    fun setModule(bab: List<ModuleEntity.Bab>) {
         this.listBab.clear()
         this.listBab.addAll(bab)
     }
 
-    inner class ViewHolder(private val binding: GalleryListBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: GalleryListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(bab: ModuleEntity.Bab) {
             with(binding) {
                 Glide.with(itemView.context)
@@ -31,7 +33,7 @@ class GalleryAdapter(private val listener: GalleryAdapterClickListener): Recycle
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = GalleryListBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = GalleryListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 

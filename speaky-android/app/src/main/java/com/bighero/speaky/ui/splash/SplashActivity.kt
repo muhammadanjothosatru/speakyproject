@@ -1,13 +1,10 @@
 package com.bighero.speaky.ui.splash
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.view.Window
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.bighero.speaky.R
 import com.bighero.speaky.ui.home.HomeActivity
@@ -28,10 +25,10 @@ class SplashActivity : AppCompatActivity() {
         val currentUser = auth.currentUser
 
         Handler(Looper.getMainLooper()).postDelayed({
-            if(currentUser != null){
+            if (currentUser != null) {
                 startActivity(Intent(this, HomeActivity::class.java))
                 finish()
-            } else{
+            } else {
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }

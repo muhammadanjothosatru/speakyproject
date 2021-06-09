@@ -8,5 +8,4 @@ import kotlinx.android.parcel.Parcelize
 data class ModuleByIdResponse(
     var module: ModuleEntity? = null,
     var exception: Exception? = null
-) : Parcelable {
-}
+) : Parcelable

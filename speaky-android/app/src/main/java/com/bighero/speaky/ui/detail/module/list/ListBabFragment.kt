@@ -3,25 +3,20 @@ package com.bighero.speaky.ui.detail.module.list
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bighero.speaky.R
-import com.bighero.speaky.databinding.FragmentHistoryBinding
 import com.bighero.speaky.databinding.FragmentListBabBinding
 import com.bighero.speaky.ui.detail.module.DetailModuleViewModel
 import com.bighero.speaky.ui.detail.module.ModuleReaderCallback
 import com.bighero.speaky.ui.detail.module.adapter.BabAdapter
 import com.bighero.speaky.ui.detail.module.adapter.GalleryAdapter
-import com.bighero.speaky.ui.home.fragment.history.HistoryViewModel
 import com.bighero.speaky.util.ViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -49,7 +44,7 @@ class ListBabFragment : Fragment(), BabAdapter.BabAdapterClickListener,
     companion object {
         var EXTRA_ID = "extra_id"
         val TAG: String = ListBabFragment::class.java.simpleName
-        fun newInstance(moduleId : String): ListBabFragment  {
+        fun newInstance(moduleId: String): ListBabFragment {
             val fragment = ListBabFragment()
             val bundle = Bundle().apply {
                 putString(EXTRA_ID, moduleId)
@@ -109,7 +104,8 @@ class ListBabFragment : Fragment(), BabAdapter.BabAdapterClickListener,
                 binding.detailContent.rvListModule.setHasFixedSize(true)
                 binding.detailContent.rvListModule.adapter = listAdapter
 
-                binding.detailContent.rvGalleryModule.layoutManager = LinearLayoutManager(context,RecyclerView.HORIZONTAL, false)
+                binding.detailContent.rvGalleryModule.layoutManager =
+                    LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
                 galleryAdapter.setModule(it.bab)
                 galleryAdapter.notifyDataSetChanged()
                 binding.detailContent.rvGalleryModule.setHasFixedSize(true)
@@ -148,17 +144,17 @@ class ListBabFragment : Fragment(), BabAdapter.BabAdapterClickListener,
     }
 
     private fun unlockModul() {
-            if (!status) {
-                Toast.makeText(context, "Kamu harus berlangganan dulu!", Toast.LENGTH_SHORT).show()
-            } else {
-                binding.btUnlock.isVisible = false
-                binding.gradient.isVisible = false
-                binding.content.isClickable = true
-                binding.detailContent.rvGalleryModule.isEnabled = true
-                binding.detailContent.rvListModule.isEnabled = true
-                binding.imgLock.isVisible = false
-                binding.tvLock.isVisible = false
+        if (!status) {
+            Toast.makeText(context, "Kamu harus berlangganan dulu!", Toast.LENGTH_SHORT).show()
+        } else {
+            binding.btUnlock.isVisible = false
+            binding.gradient.isVisible = false
+            binding.content.isClickable = true
+            binding.detailContent.rvGalleryModule.isEnabled = true
+            binding.detailContent.rvListModule.isEnabled = true
+            binding.imgLock.isVisible = false
+            binding.tvLock.isVisible = false
 
-            }
         }
     }
+}

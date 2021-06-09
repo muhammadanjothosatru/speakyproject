@@ -1,8 +1,8 @@
 package com.bighero.speaky.ui.login
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.bighero.speaky.databinding.ActivityTermBinding
 import com.bighero.speaky.ui.home.HomeActivity
 
@@ -14,7 +14,7 @@ class TermActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btAccept.setOnClickListener {
-            startActivity(Intent(this,HomeActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
             finish()
         }
     }

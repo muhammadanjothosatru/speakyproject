@@ -9,15 +9,17 @@ import com.bighero.speaky.databinding.ModuleListBinding
 import java.util.concurrent.TimeUnit
 
 
-class BabAdapter(private val listener: BabAdapterClickListener):RecyclerView.Adapter<BabAdapter.ViewHolder>() {
+class BabAdapter(private val listener: BabAdapterClickListener) :
+    RecyclerView.Adapter<BabAdapter.ViewHolder>() {
     private val listBab = ArrayList<ModuleEntity.Bab>()
 
-    fun setModule(bab: List<ModuleEntity.Bab>){
+    fun setModule(bab: List<ModuleEntity.Bab>) {
         this.listBab.clear()
         this.listBab.addAll(bab)
     }
 
-    inner class ViewHolder(private val binding: ModuleListBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ModuleListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun bind(bab: ModuleEntity.Bab) {
             with(binding) {
@@ -34,7 +36,7 @@ class BabAdapter(private val listener: BabAdapterClickListener):RecyclerView.Ada
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ModuleListBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ModuleListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 

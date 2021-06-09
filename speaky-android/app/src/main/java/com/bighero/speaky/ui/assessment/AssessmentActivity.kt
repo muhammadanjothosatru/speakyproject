@@ -24,7 +24,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.bighero.speaky.R
 import com.bighero.speaky.databinding.ActivityAssessmentBinding
 import com.bighero.speaky.ui.assessment.result.ResultActivity
-import com.bighero.speaky.ui.assessment.result.ResultViewModel
 import com.bighero.speaky.util.ViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -59,7 +58,7 @@ class AssessmentActivity : AppCompatActivity() {
 
         showLoading(true)
         val factory = ViewModelFactory.getInstance(this)
-        viewModel = ViewModelProvider(this,factory)[AssessmentViewModel::class.java]
+        viewModel = ViewModelProvider(this, factory)[AssessmentViewModel::class.java]
         setContentView(binding.root)
 
         auth = Firebase.auth
@@ -94,12 +93,12 @@ class AssessmentActivity : AppCompatActivity() {
         binding.progressBar.isVisible = b
     }
 
-    private fun showPack(packId:String) {
+    private fun showPack(packId: String) {
         viewModel.findAssessmentPack(packId).observe(this, { response ->
             response.intruction?.let { it ->
-                        binding.jenisTes.text = it.type
-                        binding.topik.text = it.intruksi.random().toString()
-                }
+                binding.jenisTes.text = it.type
+                binding.topik.text = it.intruksi.random().toString()
+            }
 
             response.exception?.let { exception ->
                 exception.message?.let {
@@ -272,9 +271,9 @@ class AssessmentActivity : AppCompatActivity() {
         alertDialogBuilder.setTitle("Keluar")
             .setMessage("Kamu yakin ingin keluar dari tes?")
             .setCancelable(false)
-            .setPositiveButton("Ya") {_,_->
+            .setPositiveButton("Ya") { _, _ ->
                 finish()
-            }.setNegativeButton("Tidak") {dialog, _ -> dialog.cancel()}
+            }.setNegativeButton("Tidak") { dialog, _ -> dialog.cancel() }
 
         val alertDialog = alertDialogBuilder.create()
         alertDialog.show()

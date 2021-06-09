@@ -11,8 +11,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import com.bighero.speaky.data.entity.assesment.AssessmentPackEntity
-import com.bighero.speaky.data.entity.module.ModuleEntity
 import com.bighero.speaky.data.source.remote.response.module.ModuleResponse
 import com.bighero.speaky.databinding.ContentModuleBinding
 import com.bighero.speaky.databinding.FragmentModuleBinding

@@ -3,10 +3,10 @@ package com.bighero.speaky.ui.detail.user.edit
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.bighero.speaky.R
 import com.bighero.speaky.data.entity.UserEntity
 import com.bighero.speaky.databinding.ActivityEditProfileBinding
@@ -57,7 +57,7 @@ class EditProfileActivity : AppCompatActivity() {
             startActivityForResult(pIntent, 0)
         }
 
-        binding.btNext.setOnClickListener{
+        binding.btNext.setOnClickListener {
             registerUser()
         }
     }
@@ -116,14 +116,13 @@ class EditProfileActivity : AppCompatActivity() {
             val storageRef = FirebaseStorage.getInstance().getReference("avatar/${uId}/$filename")
 
             val uploadTask = uri.let { storageRef.putFile(it!!) }
-            uploadTask.
-            addOnSuccessListener {
+            uploadTask.addOnSuccessListener {
                 binding.avatar.setImageURI(null)
-            }.addOnFailureListener{
+            }.addOnFailureListener {
                 Log.e("upload image", "fail")
             }
 
-            uploadTask.continueWithTask{ task ->
+            uploadTask.continueWithTask { task ->
                 if (!task.isSuccessful) {
                     task.exception.let {
                         throw it!!
@@ -140,7 +139,7 @@ class EditProfileActivity : AppCompatActivity() {
                     auth.currentUser!!.updateProfile(profileUpdates)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
-                                Log.d("firebase","User profil updated")
+                                Log.d("firebase", "User profil updated")
                                 writeNewUser(
                                     binding.etName.text.toString(),
                                     binding.etUsername.text.toString(),
@@ -167,9 +166,11 @@ class EditProfileActivity : AppCompatActivity() {
             auth.currentUser!!.updateProfile(profileUpdates)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        Log.d("firebase","User profile updated")
-                        database.child("users").child(uId).child("name").setValue(binding.etName.text.toString())
-                        database.child("users").child(uId).child("username").setValue(binding.etUsername.text.toString())
+                        Log.d("firebase", "User profile updated")
+                        database.child("users").child(uId).child("name")
+                            .setValue(binding.etName.text.toString())
+                        database.child("users").child(uId).child("username")
+                            .setValue(binding.etUsername.text.toString())
                         startActivity(Intent(this, HomeActivity::class.java))
                         showLoading(false)
                         finish()
@@ -180,8 +181,14 @@ class EditProfileActivity : AppCompatActivity() {
     }
 
 
-
-    private fun writeNewUser(name: String, uname: String, email: String, ava: String, level: String, status: Boolean) {
+    private fun writeNewUser(
+        name: String,
+        uname: String,
+        email: String,
+        ava: String,
+        level: String,
+        status: Boolean
+    ) {
         uId = auth.currentUser?.uid.toString()
         Log.i("uId", "Get ${uId}")
         val user = UserEntity(name, uname, email, ava, level, status)

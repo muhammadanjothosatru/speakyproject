@@ -8,9 +8,8 @@ import com.bighero.speaky.data.entity.module.ModuleEntity
 import com.bighero.speaky.databinding.GridListBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import kotlin.collections.ArrayList
 
-class ModuleAdapter: RecyclerView.Adapter<ModuleAdapter.ViewHolder>() {
+class ModuleAdapter : RecyclerView.Adapter<ModuleAdapter.ViewHolder>() {
     private val listModule = ArrayList<ModuleEntity>()
 
     private var onItemClickCallback: OnItemClickCallback? = null
@@ -19,12 +18,13 @@ class ModuleAdapter: RecyclerView.Adapter<ModuleAdapter.ViewHolder>() {
         this.onItemClickCallback = onItemClickCallback
     }
 
-    fun setModule(module: List<ModuleEntity>){
+    fun setModule(module: List<ModuleEntity>) {
         this.listModule.clear()
         this.listModule.addAll(module)
     }
 
-    inner class ViewHolder(private val binding: GridListBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: GridListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(module: ModuleEntity) {
             with(binding) {
                 judul.text = module.judul
@@ -41,7 +41,8 @@ class ModuleAdapter: RecyclerView.Adapter<ModuleAdapter.ViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemGridtMainBinding = GridListBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val itemGridtMainBinding =
+            GridListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(itemGridtMainBinding)
     }
 

@@ -12,7 +12,7 @@ class PracticeViewModel(private val mFirebaseRepository: FirebaseRepository) : V
         value = "This is practice Fragment"
     }
     val text: LiveData<String> = _text
-    fun getPratice() : LiveData<PracticeResponse> {
+    fun getPratice(): LiveData<PracticeResponse> {
         return mFirebaseRepository.getPractice()
     }
 }

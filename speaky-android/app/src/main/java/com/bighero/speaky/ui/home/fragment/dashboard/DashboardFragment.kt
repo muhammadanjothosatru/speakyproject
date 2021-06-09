@@ -8,19 +8,14 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bighero.speaky.R
-import com.bighero.speaky.data.entity.UserEntity
 import com.bighero.speaky.databinding.ContentDashboardBinding
 import com.bighero.speaky.databinding.FragmentDashboardBinding
 import com.bighero.speaky.ui.assessment.PraAssessmentActivity
-import com.bighero.speaky.ui.home.fragment.history.HistoryViewModel
 import com.bighero.speaky.util.ViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 
 class DashboardFragment : Fragment() {
@@ -46,7 +41,7 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val factory = ViewModelFactory.getInstance(requireContext())
-        dashboardViewModel = ViewModelProvider(this,factory)[DashboardViewModel::class.java]
+        dashboardViewModel = ViewModelProvider(this, factory)[DashboardViewModel::class.java]
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         detailBinding = binding.detailContent

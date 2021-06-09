@@ -15,7 +15,7 @@ class HistoryViewModel(
     }
     val text: LiveData<String> = _text
 
-    fun getResponseUsingLiveData() : LiveData<UserAssesmentResponse> {
+    fun getResponseUsingLiveData(): LiveData<UserAssesmentResponse> {
         return firebaseRepository.getHistory()
     }
 }

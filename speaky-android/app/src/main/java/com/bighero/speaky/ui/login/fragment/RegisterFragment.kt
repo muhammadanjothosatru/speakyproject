@@ -1,7 +1,6 @@
 package com.bighero.speaky.ui.login.fragment
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.view.LayoutInflater
@@ -10,9 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bighero.speaky.R
-import com.bighero.speaky.data.entity.UserEntity
 import com.bighero.speaky.databinding.FragmentRegisterBinding
-import com.bighero.speaky.ui.login.TermActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -23,7 +20,7 @@ import io.reactivex.Observable
 
 class RegisterFragment : Fragment(), View.OnClickListener {
 
-    private var _binding : FragmentRegisterBinding? = null
+    private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var auth: FirebaseAuth
@@ -44,7 +41,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         validateInput()
-        binding.btnRegister.setOnClickListener (this)
+        binding.btnRegister.setOnClickListener(this)
         binding.masukDisini.setOnClickListener(this)
     }
 
@@ -66,7 +63,10 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         }
 
         showLoading(true)
-        auth.createUserWithEmailAndPassword(binding.etEmail.text.toString(), binding.etPassword.text.toString())
+        auth.createUserWithEmailAndPassword(
+            binding.etEmail.text.toString(),
+            binding.etPassword.text.toString()
+        )
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     val mUserFragment = UserInfoFragment()
@@ -78,8 +78,17 @@ class RegisterFragment : Fragment(), View.OnClickListener {
 
                     val mFragmentManager = fragmentManager
                     mFragmentManager?.beginTransaction()?.apply {
-                        setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
-                        replace(R.id.frame_container, mUserFragment, UserInfoFragment::class.java.simpleName)
+                        setCustomAnimations(
+                            R.anim.enter,
+                            R.anim.exit,
+                            R.anim.pop_enter,
+                            R.anim.pop_exit
+                        )
+                        replace(
+                            R.id.frame_container,
+                            mUserFragment,
+                            UserInfoFragment::class.java.simpleName
+                        )
                         addToBackStack(null)
                         commit()
                     }
@@ -109,7 +118,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         val passwordStream = RxTextView.textChanges(binding.etPassword)
             .skipInitialValue()
             .map { password ->
-                password.length <6
+                password.length < 6
             }
         passwordStream.subscribe {
             showPasswordMinimalAlert(it)
@@ -147,7 +156,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
             val mLoginFragment = LoginFragment()
             val mFragmentManager = fragmentManager
             mFragmentManager?.beginTransaction()?.apply {
-                replace(R.id.frame_container, mLoginFragment,LoginFragment::class.java.simpleName)
+                replace(R.id.frame_container, mLoginFragment, LoginFragment::class.java.simpleName)
                 commit()
             }
         }
@@ -165,7 +174,8 @@ class RegisterFragment : Fragment(), View.OnClickListener {
     }
 
     private fun showPasswordConfirmationAlert(isNotValid: Boolean) {
-        binding.etConfirmPassword.error = if (isNotValid) getString(R.string.password_not_same) else null
+        binding.etConfirmPassword.error =
+            if (isNotValid) getString(R.string.password_not_same) else null
     }
 
     private fun showLoading(i: Boolean) {

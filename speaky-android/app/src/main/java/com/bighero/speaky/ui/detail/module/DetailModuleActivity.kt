@@ -1,8 +1,7 @@
 package com.bighero.speaky.ui.detail.module
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.bighero.speaky.R
 import com.bighero.speaky.databinding.ActivityDetailModuleBinding
 import com.bighero.speaky.ui.detail.module.content.BabFragment
@@ -43,9 +42,10 @@ class DetailModuleActivity : AppCompatActivity(), ModuleReaderCallback {
     }
 
     override fun moveTo(position: Int, babId: String, moduleId: String?) {
-        val fragment = BabFragment.newInstance(babId,moduleId)
+        val fragment = BabFragment.newInstance(babId, moduleId)
         supportFragmentManager.beginTransaction().add(
-            R.id.frame_container, fragment, BabFragment.TAG)
+            R.id.frame_container, fragment, BabFragment.TAG
+        )
             .addToBackStack(null)
             .commit()
     }

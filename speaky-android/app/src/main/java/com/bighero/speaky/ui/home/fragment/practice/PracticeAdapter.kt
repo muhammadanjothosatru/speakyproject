@@ -9,7 +9,7 @@ import com.bighero.speaky.databinding.GridListBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class PracticeAdapter : RecyclerView.Adapter<PracticeAdapter .ViewHolder>() {
+class PracticeAdapter : RecyclerView.Adapter<PracticeAdapter.ViewHolder>() {
     private val listPractice = ArrayList<PraticeEntity>()
 
     private var onItemClickCallback: OnItemClickCallback? = null
@@ -18,12 +18,13 @@ class PracticeAdapter : RecyclerView.Adapter<PracticeAdapter .ViewHolder>() {
         this.onItemClickCallback = onItemClickCallback
     }
 
-    fun setPratice(pratice: List<PraticeEntity>){
+    fun setPratice(pratice: List<PraticeEntity>) {
         this.listPractice.clear()
         this.listPractice.addAll(pratice)
     }
 
-    inner class ViewHolder(private val binding: GridListBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: GridListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(module: PraticeEntity) {
             with(binding) {
                 judul.text = module.judul
@@ -41,7 +42,8 @@ class PracticeAdapter : RecyclerView.Adapter<PracticeAdapter .ViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemGridtMainBinding = GridListBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val itemGridtMainBinding =
+            GridListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(itemGridtMainBinding)
     }
 

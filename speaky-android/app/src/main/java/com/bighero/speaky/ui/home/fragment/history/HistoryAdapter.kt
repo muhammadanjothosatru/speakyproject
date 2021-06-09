@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bighero.speaky.data.entity.assesment.AssessmentEntity
 import com.bighero.speaky.databinding.ItemListBinding
-import com.bighero.speaky.ui.home.fragment.module.ModuleAdapter
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 import java.text.SimpleDateFormat
@@ -14,7 +13,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
+class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
     private val listHistory = ArrayList<AssessmentEntity>()
 
     private var onItemClickCallback: OnItemClickCallback? = null
@@ -27,25 +26,26 @@ class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
         fun onItemClicked(date: String)
     }
 
-    fun setHistory(film: List<AssessmentEntity>){
+    fun setHistory(film: List<AssessmentEntity>) {
         this.listHistory.clear()
         this.listHistory.addAll(film)
     }
 
-    inner class ViewHolder(private val binding: ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ItemListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun bind(historyList: AssessmentEntity) {
             with(binding) {
-               tvItemDate.text = formatdate(historyList.timeStamp)
+                tvItemDate.text = formatdate(historyList.timeStamp)
                 tvItemTime.text = formattime(historyList.timeStamp)
                 point.text = "Score " + historyList.score.toString()
                 kategory.text = "Tes"
-                itemView.setOnClickListener{ onItemClickCallback?.onItemClicked("Tes"+historyList.timeStamp)}
+                itemView.setOnClickListener { onItemClickCallback?.onItemClicked("Tes" + historyList.timeStamp) }
             }
         }
 
         private fun formattime(times: String): String {
-            val outputFormat= SimpleDateFormat("HH:mm", Locale.US)
+            val outputFormat = SimpleDateFormat("HH:mm", Locale.US)
             val inputFormat = SimpleDateFormat("yyyy-MM-dd-HH-mm", Locale.US)
             val dateFormat = inputFormat.parse(times)
             val date: String = outputFormat.format(dateFormat)
@@ -54,13 +54,14 @@ class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
         private fun formatdate(times: String): String {
             val formater = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm", Locale.US)
-            val date = LocalDate.parse(times,formater).toString()
+            val date = LocalDate.parse(times, formater).toString()
             return date
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemListMainBinding = ItemListBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val itemListMainBinding =
+            ItemListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(itemListMainBinding)
     }
 

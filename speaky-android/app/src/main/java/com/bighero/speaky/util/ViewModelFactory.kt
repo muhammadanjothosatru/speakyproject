@@ -16,7 +16,8 @@ import com.bighero.speaky.ui.home.fragment.module.ModuleViewModel
 import com.bighero.speaky.ui.home.fragment.practice.PracticeViewModel
 
 
-class ViewModelFactory private constructor(private val mFirebaseRepository: FirebaseRepository) : ViewModelProvider.NewInstanceFactory() {
+class ViewModelFactory private constructor(private val mFirebaseRepository: FirebaseRepository) :
+    ViewModelProvider.NewInstanceFactory() {
 
     companion object {
         @Volatile

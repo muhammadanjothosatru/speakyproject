@@ -3,14 +3,12 @@ package com.bighero.speaky.ui.assessment.result
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.bighero.speaky.databinding.ActivityResultBinding
 import com.bighero.speaky.databinding.ContentResultBinding
-import com.bighero.speaky.ui.home.fragment.history.HistoryViewModel
 import com.bighero.speaky.ui.detail.assessment.DetailResultActivity
 import com.bighero.speaky.util.ViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
@@ -30,7 +28,10 @@ class ResultActivity : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private lateinit var uId: String
 
-    private var date = "Tes" + SimpleDateFormat("yyyy-MM-dd-HH-mm", Locale.US).format(System.currentTimeMillis()).toString()
+    private var date =
+        "Tes" + SimpleDateFormat("yyyy-MM-dd-HH-mm", Locale.US).format(System.currentTimeMillis())
+            .toString()
+
     companion object {
         const val EXTRA_TES = "extra_tes"
     }
@@ -40,7 +41,7 @@ class ResultActivity : AppCompatActivity() {
         binding = ActivityResultBinding.inflate(layoutInflater)
         detailBinding = binding.detailContent
         val factory = ViewModelFactory.getInstance(this)
-        viewModel = ViewModelProvider(this,factory)[ResultViewModel::class.java]
+        viewModel = ViewModelProvider(this, factory)[ResultViewModel::class.java]
         setContentView(binding.root)
 
         database = Firebase.database.reference
@@ -53,7 +54,7 @@ class ResultActivity : AppCompatActivity() {
         if (extras != null) {
             val url = extras.getString(EXTRA_TES).toString()
             Log.i("formatTes", url)
-            viewModel.findAssessment(url, uId,date)
+            viewModel.findAssessment(url, uId, date)
         }
 
         setResult()

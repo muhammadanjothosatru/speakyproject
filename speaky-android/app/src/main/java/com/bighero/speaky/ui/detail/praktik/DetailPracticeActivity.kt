@@ -1,16 +1,15 @@
 package com.bighero.speaky.ui.detail.praktik
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.bighero.speaky.R
 import com.bighero.speaky.databinding.ActivityDetailPracticeBinding
 import com.bighero.speaky.ui.detail.module.DetailModuleActivity
-import com.bighero.speaky.ui.home.fragment.practice.PracticeViewModel
 import com.bighero.speaky.util.ViewModelFactory
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -39,7 +38,8 @@ class DetailPracticeActivity : AppCompatActivity() {
         binding = ActivityDetailPracticeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val factory = ViewModelFactory.getInstance(this)
-        detailPracticeViewModel = ViewModelProvider(this,factory)[DetailPracticeViewModel::class.java]
+        detailPracticeViewModel =
+            ViewModelProvider(this, factory)[DetailPracticeViewModel::class.java]
         val bundle = intent.extras
         if (bundle != null) {
             val practiceId = bundle.getString(DetailModuleActivity.EXTRA_TITLE)
@@ -83,8 +83,9 @@ class DetailPracticeActivity : AppCompatActivity() {
             response.pratice?.let {
                 binding.tvTitle.text = it.judul
                 binding.tvDesc.text = it.judul
-                binding.tvDuration.text = TimeUnit.MILLISECONDS.toSeconds(it.ilustrasi.durasi).toString() + " " +
-                        "Detik"
+                binding.tvDuration.text =
+                    TimeUnit.MILLISECONDS.toSeconds(it.ilustrasi.durasi).toString() + " " +
+                            "Detik"
                 binding.tvDesc.text = it.deskripsi
                 Glide.with(this)
                     .load(it.cover)
