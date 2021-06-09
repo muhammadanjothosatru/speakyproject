@@ -187,9 +187,6 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         if (v.id == R.id.cv_toc) {
             startActivity(Intent(activity, TouActivity::class.java))
         }
-        else {
-            Toast.makeText(context, "Coming Soon", Toast.LENGTH_SHORT).show()
-        }
     }
 
     override fun onDestroyView() {
