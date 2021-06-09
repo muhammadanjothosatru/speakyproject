@@ -41,7 +41,7 @@ class DetailResultActivity : AppCompatActivity() {
                 binding.detailContent.gazeValue.text = it.gaze.toString() + "kali"
                 binding.detailContent.disValue.text = it.disfluency.toString() + "kali"
                 binding.detailContent.skorValue.text = it.score.toString()
-                binding.detailContent.timeValue.text = it.timeStamp
+                binding.detailContent.timeValue.text = formatdate() + " " + formattime(it.timeStamp)
                 showLoading(false)
             }
 
