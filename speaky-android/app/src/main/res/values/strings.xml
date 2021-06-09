@@ -67,7 +67,7 @@
     <string name="free_user">Free</string>
     <string name="premium_user">Premium</string>
     <string name="username">Username</string>
-    <string name="next">Lanjut</string>
+    <string name="next">Selanjutnya</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="detail_tes">Pilih paket tes yang ingin kamu coba.</string>
@@ -93,4 +93,10 @@
     <string name="buka_praktik">Buka Praktik</string>
     <string name="skor">Skor</string>
     <string name="waktu">Waktu</string>
+    <string name="jenis_jenis_pembawaan">Jenis-jenis Pembawaan</string>
+    <string name="gaya_pembawaan_public_speaking">Gaya Pembawaan Public Speaking</string>
+    <string name="duration">30 detik</string>
+    <string name="praktik_terkunci">Praktik terkunci</string>
+    <string name="modul_terkunci">Modul terkunci</string>
+    <string name="prev">Sebelumnya</string>
 </resources>

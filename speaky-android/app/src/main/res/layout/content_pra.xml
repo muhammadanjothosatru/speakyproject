@@ -29,6 +29,7 @@
         android:id="@+id/detail_petunjuk"
         style="@style/regularTextThin"
         android:textSize="14sp"
+        android:lineSpacingExtra="5dp"
         android:text="@string/detail_tes"
         android:layout_marginTop="15dp"
         app:layout_constraintTop_toBottomOf="@id/title_petunjuk"

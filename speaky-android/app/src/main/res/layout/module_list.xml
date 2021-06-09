@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="5dp"
+        android:backgroundTint="@color/white"
         android:layout_marginBottom="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,14 +28,14 @@
             <TextView
                 android:id="@+id/tv_bab"
                 style="@style/regularText"
-                android:textSize="20sp"
+                android:textSize="14sp"
                 android:text="@string/score"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
             <TextView
                 android:id="@+id/title_module"
                 style="@style/regularText"
-                android:textSize="20sp"
+                android:textSize="14sp"
                 android:text="@string/score"
                 android:layout_marginStart="20dp"
                 app:layout_constraintTop_toTopOf="parent"

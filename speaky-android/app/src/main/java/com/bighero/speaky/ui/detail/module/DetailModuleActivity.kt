@@ -12,7 +12,6 @@ import com.bighero.speaky.util.ViewModelFactory
 
 class DetailModuleActivity : AppCompatActivity(), ModuleReaderCallback {
     private lateinit var binding: ActivityDetailModuleBinding
-    private lateinit var viewModel: DetailModuleViewModel
 
     companion object {
         const val EXTRA_TITLE = "extra_title"
@@ -30,11 +29,7 @@ class DetailModuleActivity : AppCompatActivity(), ModuleReaderCallback {
                 populateFragment(moduleId)
             }
         }
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
-
-
-
 
     private fun populateFragment(moduleId: String) {
 

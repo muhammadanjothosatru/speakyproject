@@ -8,7 +8,9 @@
     <ImageView
         android:id="@+id/video_bab"
         android:layout_width="match_parent"
-        android:layout_height="200dp"/>
+        android:layout_height="200dp"
+        android:src="@color/placeholder"
+        tools:ignore="ContentDescription" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="10dp"
@@ -19,7 +21,7 @@
     <TextView
         android:id="@+id/title_bab"
         style="@style/regularText"
-        android:text="Jenis-jenis Pembawaan"
+        android:text="@string/jenis_jenis_pembawaan"
         android:textSize="16sp"
         android:layout_marginTop="20dp"/>
     <TextView

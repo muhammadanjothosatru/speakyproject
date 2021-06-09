@@ -9,14 +9,8 @@ import com.bighero.speaky.databinding.GalleryListBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class GalleryAdapter: RecyclerView.Adapter<GalleryAdapter.ViewHolder>() {
+class GalleryAdapter(private val listener: GalleryAdapterClickListener): RecyclerView.Adapter<GalleryAdapter.ViewHolder>() {
     private val listBab = ArrayList<ModuleEntity.Bab>()
-
-    private var onItemClickCallback: OnItemClickCallback? = null
-
-    fun setOnClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
 
     fun setModule(bab: List<ModuleEntity.Bab>){
         this.listBab.clear()
@@ -31,7 +25,6 @@ class GalleryAdapter: RecyclerView.Adapter<GalleryAdapter.ViewHolder>() {
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
                     .error(R.drawable.ic_error)
                     .into(imgGalleryModule)
-                itemView.setOnClickListener { onItemClickCallback?.onItemClicked(bab.video) }
             }
         }
 
@@ -43,14 +36,18 @@ class GalleryAdapter: RecyclerView.Adapter<GalleryAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(listBab[position])
+        val bab = listBab[position]
+        holder.bind(bab)
+        holder.itemView.setOnClickListener {
+            listener.onItemClicked(holder.adapterPosition, listBab[holder.adapterPosition].judul)
+        }
     }
 
     override fun getItemCount(): Int {
         return listBab.size
     }
 
-    interface OnItemClickCallback {
-        fun onItemClicked(bab: String)
+    interface GalleryAdapterClickListener {
+        fun onItemClicked(position: Int, babId: String)
     }
 }

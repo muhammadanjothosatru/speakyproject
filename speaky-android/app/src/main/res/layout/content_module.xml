@@ -25,6 +25,7 @@
         android:id="@+id/description_module_fragment"
         style="@style/regularTextGrayThin"
         android:textSize="16sp"
+        android:lineSpacingExtra="5dp"
         android:text="@string/deskripsi_module_fragment"
         android:layout_marginTop="5dp"
         app:layout_constraintTop_toBottomOf="@id/title_module_fragment"
@@ -56,12 +57,13 @@
                 style="@style/regularTextGrayThin"
                 android:text="Gaya Pembawaan Public Speaking"
                 android:textSize="10sp"
-                tools:ignore="SmallSp" />
+                tools:ignore="HardcodedText,SmallSp" />
 
             <TextView
                 style="@style/regularText"
                 android:textSize="14sp"
-                android:text="Master of Ceremony" />
+                android:text="Master of Ceremony"
+                tools:ignore="HardcodedText" />
             <ProgressBar
                 style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"
                 android:id="@+id/progress_module"

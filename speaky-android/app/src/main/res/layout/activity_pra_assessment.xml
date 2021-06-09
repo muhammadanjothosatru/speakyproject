@@ -19,7 +19,8 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_select"
-        style="@style/customButtonRect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/start"
         android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"

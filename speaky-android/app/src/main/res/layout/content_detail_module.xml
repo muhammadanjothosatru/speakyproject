@@ -9,18 +9,19 @@
         android:id="@+id/judulmodul"
         style="@style/regularText"
         android:textSize="16sp"
-        android:text="Gaya Pembawaan Public Speaking"/>
+        android:text="@string/xxx"/>
     <TextView
         android:id="@+id/deskripsimodul"
         style="@style/regularTextThin"
         android:textSize="14sp"
         android:layout_marginTop="10dp"
-        android:text="Di modul ini kamu akan belajar bagaimana cara menjadi pembawa acara dengan berbagai macam kondisi atau situasi yang menarik"/>
+        android:lineSpacingExtra="5dp"
+        android:text="@string/xxx"/>
 
     <TextView
         style="@style/regularTextThin"
         android:textSize="14sp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:text="@string/galeri_kelas"/>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -31,6 +32,7 @@
         tools:listitem="@layout/gallery_list"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="25dp"
         android:id="@+id/rv_list_module"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
