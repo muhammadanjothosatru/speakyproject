@@ -17,6 +17,7 @@ class ResultViewModel(
     private val firebaseRepository: FirebaseRepository
 ) : ViewModel() {
 
+
     private val _assessment = MutableLiveData<AssesementResponse>()
     val assessment: LiveData<AssesementResponse> = _assessment
 
@@ -37,6 +38,7 @@ class ResultViewModel(
     }
 
     fun findAssessment(url: String, id: String, date: String) {
+        val date = SimpleDateFormat("yyyy-MM-dd-HH-mm", Locale.US).format(System.currentTimeMillis()).toString()
         val client = ApiConfig.getApiService().getAssessment(url, id)
         client.enqueue(object : retrofit2.Callback<AssesementResponse> {
             override fun onResponse(
