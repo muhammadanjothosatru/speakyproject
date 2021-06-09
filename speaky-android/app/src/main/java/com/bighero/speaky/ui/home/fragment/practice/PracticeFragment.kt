@@ -80,9 +80,9 @@ class PracticeFragment : Fragment(), PracticeAdapter.OnItemClickCallback {
         binding.content.isInvisible = i
     }
 
-    override fun onItemClicked(judul: String) {
-        val intent = Intent(context, DetailModuleActivity::class.java)
-        intent.putExtra(DetailPracticeActivity.EXTRA_TITLE, id)
+    override fun onItemClicked(key: String) {
+        val intent = Intent(context, DetailPracticeActivity::class.java)
+        intent.putExtra(DetailPracticeActivity.EXTRA_TITLE, key)
         context?.startActivity(intent)
     }
 }

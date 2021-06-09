@@ -36,6 +36,7 @@
         app:layout_constraintStart_toStartOf="@id/tv_desc"
         app:layout_constraintEnd_toEndOf="@id/tv_desc">
         <ImageView
+            android:id="@+id/imagepratice"
             android:layout_width="fill_parent"
             android:layout_height="370dp"
             tools:ignore="ContentDescription" />

@@ -2,10 +2,9 @@ package com.bighero.speaky.ui.home.fragment.practice
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bighero.speaky.R
-import com.bighero.speaky.data.entity.PraticeEntity
+import com.bighero.speaky.data.entity.pratice.PraticeEntity
 import com.bighero.speaky.databinding.GridListBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -56,6 +55,6 @@ class PracticeAdapter : RecyclerView.Adapter<PracticeAdapter .ViewHolder>() {
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(judul: String)
+        fun onItemClicked(key: String)
     }
 }

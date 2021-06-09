@@ -2,7 +2,7 @@ package com.bighero.speaky.domain.useCase
 
 import androidx.lifecycle.MutableLiveData
 import com.bighero.speaky.data.entity.assesment.AssessmentEntity
-import com.bighero.speaky.data.source.remote.response.PracticeResponse
+import com.bighero.speaky.data.source.remote.response.pratice.PracticeResponse
 import com.bighero.speaky.data.source.remote.response.assesment.APackResponse
 import com.bighero.speaky.data.source.remote.response.assesment.InstructionResponse
 import com.bighero.speaky.data.source.remote.response.module.ModuleResponse
@@ -10,6 +10,7 @@ import com.bighero.speaky.data.source.remote.response.assesment.UserAssesmentRes
 import com.bighero.speaky.data.source.remote.response.module.BabByIdResponse
 import com.bighero.speaky.data.source.remote.response.module.ModuleByIdResponse
 import com.bighero.speaky.data.source.remote.response.module.UserModuleResponse
+import com.bighero.speaky.data.source.remote.response.pratice.PracticeByIdResponse
 
 interface IHistoryRepository {
     fun getHistory() : MutableLiveData<UserAssesmentResponse>
@@ -19,6 +20,7 @@ interface IHistoryRepository {
     fun getPractice() : MutableLiveData<PracticeResponse>
     fun getInstruction(id:String) : MutableLiveData<InstructionResponse>
     fun getModuleById(id:String) : MutableLiveData<ModuleByIdResponse>
+    fun getPraticeById(id:String) : MutableLiveData<PracticeByIdResponse>
     fun getBabById(id: String, moduleId: String) : MutableLiveData<BabByIdResponse>
     fun setUser(assessmentEntity: AssessmentEntity)
 }

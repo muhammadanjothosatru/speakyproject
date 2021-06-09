@@ -2,14 +2,14 @@ package com.bighero.speaky.data.source
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.bighero.speaky.data.entity.PraticeEntity
+import com.bighero.speaky.data.entity.pratice.PraticeEntity
 import com.bighero.speaky.data.entity.assesment.AssementInstruction
 import com.bighero.speaky.data.entity.assesment.AssessmentEntity
 import com.bighero.speaky.data.entity.assesment.AssessmentPackEntity
 import com.bighero.speaky.data.entity.module.BabByEntity
 import com.bighero.speaky.data.entity.module.ModuleEntity
 import com.bighero.speaky.data.entity.module.UserModuleEntity
-import com.bighero.speaky.data.source.remote.response.PracticeResponse
+import com.bighero.speaky.data.source.remote.response.pratice.PracticeResponse
 import com.bighero.speaky.data.source.remote.response.assesment.APackResponse
 import com.bighero.speaky.data.source.remote.response.assesment.InstructionResponse
 import com.bighero.speaky.data.source.remote.response.module.ModuleResponse
@@ -17,6 +17,7 @@ import com.bighero.speaky.data.source.remote.response.assesment.UserAssesmentRes
 import com.bighero.speaky.data.source.remote.response.module.BabByIdResponse
 import com.bighero.speaky.data.source.remote.response.module.ModuleByIdResponse
 import com.bighero.speaky.data.source.remote.response.module.UserModuleResponse
+import com.bighero.speaky.data.source.remote.response.pratice.PracticeByIdResponse
 import com.bighero.speaky.domain.useCase.IHistoryRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -153,6 +154,7 @@ class FirebaseRepository(
                     key = it.key.toString(),
                    judul = it.child("judul").value.toString(),
                     cover = it.child("cover").value.toString(),
+                    deskripsi =it.child("deskripsi").value.toString(),
                     ilustrasi = PraticeEntity.Ilustration(
                             durasi = it.child("ilustrasi").child("durasi").value as Long,
                             link = it.child("ilustrasi").child("link").value.toString(),
@@ -212,6 +214,29 @@ class FirebaseRepository(
                         )
                     }
                 )
+            mutableLiveData.value = response
+        }.addOnFailureListener {
+            Log.e("firebase", "Error getting data", it)
+        }
+        return mutableLiveData
+    }
+
+    override fun getPraticeById(id: String): MutableLiveData<PracticeByIdResponse> {
+        val mutableLiveData = MutableLiveData<PracticeByIdResponse>()
+        praticeRef.get().addOnSuccessListener {
+            val response = PracticeByIdResponse()
+            response.pratice =
+                PraticeEntity(
+                    key = it.child(id).key.toString(),
+                    judul = it.child(id).child("judul").value.toString(),
+                    cover = it.child(id).child("cover").value.toString(),
+                    deskripsi = it.child(id).child("deskripsi").value.toString(),
+                    ilustrasi = PraticeEntity.Ilustration(
+                        durasi = it.child(id).child("ilustrasi").child("durasi").value as Long,
+                        link = it.child(id).child("ilustrasi").child("link").value.toString(),
+                    )
+                )
+
             mutableLiveData.value = response
         }.addOnFailureListener {
             Log.e("firebase", "Error getting data", it)
