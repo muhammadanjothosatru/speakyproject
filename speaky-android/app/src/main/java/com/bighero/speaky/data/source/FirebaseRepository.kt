@@ -31,6 +31,7 @@ class FirebaseRepository(
     rootRef: DatabaseReference,
 ) : IHistoryRepository {
 
+    private val userRef: DatabaseReference = rootRef.child("users")
     private val moduleRef: DatabaseReference = rootRef.child("ResModul")
     private val praticeRef: DatabaseReference = rootRef.child("ResPractice")
     private val userModuleRef: DatabaseReference = rootRef.child("userModul")
@@ -292,6 +293,7 @@ class FirebaseRepository(
 
     override fun setUser(assessmentEntity: AssessmentEntity, date:String) {
         userAssessmentRef.child(uId).child(date).setValue(assessmentEntity)
+        userRef.child(uId).child("latest score").setValue(assessmentEntity.score)
     }
 
 }

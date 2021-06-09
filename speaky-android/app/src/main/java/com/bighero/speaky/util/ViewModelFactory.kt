@@ -10,6 +10,7 @@ import com.bighero.speaky.ui.assessment.result.ResultViewModel
 import com.bighero.speaky.ui.detail.assessment.DetailResultViewModel
 import com.bighero.speaky.ui.detail.module.DetailModuleViewModel
 import com.bighero.speaky.ui.detail.praktik.DetailPracticeViewModel
+import com.bighero.speaky.ui.home.fragment.dashboard.DashboardViewModel
 import com.bighero.speaky.ui.home.fragment.history.HistoryViewModel
 import com.bighero.speaky.ui.home.fragment.module.ModuleViewModel
 import com.bighero.speaky.ui.home.fragment.practice.PracticeViewModel
@@ -55,6 +56,9 @@ class ViewModelFactory private constructor(private val mFirebaseRepository: Fire
             }
             modelClass.isAssignableFrom(DetailResultViewModel::class.java) -> {
                 DetailResultViewModel(mFirebaseRepository) as T
+            }
+            modelClass.isAssignableFrom(DashboardViewModel::class.java) -> {
+                DashboardViewModel(mFirebaseRepository) as T
             }
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }
