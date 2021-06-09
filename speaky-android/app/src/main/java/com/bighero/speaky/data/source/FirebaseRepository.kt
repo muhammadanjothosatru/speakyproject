@@ -2,11 +2,13 @@ package com.bighero.speaky.data.source
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.bighero.speaky.data.entity.PraticeEntity
 import com.bighero.speaky.data.entity.assesment.AssementInstruction
 import com.bighero.speaky.data.entity.assesment.AssessmentEntity
 import com.bighero.speaky.data.entity.assesment.AssessmentPackEntity
 import com.bighero.speaky.data.entity.module.ModuleEntity
 import com.bighero.speaky.data.entity.module.UserModuleEntity
+import com.bighero.speaky.data.source.remote.response.PracticeResponse
 import com.bighero.speaky.data.source.remote.response.assesment.APackResponse
 import com.bighero.speaky.data.source.remote.response.assesment.InstructionResponse
 import com.bighero.speaky.data.source.remote.response.module.ModuleResponse
@@ -27,6 +29,7 @@ class FirebaseRepository(
 ) : IHistoryRepository {
 
     private val moduleRef: DatabaseReference = rootRef.child("ResModul")
+    private val praticeRef: DatabaseReference = rootRef.child("ResPractice")
     private val userModuleRef: DatabaseReference = rootRef.child("userModul")
     private val userAssessmentRef: DatabaseReference = rootRef.child("UserAssessment")
     private val packAssessmentRef: DatabaseReference = rootRef.child("AssessmentPack")
@@ -128,6 +131,29 @@ class FirebaseRepository(
                     guide = it.child("instruction").children.map {
                         it.value.toString()
                     }
+                )
+            }
+            mutableLiveData.value = response
+        }.addOnFailureListener {
+            Log.e("firebase", "Error getting data", it)
+        }
+        return mutableLiveData
+    }
+
+    override fun getPractice(): MutableLiveData<PracticeResponse> {
+        val mutableLiveData = MutableLiveData<PracticeResponse>()
+        praticeRef.get().addOnSuccessListener {
+            val response = PracticeResponse()
+            response.pratice = it.children.map { it ->
+                PraticeEntity(
+                    key = it.key.toString(),
+                   judul = it.child("judul").value.toString(),
+                    cover = it.child("cover").value.toString(),
+                    ilustrasi = PraticeEntity.Ilustration(
+                            durasi = it.child("ilustrasi").child("durasi").value as Long,
+                            link = it.child("ilustrasi").child("link").value.toString(),
+                        )
+
                 )
             }
             mutableLiveData.value = response

@@ -10,6 +10,7 @@ import com.bighero.speaky.ui.assessment.result.ResultViewModel
 import com.bighero.speaky.ui.detail.module.DetailModuleViewModel
 import com.bighero.speaky.ui.home.fragment.history.HistoryViewModel
 import com.bighero.speaky.ui.home.fragment.module.ModuleViewModel
+import com.bighero.speaky.ui.home.fragment.practice.PracticeViewModel
 
 
 class ViewModelFactory private constructor(private val mFirebaseRepository: FirebaseRepository) : ViewModelProvider.NewInstanceFactory() {
@@ -43,6 +44,9 @@ class ViewModelFactory private constructor(private val mFirebaseRepository: Fire
             }
             modelClass.isAssignableFrom(DetailModuleViewModel::class.java) -> {
                 DetailModuleViewModel(mFirebaseRepository) as T
+            }
+            modelClass.isAssignableFrom(PracticeViewModel::class.java) -> {
+                PracticeViewModel(mFirebaseRepository) as T
             }
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }

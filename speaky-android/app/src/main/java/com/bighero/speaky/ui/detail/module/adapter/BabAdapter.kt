@@ -24,7 +24,10 @@ class BabAdapter:RecyclerView.Adapter<BabAdapter.ViewHolder>() {
         fun bind(bab: ModuleEntity.Bab) {
             with(binding) {
                 titleModule.text = bab.judul
-                itemView.setOnClickListener { onItemClickCallback?.onItemClicked(bab.judul) }
+                itemView.setOnClickListener {
+                    onItemClickCallback?.onItemClicked(bab.judul)
+                    
+                }
             }
         }
 
