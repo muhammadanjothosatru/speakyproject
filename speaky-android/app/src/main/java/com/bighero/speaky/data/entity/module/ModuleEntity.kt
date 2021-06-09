@@ -16,6 +16,8 @@ data class ModuleEntity(
     @Parcelize
     data class Bab(
         val key :String,
+        val no :String,
+        val time : Long,
         val konten: String,
         val judul: String,
         val video: String,

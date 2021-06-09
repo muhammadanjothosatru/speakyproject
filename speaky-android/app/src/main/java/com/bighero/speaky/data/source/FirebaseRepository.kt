@@ -81,6 +81,8 @@ class FirebaseRepository(
                         ModuleEntity.Bab(
                             key = module.key.toString(),
                                 konten = module.child("deskripsi").value.toString(),
+                                no = module.child("no").value.toString(),
+                                time = module.child("time").value as Long,
                                 judul = module.child("judul").value.toString(),
                                 video = module.child("video").value.toString(),
                                 practice = module.child("practice").children.map { prac ->
@@ -196,6 +198,8 @@ class FirebaseRepository(
                     bab = it.child(id).child("bab").children.map { module ->
                         ModuleEntity.Bab(
                             key = module.key.toString(),
+                            no = module.child("no").value.toString(),
+                            time = module.child("time").value as Long,
                             konten = module.child("deskripsi").value.toString(),
                             judul = module.child("judul").value.toString(),
                             video = module.child("video").value.toString(),
@@ -221,6 +225,8 @@ class FirebaseRepository(
             val response = BabByIdResponse()
             response.module = BabByEntity(
                         key = module.key.toString(),
+                        no = module.child("no").value.toString(),
+                        time = module.child("time").value as Long,
                         konten = module.child("deskripsi").value.toString(),
                         judul = module.child("judul").value.toString(),
                         video = module.child("video").value.toString(),

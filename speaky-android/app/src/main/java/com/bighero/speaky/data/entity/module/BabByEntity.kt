@@ -6,6 +6,8 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class BabByEntity(
     val key :String,
+    val no :String,
+    val time : Long,
     val konten: String,
     val judul: String,
     val video: String,

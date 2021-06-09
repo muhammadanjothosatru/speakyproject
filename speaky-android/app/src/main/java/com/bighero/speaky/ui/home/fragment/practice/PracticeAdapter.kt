@@ -2,6 +2,7 @@ package com.bighero.speaky.ui.home.fragment.practice
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bighero.speaky.R
 import com.bighero.speaky.data.entity.PraticeEntity
@@ -32,7 +33,9 @@ class PracticeAdapter : RecyclerView.Adapter<PracticeAdapter .ViewHolder>() {
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
                     .error(R.drawable.ic_error)
                     .into(imgModule)
-                itemView.setOnClickListener { onItemClickCallback?.onItemClicked(module.key) }
+                itemView.setOnClickListener {
+                    onItemClickCallback?.onItemClicked(module.key)
+                }
             }
         }
 

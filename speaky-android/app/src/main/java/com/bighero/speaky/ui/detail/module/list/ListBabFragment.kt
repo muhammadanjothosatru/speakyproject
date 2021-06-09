@@ -7,22 +7,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bighero.speaky.R
-import com.bighero.speaky.databinding.FragmentHistoryBinding
 import com.bighero.speaky.databinding.FragmentListBabBinding
 import com.bighero.speaky.ui.detail.module.DetailModuleViewModel
 import com.bighero.speaky.ui.detail.module.ModuleReaderCallback
 import com.bighero.speaky.ui.detail.module.adapter.BabAdapter
 import com.bighero.speaky.ui.detail.module.adapter.GalleryAdapter
-import com.bighero.speaky.ui.detail.module.content.BabFragment
-import com.bighero.speaky.ui.home.fragment.history.HistoryViewModel
 import com.bighero.speaky.util.ViewModelFactory
 
 
@@ -76,7 +68,6 @@ class ListBabFragment : Fragment(), BabAdapter.BabAdapterClickListener,
     private fun showBab(moduleId: String) {
         viewModel.setSelectedModule(moduleId).observe(viewLifecycleOwner, { response ->
             response.module?.let {
-
                 binding.detailContent.judulmodul.text = it.judul
                 binding.detailContent.deskripsimodul.text = it.deskripsi
 
@@ -85,17 +76,6 @@ class ListBabFragment : Fragment(), BabAdapter.BabAdapterClickListener,
                 listAdapter.notifyDataSetChanged()
                 binding.detailContent.rvListModule.setHasFixedSize(true)
                 binding.detailContent.rvListModule.adapter = listAdapter
-
-                listAdapter.setOnClickCallback(object : BabAdapter.OnItemClickCallback {
-                    override fun onItemClicked(bab: String) {
-                        viewModel.getBabById(bab,moduleId).observe(viewLifecycleOwner,  { response ->
-                            response.module?.let {
-                                Log.d("bab id", it.toString())
-                            }
-                        })
-                    }
-                })
-
 
                 binding.detailContent.rvGalleryModule.layoutManager = LinearLayoutManager(context,RecyclerView.HORIZONTAL, false)
                 galleryAdapter.setModule(it.bab)
@@ -131,7 +111,7 @@ class ListBabFragment : Fragment(), BabAdapter.BabAdapterClickListener,
     }
 
     override fun onItemClicked(position: Int, babId: String) {
-        moduleReaderCallback.moveTo(position, babId)
-        viewModel.setSelectedModule(babId)
+        val moduleId = arguments?.getString(EXTRA_ID)
+        moduleReaderCallback.moveTo(position, babId, moduleId)
     }
 }

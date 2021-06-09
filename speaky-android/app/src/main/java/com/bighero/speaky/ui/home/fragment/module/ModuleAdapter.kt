@@ -28,6 +28,7 @@ class ModuleAdapter: RecyclerView.Adapter<ModuleAdapter.ViewHolder>() {
         fun bind(module: ModuleEntity) {
             with(binding) {
                 judul.text = module.judul
+
                 Glide.with(itemView.context)
                     .load(module.gambar)
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
