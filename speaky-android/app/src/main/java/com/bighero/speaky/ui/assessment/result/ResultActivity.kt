@@ -63,6 +63,7 @@ class ResultActivity : AppCompatActivity() {
         viewModel.assessment.observe(this, { assessment ->
 
             detailBinding.score.text = assessment.score.toString()
+            database.child("users").child(uId).child("latest score").setValue(assessment.score)
         })
         viewModel.disfluency.observe(this, { disfluency ->
             //detailBinding.disValue.text = disfluency.value.toString()
