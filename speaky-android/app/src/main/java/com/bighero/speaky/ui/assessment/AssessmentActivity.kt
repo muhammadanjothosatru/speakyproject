@@ -57,6 +57,7 @@ class AssessmentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAssessmentBinding.inflate(layoutInflater)
 
+        showLoading(true)
         val factory = ViewModelFactory.getInstance(this)
         viewModel = ViewModelProvider(this,factory)[AssessmentViewModel::class.java]
         setContentView(binding.root)
@@ -78,6 +79,8 @@ class AssessmentActivity : AppCompatActivity() {
 
         if (allPermissionsGranted()) {
             startCamera()
+            showLoading(false)
+
         } else {
             ActivityCompat.requestPermissions(
                 this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
@@ -85,6 +88,10 @@ class AssessmentActivity : AppCompatActivity() {
         }
         cameraExecutor = Executors.newSingleThreadExecutor()
 
+    }
+
+    private fun showLoading(b: Boolean) {
+        binding.progressBar.isVisible = b
     }
 
     private fun showPack(packId:String) {
@@ -145,7 +152,6 @@ class AssessmentActivity : AppCompatActivity() {
             @SuppressLint("ResourceAsColor")
             override fun onTick(millisUntilFinished: Long) {
                 binding.countDown.text = (millisUntilFinished / 1000).toString()
-                binding.countDown.setTextColor(android.R.color.holo_red_dark)
             }
 
             override fun onFinish() {
@@ -171,7 +177,8 @@ class AssessmentActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 videoCapture.stopRecording()
-                binding.progressBar.visibility = View.VISIBLE
+                showLoading(true)
+
 
             }
         }
@@ -194,6 +201,7 @@ class AssessmentActivity : AppCompatActivity() {
                     val savedUri = Uri.fromFile(cacheFile)
                     val uploadRef = storageRef.child("${uId}/${savedUri.lastPathSegment}")
                     val msg = "Video capture succeeded: $savedUri"
+
                     Log.d(TAG, msg)
                     val uploadTask = uploadRef.putFile(savedUri)
                     uploadTask.addOnFailureListener {
@@ -218,6 +226,7 @@ class AssessmentActivity : AppCompatActivity() {
                             val intent = Intent(this@AssessmentActivity, ResultActivity::class.java)
                             intent.putExtra(ResultActivity.EXTRA_TES, downloadUri)
                             startActivity(intent)
+                            showLoading(false)
                         } else {
                             Log.e(TAG, "failed")
                         }

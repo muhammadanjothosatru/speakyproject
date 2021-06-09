@@ -34,6 +34,7 @@ class ResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityResultBinding.inflate(layoutInflater)
         detailBinding = binding.detailContent
+        showLoading(true)
         val factory = ViewModelFactory.getInstance(this)
         viewModel = ViewModelProvider(this,factory)[ResultViewModel::class.java]
         setContentView(binding.root)
@@ -69,5 +70,11 @@ class ResultActivity : AppCompatActivity() {
             binding.progressBar.isVisible = it
             binding.content.isInvisible = it
         })
+        showLoading(false)
+    }
+
+    private fun showLoading(b: Boolean) {
+        binding.progressBar.isVisible = b
+        binding.content.isInvisible = b
     }
 }
