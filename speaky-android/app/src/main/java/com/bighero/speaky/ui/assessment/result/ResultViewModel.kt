@@ -38,7 +38,7 @@ class ResultViewModel(
     }
 
     fun findAssessment(url: String, id: String, date: String) {
-        val date = SimpleDateFormat("yyyy-MM-dd-HH-mm", Locale.US).format(System.currentTimeMillis()).toString()
+        val dates = SimpleDateFormat("yyyy-MM-dd-HH-mm", Locale.US).format(System.currentTimeMillis()).toString()
         val client = ApiConfig.getApiService().getAssessment(url, id)
         client.enqueue(object : retrofit2.Callback<AssesementResponse> {
             override fun onResponse(
@@ -54,7 +54,7 @@ class ResultViewModel(
                     val assessment =  AssessmentEntity(
                         donwloadUrl = url,
                         score = response.body()!!.score,
-                        timeStamp = date,
+                        timeStamp = dates,
                         gaze = response.body()?.gaze!!.value,
                         blink = response.body()?.blink!!.value,
                         disfluency = response.body()?.disfluency!!.value,
