@@ -76,7 +76,6 @@ class DashboardFragment : Fragment() {
 
         detailBinding.btTest.setOnClickListener {
             startActivity(Intent(activity, PraAssessmentActivity::class.java))
-            activity?.finish()
         }
 
 
