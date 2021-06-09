@@ -1,4 +1,4 @@
-# SPEAKY PROJECT
+# Speaky
 Speaky is a self learning public speaking machine learning based. The machine learning is used to assess disfluency, eye gazing, and eye blinking. After that the model deployed in google cloud platform with cloud functions and integrated with firebase. Android application trigger send mfcc to storage and trigger API to pass input to the model. After that, the result is sent to application again. 
 
 ## Machine Learning
@@ -27,6 +27,9 @@ Speaky is a self learning public speaking machine learning based. The machine le
 - Create Flask to make API work for deployed model on Virtual Machine.
 - Testing the API.
 - Deploy flask in virtual machine
+
+## Deployment Link
+- The deployment save in other repo https://github.com/mluthfi3d/speaky_deploy
 
 
 # Github CLONE
