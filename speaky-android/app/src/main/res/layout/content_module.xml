@@ -68,7 +68,7 @@
                 style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"
                 android:id="@+id/progress_module"
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
+                android:layout_height="10dp"
                 android:max="100"
                 android:progress="40"
                 app:indicatorColor="@color/blue_700"

@@ -33,6 +33,8 @@ class PraAssessmentActivity : AppCompatActivity() {
         val factory = ViewModelFactory.getInstance(this)
         assesment = ViewModelProvider(this,factory)[AssessmentViewModel::class.java]
         getPack()
+        showLoading(false)
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
     }
@@ -57,7 +59,6 @@ class PraAssessmentActivity : AppCompatActivity() {
                 Log.e("exception", it)
             }
         }
-        showLoading(false)
     }
 
     private fun showRecyclerList() {

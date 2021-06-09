@@ -42,7 +42,6 @@ class ListBabFragment : Fragment(), BabAdapter.BabAdapterClickListener,
     private lateinit var listAdapter: BabAdapter
 
     private lateinit var auth: FirebaseAuth
-
     private lateinit var database: DatabaseReference
     private lateinit var uId: String
     private var status: Boolean = false

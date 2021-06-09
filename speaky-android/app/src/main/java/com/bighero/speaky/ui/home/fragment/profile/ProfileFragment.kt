@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bighero.speaky.R
 import com.bighero.speaky.databinding.ContentProfileBinding
@@ -34,8 +35,6 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         const val ALERT_DIALOG_OUT = 10
         const val ALERT_DIALOG_DELETE = 20
         const val ALERT_DIALOG_SUBS = 30
-        const val REQUEST_DELETE = 100
-        const val RESULT_DELETE = 200
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,6 +63,9 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         detailBinding.cvEdit.setOnClickListener(this)
         detailBinding.cvSubs.setOnClickListener(this)
         detailBinding.cvToc.setOnClickListener(this)
+        detailBinding.cvSetting.setOnClickListener(this)
+        detailBinding.cvFaq.setOnClickListener(this)
+        detailBinding.cvHelp.setOnClickListener(this)
     }
 
     private fun showProfile() {
@@ -184,6 +186,9 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         }
         if (v.id == R.id.cv_toc) {
             startActivity(Intent(activity, TouActivity::class.java))
+        }
+        else {
+            Toast.makeText(context, "Coming Soon", Toast.LENGTH_SHORT).show()
         }
     }
 
