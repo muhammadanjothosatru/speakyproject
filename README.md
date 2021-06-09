@@ -3,7 +3,7 @@ Speaky is a self learning public speaking machine learning based. The machine le
 
 ## Machine Learning
 - Make datasets or find public datasets for disfluent speech, eye blink, and eye gaze. 
-- For the disfluent speech dataset, we use xxxxxxxxxxxxx
+- For the disfluent speech dataset, we use our own dataset cropping audios from TEDx Youtube videos
 - For the eye blink dataset, we use a public dataset from MRL Eye Dataset as shown in ``Dataset info.md``
 - For the eye gaze dataset, we use datasets from a conference paper entitled “EYE CONTROLLED VIRTUAL KEYBOARD USING CONVOLUTIONAL NEURAL NETWORKS” as shown in the ``Dataset       info.md``
 - Make model for speech disfluency, eye blink, and eye gaze detection
