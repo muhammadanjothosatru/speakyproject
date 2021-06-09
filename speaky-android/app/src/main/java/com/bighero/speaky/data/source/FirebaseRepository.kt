@@ -6,6 +6,7 @@ import com.bighero.speaky.data.entity.PraticeEntity
 import com.bighero.speaky.data.entity.assesment.AssementInstruction
 import com.bighero.speaky.data.entity.assesment.AssessmentEntity
 import com.bighero.speaky.data.entity.assesment.AssessmentPackEntity
+import com.bighero.speaky.data.entity.module.BabByEntity
 import com.bighero.speaky.data.entity.module.ModuleEntity
 import com.bighero.speaky.data.entity.module.UserModuleEntity
 import com.bighero.speaky.data.source.remote.response.PracticeResponse
@@ -13,6 +14,7 @@ import com.bighero.speaky.data.source.remote.response.assesment.APackResponse
 import com.bighero.speaky.data.source.remote.response.assesment.InstructionResponse
 import com.bighero.speaky.data.source.remote.response.module.ModuleResponse
 import com.bighero.speaky.data.source.remote.response.assesment.UserAssesmentResponse
+import com.bighero.speaky.data.source.remote.response.module.BabByIdResponse
 import com.bighero.speaky.data.source.remote.response.module.ModuleByIdResponse
 import com.bighero.speaky.data.source.remote.response.module.UserModuleResponse
 import com.bighero.speaky.domain.useCase.IHistoryRepository
@@ -22,7 +24,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.reflect.typeOf
 
 class FirebaseRepository(
     rootRef: DatabaseReference,
@@ -78,6 +79,7 @@ class FirebaseRepository(
                     judul = it.child("judul").value.toString(),
                     bab = it.child("bab").children.map { module ->
                         ModuleEntity.Bab(
+                            key = module.key.toString(),
                                 konten = module.child("deskripsi").value.toString(),
                                 judul = module.child("judul").value.toString(),
                                 video = module.child("video").value.toString(),
@@ -193,6 +195,7 @@ class FirebaseRepository(
                     judul = it.child(id).child("judul").value.toString(),
                     bab = it.child(id).child("bab").children.map { module ->
                         ModuleEntity.Bab(
+                            key = module.key.toString(),
                             konten = module.child("deskripsi").value.toString(),
                             judul = module.child("judul").value.toString(),
                             video = module.child("video").value.toString(),
@@ -205,6 +208,29 @@ class FirebaseRepository(
                         )
                     }
                 )
+            mutableLiveData.value = response
+        }.addOnFailureListener {
+            Log.e("firebase", "Error getting data", it)
+        }
+        return mutableLiveData
+    }
+
+    override fun getBabById(id: String, moduleId: String): MutableLiveData<BabByIdResponse> {
+        val mutableLiveData = MutableLiveData<BabByIdResponse>()
+        moduleRef.child(moduleId).child("bab").child(id).get().addOnSuccessListener { module ->
+            val response = BabByIdResponse()
+            response.module = BabByEntity(
+                        key = module.key.toString(),
+                        konten = module.child("deskripsi").value.toString(),
+                        judul = module.child("judul").value.toString(),
+                        video = module.child("video").value.toString(),
+                        practice = module.child("practice").children.map { prac ->
+                            BabByEntity.practices(
+                                key = prac.key.toString(),
+                                time = prac.child("time").value as Long
+                            )
+                        }
+                    )
             mutableLiveData.value = response
         }.addOnFailureListener {
             Log.e("firebase", "Error getting data", it)

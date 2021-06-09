@@ -15,6 +15,7 @@ data class ModuleEntity(
 ) : Parcelable {
     @Parcelize
     data class Bab(
+        val key :String,
         val konten: String,
         val judul: String,
         val video: String,
