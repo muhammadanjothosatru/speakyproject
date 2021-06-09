@@ -29,6 +29,7 @@ class DetailModuleActivity : AppCompatActivity(), ModuleReaderCallback {
                 populateFragment(moduleId)
             }
         }
+        supportActionBar?.title = ""
     }
 
     private fun populateFragment(moduleId: String) {
