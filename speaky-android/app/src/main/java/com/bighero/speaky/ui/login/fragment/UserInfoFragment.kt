@@ -192,7 +192,7 @@ class UserInfoFragment : Fragment() {
     private fun writeNewUser(name: String, uname: String, email: String, ava: String, level: String, status: Boolean) {
         uId = auth.currentUser?.uid.toString()
         Log.i("uId", "Get ${uId}")
-        val user = UserEntity(name, uname, email, ava, level, status)
+        val user = UserEntity(name, uname, email, ava, level, status,0)
 
         database.child("users").child(uId).setValue(user)
     }

@@ -293,7 +293,7 @@ class FirebaseRepository(
 
     override fun setUser(assessmentEntity: AssessmentEntity, date:String) {
         userAssessmentRef.child(uId).child(date).setValue(assessmentEntity)
-        userRef.child(uId).child("latest score").setValue(assessmentEntity.score)
+        userRef.child(uId).child("score").setValue(assessmentEntity.score)
     }
 
 }

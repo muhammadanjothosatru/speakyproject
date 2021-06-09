@@ -6,5 +6,6 @@ data class UserEntity(
     val email: String? = null,
     val imgPhoto: String? = null,
     val level: String? = null,
-    val status: Boolean? = false
+    val status: Boolean? = false,
+    val score: Int = 0
 )

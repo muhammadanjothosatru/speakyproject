@@ -169,7 +169,7 @@ class AssessmentActivity : AppCompatActivity() {
         // Get a stable reference of the modifiable image capture use case
         val videoCapture = videoCapture ?: return
 
-        timer = object : CountDownTimer(30000, 1000) {
+        timer = object : CountDownTimer(31000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 binding.startTime.text = getString(R.string.sisa_waktu)
                 binding.countDown.text = (millisUntilFinished / 1000).toString()
