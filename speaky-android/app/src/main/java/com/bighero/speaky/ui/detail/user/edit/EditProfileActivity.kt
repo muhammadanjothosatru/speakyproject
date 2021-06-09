@@ -1,4 +1,4 @@
-package com.bighero.speaky.ui.detail.user
+package com.bighero.speaky.ui.detail.user.edit
 
 import android.app.Activity
 import android.content.Intent

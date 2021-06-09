@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bighero.speaky.data.entity.assesment.AssessmentEntity
 import com.bighero.speaky.databinding.ItemListBinding
+import com.bighero.speaky.ui.home.fragment.module.ModuleAdapter
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 import java.text.SimpleDateFormat
@@ -15,12 +16,23 @@ import kotlin.collections.ArrayList
 
 class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
     private val listHistory = ArrayList<AssessmentEntity>()
+
+    private var onItemClickCallback: OnItemClickCallback? = null
+
+    fun setOnClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(date: String)
+    }
+
     fun setHistory(film: List<AssessmentEntity>){
         this.listHistory.clear()
         this.listHistory.addAll(film)
     }
 
-    class ViewHolder(private val binding: ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun bind(historyList: AssessmentEntity) {
             with(binding) {
@@ -28,6 +40,7 @@ class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
                 tvItemTime.text = formattime(historyList.timeStamp)
                 point.text = "Score " + historyList.score.toString()
                 kategory.text = "Tes"
+                itemView.setOnClickListener{ onItemClickCallback?.onItemClicked("Tes"+historyList.timeStamp)}
             }
         }
 
@@ -58,6 +71,5 @@ class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int {
         return listHistory.size
-
     }
 }

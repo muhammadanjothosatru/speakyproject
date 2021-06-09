@@ -90,10 +90,6 @@ class AssessmentActivity : AppCompatActivity() {
 
     }
 
-    private fun showLoading(b: Boolean) {
-        binding.progressBar.isVisible = b
-    }
-
     private fun showPack(packId:String) {
         viewModel.findAssessmentPack(packId).observe(this, { response ->
             response.intruction?.let { it ->
@@ -177,7 +173,7 @@ class AssessmentActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 videoCapture.stopRecording()
-                showLoading(true)
+
 
 
             }
@@ -198,6 +194,7 @@ class AssessmentActivity : AppCompatActivity() {
             ContextCompat.getMainExecutor(this),
             object : VideoCapture.OnVideoSavedCallback {
                 override fun onVideoSaved(outputFileResults: VideoCapture.OutputFileResults) {
+                    showLoading(true)
                     val savedUri = Uri.fromFile(cacheFile)
                     val uploadRef = storageRef.child("${uId}/${savedUri.lastPathSegment}")
                     val msg = "Video capture succeeded: $savedUri"
@@ -222,15 +219,15 @@ class AssessmentActivity : AppCompatActivity() {
                         if (task.isSuccessful) {
                             val downloadUri = task.result.toString()
                             Log.i(TAG, downloadUri)
-                            binding.progressBar.visibility = View.INVISIBLE
                             val intent = Intent(this@AssessmentActivity, ResultActivity::class.java)
                             intent.putExtra(ResultActivity.EXTRA_TES, downloadUri)
                             startActivity(intent)
-                            showLoading(false)
+
                         } else {
                             Log.e(TAG, "failed")
                         }
                         finish()
+                        showLoading(false)
                     }
                     Log.i("firebase url", urlTask.toString())
                     cacheFile.delete()
@@ -256,7 +253,6 @@ class AssessmentActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_ID = "extra_title"
-        const val EXTRA_DETAIL = "extra_detail"
         private const val TAG = "CameraXBasic"
         private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm"
         private const val REQUEST_CODE_PERMISSIONS = 10
@@ -300,5 +296,9 @@ class AssessmentActivity : AppCompatActivity() {
                 finish()
             }
         }
+    }
+
+    private fun showLoading(b: Boolean) {
+        binding.progressBar.isVisible = b
     }
 }

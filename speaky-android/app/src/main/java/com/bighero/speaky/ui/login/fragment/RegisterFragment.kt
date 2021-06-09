@@ -78,6 +78,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
 
                     val mFragmentManager = fragmentManager
                     mFragmentManager?.beginTransaction()?.apply {
+                        setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
                         replace(R.id.frame_container, mUserFragment, UserInfoFragment::class.java.simpleName)
                         addToBackStack(null)
                         commit()

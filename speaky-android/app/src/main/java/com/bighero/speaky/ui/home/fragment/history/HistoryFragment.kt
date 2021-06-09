@@ -1,5 +1,6 @@
 package com.bighero.speaky.ui.home.fragment.history
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,9 +14,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bighero.speaky.data.source.remote.response.assesment.UserAssesmentResponse
 import com.bighero.speaky.databinding.FragmentHistoryBinding
+import com.bighero.speaky.ui.detail.assessment.DetailResultActivity
+import com.bighero.speaky.ui.detail.module.DetailModuleActivity
 import com.bighero.speaky.util.ViewModelFactory
 
-class HistoryFragment : Fragment() {
+class HistoryFragment : Fragment(), HistoryAdapter.OnItemClickCallback {
 
     private lateinit var historyViewModel: HistoryViewModel
     private var _binding: FragmentHistoryBinding? = null
@@ -53,6 +56,7 @@ class HistoryFragment : Fragment() {
                     binding.rvHistory.layoutManager = LinearLayoutManager(context)
                     historyAdapter.setHistory(it)
                     historyAdapter.notifyDataSetChanged()
+                    historyAdapter.setOnClickCallback(this)
                     binding.rvHistory.setHasFixedSize(true)
                     binding.rvHistory.adapter = historyAdapter
                 }
@@ -73,5 +77,11 @@ class HistoryFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onItemClicked(date: String) {
+        val intent = Intent(context, DetailModuleActivity::class.java)
+        intent.putExtra(DetailResultActivity.EXTRA_ID, date)
+        context?.startActivity(intent)
     }
 }

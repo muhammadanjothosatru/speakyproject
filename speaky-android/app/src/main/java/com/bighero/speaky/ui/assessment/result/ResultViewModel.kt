@@ -63,6 +63,7 @@ class ResultViewModel(
                     _isLoading.value = false
                 } else {
                     Log.e(TAG, "onFailure: ${response.message()}")
+                    _isLoading.value = false
                 }
             }
 

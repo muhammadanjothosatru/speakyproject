@@ -11,8 +11,8 @@ import com.bighero.speaky.R
 import com.bighero.speaky.databinding.ContentProfileBinding
 import com.bighero.speaky.databinding.FragmentProfileBinding
 import com.bighero.speaky.ui.login.LoginActivity
-import com.bighero.speaky.ui.detail.user.EditProfileActivity
-import com.bighero.speaky.ui.detail.user.TouActivity
+import com.bighero.speaky.ui.detail.user.edit.EditProfileActivity
+import com.bighero.speaky.ui.detail.user.tou.TouActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.auth.FirebaseAuth

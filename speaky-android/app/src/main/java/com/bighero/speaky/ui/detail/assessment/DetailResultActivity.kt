@@ -1,6 +1,8 @@
 package com.bighero.speaky.ui.detail.assessment
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -37,9 +39,9 @@ class DetailResultActivity : AppCompatActivity() {
     private fun setHasil(id: String) {
         detailResultViewModel.getResult(id).observe(this, { response ->
             response.history?.let {
-                binding.detailContent.blinkValue.text = it.blink.toString() + "kali"
-                binding.detailContent.gazeValue.text = it.gaze.toString() + "kali"
-                binding.detailContent.disValue.text = it.disfluency.toString() + "kali"
+                binding.detailContent.blinkValue.text = it.blink.toString() + " kali"
+                binding.detailContent.gazeValue.text = it.gaze.toString() + " kali"
+                binding.detailContent.disValue.text = it.disfluency.toString() + " kali"
                 binding.detailContent.skorValue.text = it.score.toString()
                 binding.detailContent.timeValue.text = formatdate(it.timeStamp) + " " + formattime(it.timeStamp)
                 showLoading(false)
