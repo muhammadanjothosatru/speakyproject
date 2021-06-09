@@ -43,11 +43,15 @@
 
     <Button
         android:id="@+id/bt_unlock"
-        android:layout_width="320dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
         android:layout_gravity=""
-        android:text="Buka modul"
+        android:backgroundTint="@color/blue_700"
+        android:textColor="@color/white"
+        android:text="@string/buka_modul"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

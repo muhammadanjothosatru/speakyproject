@@ -1,10 +1,10 @@
 package com.bighero.speaky.ui.home.fragment.profile
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bighero.speaky.R
 import com.bighero.speaky.databinding.ContentProfileBinding
@@ -27,6 +27,13 @@ class ProfileFragment : Fragment(), View.OnClickListener {
 
     private lateinit var database: DatabaseReference
     private lateinit var uId: String
+
+    companion object{
+        const val ALERT_DIALOG_OUT = 10
+        const val ALERT_DIALOG_DELETE = 20
+        const val REQUEST_DELETE = 100
+        const val RESULT_DELETE = 200
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,37 +93,65 @@ class ProfileFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_logout -> {
-                Firebase.auth.signOut()
-                startActivity((Intent(requireActivity(), LoginActivity::class.java)))
-                activity?.finish()
-                true
-            }
-            R.id.action_delete -> {
-                showLoading(true)
-                database.child("users").child(uId).removeValue()
-                auth.currentUser!!.delete()
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            Log.d("auth", "User account deleted.")
-                        }
-                    }
-                startActivity(Intent(activity, LoginActivity::class.java))
-                showLoading(false)
-                activity?.finish()
-                true
-            }
+        when (item.itemId) {
+            R.id.action_logout -> showAlertDialog(ALERT_DIALOG_OUT)
+            R.id.action_delete -> showAlertDialog(ALERT_DIALOG_DELETE)
             else -> super.onOptionsItemSelected(item)
         }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun showAlertDialog(type: Int) {
+        val isLogout = type == ALERT_DIALOG_OUT
+        val dialogTitle: String
+        val dialogMessage: String
+        if (isLogout){
+            dialogTitle = getString(R.string.sign_out)
+            dialogMessage = getString(R.string.sign_out_message)
+        } else {
+            dialogTitle = getString(R.string.delete)
+            dialogMessage = getString(R.string.delete_message)
+        }
+        val alertDialogBuilder = AlertDialog.Builder(activity)
+
+        with(alertDialogBuilder) {
+            setTitle(dialogTitle)
+            setMessage(dialogMessage)
+            setCancelable(false)
+            setPositiveButton(getString(R.string.yes)) {_,_->
+                if (!isLogout) {
+                    database.child("users").child(uId).removeValue()
+                    database.child("UserAssessment").child(uId).removeValue()
+                    database.child("UserModule").child(uId).removeValue()
+                    database.child("UserPractice").child(uId).removeValue()
+                    auth.currentUser!!.delete()
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                Log.d("auth", "User account deleted.")
+                            }
+                        }
+                    startActivity(Intent(activity, LoginActivity::class.java))
+                    showLoading(false)
+                    activity?.finish()
+
+                } else {
+                    Firebase.auth.signOut()
+                    startActivity(Intent(activity, LoginActivity::class.java))
+                    showLoading(false)
+                    activity?.finish()
+
+                }
+            }
+        }.setNegativeButton(getString(R.string.tidak)) {dialog, _ -> dialog.cancel()}
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
+
+
     }
 
     override fun onClick(v: View) {
         if (v.id == R.id.cv_edit) {
             startActivity(Intent(activity, EditProfileActivity::class.java))
-        }
-        else {
-            Toast.makeText(requireContext(), "Coming Soon", Toast.LENGTH_SHORT ).show()
         }
     }
 

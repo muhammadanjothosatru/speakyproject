@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Speaky"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.detail.module.content.MainActivity"></activity>
+        <activity android:name=".ui.detail.assessment.DetailResultActivity"></activity>
+        <activity android:name=".ui.detail.praktik.DetailPracticeActivity" />
         <activity
             android:name=".ui.detail.module.DetailModuleActivity"
             android:parentActivityName=".ui.home.HomeActivity" />

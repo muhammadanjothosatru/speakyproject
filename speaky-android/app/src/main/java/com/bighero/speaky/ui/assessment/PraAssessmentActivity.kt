@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,6 +26,8 @@ class PraAssessmentActivity : AppCompatActivity() {
         binding = ActivityPraAssessmentBinding.inflate(layoutInflater)
         detailBinding = binding.detailContent
         setContentView(binding.root)
+
+        showLoading(true)
 
         detailBinding.rvTes.setHasFixedSize(true)
         val factory = ViewModelFactory.getInstance(this)
@@ -54,6 +57,7 @@ class PraAssessmentActivity : AppCompatActivity() {
                 Log.e("exception", it)
             }
         }
+        showLoading(false)
     }
 
     private fun showRecyclerList() {
@@ -77,6 +81,16 @@ class PraAssessmentActivity : AppCompatActivity() {
             intent.putExtra(AssessmentActivity.EXTRA_ID, data.id)
             startActivity(intent)
             finish()
+        }
+    }
+
+    private fun showLoading(i: Boolean) {
+        if (i) {
+            binding.progressBar.visibility = View.VISIBLE
+            binding.content.visibility = View.INVISIBLE
+        } else {
+            binding.progressBar.visibility = View.INVISIBLE
+            binding.content.visibility = View.VISIBLE
         }
     }
 }

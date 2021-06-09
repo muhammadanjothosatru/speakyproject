@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/skor"
+        style="@style/regularTextThin"
+        android:text="@string/skor"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/skor_value"
+        style="@style/regularText"
+        android:text="@string/score"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/guideline2"
+        app:layout_constraintTop_toTopOf="@id/skor"/>
+
+    <TextView
+        android:id="@+id/time"
+        style="@style/regularTextThin"
+        android:text="@string/waktu"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/skor" />
+
+    <TextView
+        android:id="@+id/time_value"
+        style="@style/regularText"
+        android:text="@string/score"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/guideline2"
+        app:layout_constraintTop_toTopOf="@id/time"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="102dp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_video"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintTop_toBottomOf="@id/time_value">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingTop="25dp"
+            android:paddingBottom="25dp"
+            android:paddingStart="15dp">
+            <TextView
+                style="@style/regularTextThin"
+                android:text="Tonton kembali video kamu"
+                android:textSize="18sp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_gaze"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_marginTop="5dp"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintTop_toBottomOf="@id/cv_video">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="25dp"
+            android:paddingBottom="25dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp">
+            <TextView
+                android:id="@+id/tv_gaze"
+                style="@style/regularTextThin"
+                android:text="Eye Gazing"
+                android:textSize="18sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                style="@style/regularTextGrayThin"
+                android:text="Berapa kali mata kamu kehilangan fokus"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_gaze"
+                app:layout_constraintStart_toStartOf="@id/tv_gaze"/>
+            <TextView
+                android:id="@+id/gaze_value"
+                style="@style/regularText"
+                android:text="8 kali"
+                android:textSize="18sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_blink"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_marginTop="5dp"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintTop_toBottomOf="@id/cv_gaze">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="25dp"
+            android:paddingBottom="25dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp">
+            <TextView
+                android:id="@+id/tv_blink"
+                style="@style/regularTextThin"
+                android:text="Abnormal Blinking"
+                android:textSize="18sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                style="@style/regularTextGrayThin"
+                android:text="Berapa kali mata kamu berkedip secara tidak normal."
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_blink"
+                app:layout_constraintStart_toStartOf="@id/tv_blink"/>
+            <TextView
+                android:id="@+id/blink_value"
+                style="@style/regularText"
+                android:text="8 kali"
+                android:textSize="18sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_dis"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_marginTop="5dp"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintTop_toBottomOf="@id/cv_blink">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="25dp"
+            android:paddingBottom="25dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp">
+            <TextView
+                android:id="@+id/tv_dis"
+                style="@style/regularTextThin"
+                android:text="Disfluency"
+                android:textSize="18sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                style="@style/regularTextGrayThin"
+                android:text="Berapa kali bicaramu tidak lancar."
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_dis"
+                app:layout_constraintStart_toStartOf="@id/tv_dis"/>
+            <TextView
+                android:id="@+id/dis_value"
+                style="@style/regularText"
+                android:text="8 kali"
+                android:textSize="18sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_rekom_modul"
+        style="@style/regularTextGray"
+        android:textSize="16sp"
+        android:text="@string/rekomendasi_modul"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/cv_dis"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_teori"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/dashboard_list"
+        app:layout_constraintTop_toBottomOf="@id/tv_rekom_modul" />
+    <TextView
+        android:id="@+id/tv_rekom_praktik"
+        style="@style/regularTextGray"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"
+        android:text="@string/rekomendasi_praktek"
+        app:layout_constraintTop_toBottomOf="@id/rv_teori"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_praktek"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/dashboard_list"
+        app:layout_constraintTop_toBottomOf="@id/tv_rekom_praktik"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

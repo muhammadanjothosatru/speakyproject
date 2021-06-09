@@ -8,15 +8,16 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="120dp"
         android:layout_height="150dp"
-        android:background="@drawable/pack_selected_background"
         app:cardElevation="4dp"
         app:cardMaxElevation="4dp"
         app:cardUseCompatPadding="true"
-        app:cardCornerRadius="5dp">
+        app:cardCornerRadius="5dp"
+        android:background="@drawable/rv_selector">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
             <ImageView
                 android:id="@+id/img_pack"
                 android:layout_width="match_parent"

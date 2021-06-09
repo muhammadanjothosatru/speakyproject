@@ -14,12 +14,14 @@
         android:id="@+id/deskripsimodul"
         style="@style/regularTextThin"
         android:textSize="14sp"
+        android:layout_marginTop="10dp"
         android:text="Di modul ini kamu akan belajar bagaimana cara menjadi pembawa acara dengan berbagai macam kondisi atau situasi yang menarik"/>
 
     <TextView
         style="@style/regularTextThin"
         android:textSize="14sp"
-        android:text="Galeri Kelas"/>
+        android:layout_marginTop="10dp"
+        android:text="@string/galeri_kelas"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_gallery_module"

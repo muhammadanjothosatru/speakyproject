@@ -83,4 +83,14 @@
     <string name="complete_your_profile">Lengkapi profilmu</string>
     <string name="edit_your_profile">Edit profilmu</string>
     <string name="update">Perbarui</string>
+    <string name="galeri_kelas">Galeri Kelas</string>
+    <string name="buka_modul">Buka modul</string>
+    <string name="sign_out_message">Apakah anda yakin ingin keluar?</string>
+    <string name="delete">Hapus Akun</string>
+    <string name="delete_message">Apakah anda yakin ingin menghapus akun anda?</string>
+    <string name="yes">Ya</string>
+    <string name="tidak">Batal</string>
+    <string name="buka_praktik">Buka Praktik</string>
+    <string name="skor">Skor</string>
+    <string name="waktu">Waktu</string>
 </resources>

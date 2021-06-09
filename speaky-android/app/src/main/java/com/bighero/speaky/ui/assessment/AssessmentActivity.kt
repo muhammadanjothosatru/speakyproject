@@ -142,8 +142,10 @@ class AssessmentActivity : AppCompatActivity() {
         }, ContextCompat.getMainExecutor(this))
 
         timer = object : CountDownTimer(5000, 1000) {
+            @SuppressLint("ResourceAsColor")
             override fun onTick(millisUntilFinished: Long) {
                 binding.countDown.text = (millisUntilFinished / 1000).toString()
+                binding.countDown.setTextColor(android.R.color.holo_red_dark)
             }
 
             override fun onFinish() {

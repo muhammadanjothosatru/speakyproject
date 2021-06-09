@@ -11,6 +11,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bighero.speaky.R
 import com.bighero.speaky.databinding.FragmentHistoryBinding
 import com.bighero.speaky.databinding.FragmentListBabBinding
@@ -51,7 +52,7 @@ class ListBabFragment : Fragment() {
         viewModel = ViewModelProvider(this, factory)[DetailModuleViewModel::class.java]
         val moduleId = arguments?.getString(EXTRA_ID)
         if (moduleId != null) {
-            showbab(moduleId)
+            showBab(moduleId)
         }
         return binding.root
     }
@@ -65,7 +66,7 @@ class ListBabFragment : Fragment() {
         listAdapter = BabAdapter()
     }
 
-    private fun showbab(moduleId: String) {
+    private fun showBab(moduleId: String) {
         viewModel.setSelectedModule(moduleId).observe(viewLifecycleOwner, { response ->
             response.module?.let {
                 Log.d("modul id", it.toString())
@@ -78,7 +79,7 @@ class ListBabFragment : Fragment() {
                 binding.detailContent.rvListModule.setHasFixedSize(true)
                 binding.detailContent.rvListModule.adapter = listAdapter
 
-                binding.detailContent.rvGalleryModule.layoutManager = GridLayoutManager(context,2)
+                binding.detailContent.rvGalleryModule.layoutManager = LinearLayoutManager(context,RecyclerView.HORIZONTAL, false)
                 galleryAdapter.setModule(it.bab)
                 galleryAdapter.notifyDataSetChanged()
                 binding.detailContent.rvGalleryModule.setHasFixedSize(true)
@@ -97,7 +98,12 @@ class ListBabFragment : Fragment() {
     }
 
     private fun showLoading(i: Boolean) {
-        binding.progressBar.isVisible = i
-        binding.content.isInvisible = i
+        if (i) {
+            binding.progressBar.visibility = View.VISIBLE
+            binding.content.visibility = View.INVISIBLE
+        } else {
+            binding.progressBar.visibility = View.INVISIBLE
+            binding.content.visibility = View.VISIBLE
+        }
     }
 }
