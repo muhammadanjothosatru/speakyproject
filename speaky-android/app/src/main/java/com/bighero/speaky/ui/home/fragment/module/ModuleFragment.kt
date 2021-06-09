@@ -34,13 +34,14 @@ class ModuleFragment : Fragment(), ModuleAdapter.OnItemClickCallback {
         moduleViewModel = ViewModelProvider(this, factory)[ModuleViewModel::class.java]
         _binding = FragmentModuleBinding.inflate(inflater, container, false)
         detailBinding = binding.detailContent
+        moduleAdapter = ModuleAdapter()
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showLoading(true)
-        moduleAdapter = ModuleAdapter()
         getModule()
 
     }

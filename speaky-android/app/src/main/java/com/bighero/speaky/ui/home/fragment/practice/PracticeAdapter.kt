@@ -5,15 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bighero.speaky.R
 import com.bighero.speaky.data.entity.PraticeEntity
-import com.bighero.speaky.data.entity.module.ModuleEntity
 import com.bighero.speaky.databinding.GridListBinding
-import com.bighero.speaky.databinding.PraListBinding
-import com.bighero.speaky.ui.home.fragment.module.ModuleAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
 class PracticeAdapter : RecyclerView.Adapter<PracticeAdapter .ViewHolder>() {
-    private val listPratice = ArrayList<PraticeEntity>()
+    private val listPractice = ArrayList<PraticeEntity>()
 
     private var onItemClickCallback: OnItemClickCallback? = null
 
@@ -22,8 +19,8 @@ class PracticeAdapter : RecyclerView.Adapter<PracticeAdapter .ViewHolder>() {
     }
 
     fun setPratice(pratice: List<PraticeEntity>){
-        this.listPratice.clear()
-        this.listPratice.addAll(pratice)
+        this.listPractice.clear()
+        this.listPractice.addAll(pratice)
     }
 
     inner class ViewHolder(private val binding: GridListBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -47,11 +44,11 @@ class PracticeAdapter : RecyclerView.Adapter<PracticeAdapter .ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(listPratice[position])
+        holder.bind(listPractice[position])
     }
 
     override fun getItemCount(): Int {
-        return listPratice.size
+        return listPractice.size
 
     }
 
