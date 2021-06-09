@@ -80,7 +80,7 @@ class HistoryFragment : Fragment(), HistoryAdapter.OnItemClickCallback {
     }
 
     override fun onItemClicked(date: String) {
-        val intent = Intent(context, DetailModuleActivity::class.java)
+        val intent = Intent(context, DetailResultActivity::class.java)
         intent.putExtra(DetailResultActivity.EXTRA_ID, date)
         context?.startActivity(intent)
     }
