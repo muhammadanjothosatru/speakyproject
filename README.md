@@ -73,7 +73,7 @@ sudo /etc/init.d/nginx restart
 # RUN FLASK APP
 ```bash
 cd speaky_deploy
-gunicorn --bind 0.0.0.0:5000 app:app --daemon
+gunicorn --workers 5  --bind 0.0.0.0:5000 app:app --timeout 90 --daemon
 ```
 
 
