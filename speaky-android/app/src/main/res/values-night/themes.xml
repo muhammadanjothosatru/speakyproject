@@ -14,6 +14,10 @@
         <!-- Customize your theme here. -->
         <item name="android:fontFamily">@font/vision_bold</item>
         <item name="android:autofilledHighlight" tools:targetApi="o">@drawable/autofill</item>
+        <item name="colorButtonNormal">@color/blue_700</item>
+        <item name="textAllCaps">false</item>
+        <item name="colorAccent">@color/blue_700</item>
+
     </style>
 
     <style name="Theme.Speaky.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
@@ -30,7 +34,7 @@
         <!-- Customize your theme here. -->
         <item name="android:fontFamily">@font/vision_bold</item>
         <item name="android:autofilledHighlight" tools:targetApi="o">@drawable/autofill</item>
-        <item name="android:buttonTint">@color/blue_700</item>
+        <item name="colorAccent">@color/blue_700</item>
     </style>
 
     <style name="customButtonRect" parent="Theme.AppCompat.Light">

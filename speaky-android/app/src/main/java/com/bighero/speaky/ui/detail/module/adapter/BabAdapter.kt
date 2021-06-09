@@ -6,28 +6,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bighero.speaky.data.entity.module.ModuleEntity
 import com.bighero.speaky.databinding.ModuleListBinding
 
-class BabAdapter:RecyclerView.Adapter<BabAdapter.ViewHolder>() {
-    private val listModule = ArrayList<ModuleEntity.Bab>()
-
-    private var onItemClickCallback: OnItemClickCallback? = null
-
-    fun setOnClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
+class BabAdapter(private val listener: BabAdapterClickListener):RecyclerView.Adapter<BabAdapter.ViewHolder>() {
+    private val listBab = ArrayList<ModuleEntity.Bab>()
 
     fun setModule(bab: List<ModuleEntity.Bab>){
-        this.listModule.clear()
-        this.listModule.addAll(bab)
+        this.listBab.clear()
+        this.listBab.addAll(bab)
     }
 
     inner class ViewHolder(private val binding: ModuleListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(bab: ModuleEntity.Bab) {
             with(binding) {
                 titleModule.text = bab.judul
-                itemView.setOnClickListener {
-                    onItemClickCallback?.onItemClicked(bab.judul)
-                    
-                }
             }
         }
 
@@ -39,15 +29,20 @@ class BabAdapter:RecyclerView.Adapter<BabAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(listModule[position])
+        val bab = listBab[position]
+        holder.bind(bab)
+        holder.itemView.setOnClickListener {
+            listener.onItemClicked(holder.adapterPosition, listBab[holder.adapterPosition].judul)
+        }
+
     }
 
     override fun getItemCount(): Int {
-        return listModule.size
+        return listBab.size
 
     }
 
-    interface OnItemClickCallback {
-        fun onItemClicked(bab: String)
+    interface BabAdapterClickListener {
+        fun onItemClicked(position: Int, babId: String)
     }
 }

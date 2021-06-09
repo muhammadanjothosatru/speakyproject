@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/blue_200"
+    android:background="@color/blue_200"
     tools:context=".ui.detail.module.DetailModuleActivity">
 
     <androidx.core.widget.NestedScrollView
@@ -20,7 +20,8 @@
         android:id="@+id/gradient"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/bg_gradient"/>
+        android:src="@drawable/bg_gradient"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/img_lock"
@@ -30,11 +31,12 @@
         android:layout_marginBottom="15dp"
         android:layout_marginStart="90dp"
         app:layout_constraintStart_toStartOf="@id/bt_unlock"
-        app:layout_constraintBottom_toTopOf="@id/bt_unlock" />
+        app:layout_constraintBottom_toTopOf="@id/bt_unlock"
+        tools:ignore="ContentDescription" />
 
     <TextView
         style="@style/regularTextThin"
-        android:text="Modul terkunci"
+        android:text="@string/modul_terkunci"
         android:textSize="14sp"
         android:layout_marginStart="5dp"
         app:layout_constraintStart_toEndOf="@id/img_lock"

@@ -1,5 +1,6 @@
 package com.bighero.speaky.ui.detail.module.list
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -16,17 +17,21 @@ import com.bighero.speaky.R
 import com.bighero.speaky.databinding.FragmentHistoryBinding
 import com.bighero.speaky.databinding.FragmentListBabBinding
 import com.bighero.speaky.ui.detail.module.DetailModuleViewModel
+import com.bighero.speaky.ui.detail.module.ModuleReaderCallback
 import com.bighero.speaky.ui.detail.module.adapter.BabAdapter
 import com.bighero.speaky.ui.detail.module.adapter.GalleryAdapter
 import com.bighero.speaky.ui.home.fragment.history.HistoryViewModel
 import com.bighero.speaky.util.ViewModelFactory
 
 
-class ListBabFragment : Fragment() {
+class ListBabFragment : Fragment(), BabAdapter.BabAdapterClickListener,
+    GalleryAdapter.GalleryAdapterClickListener {
 
     private var _binding: FragmentListBabBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var viewModel: DetailModuleViewModel
+    private lateinit var moduleReaderCallback: ModuleReaderCallback
     private lateinit var galleryAdapter: GalleryAdapter
     private lateinit var listAdapter: BabAdapter
 
@@ -46,7 +51,7 @@ class ListBabFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentListBabBinding.inflate(inflater, container, false)
         val factory = ViewModelFactory.getInstance(requireContext())
         viewModel = ViewModelProvider(this, factory)[DetailModuleViewModel::class.java]
@@ -62,8 +67,8 @@ class ListBabFragment : Fragment() {
         showLoading(true)
         val factory = ViewModelFactory.getInstance(requireContext())
         viewModel = ViewModelProvider(this, factory)[DetailModuleViewModel::class.java]
-        galleryAdapter = GalleryAdapter()
-        listAdapter = BabAdapter()
+        galleryAdapter = GalleryAdapter(this)
+        listAdapter = BabAdapter(this)
     }
 
     private fun showBab(moduleId: String) {
@@ -105,5 +110,15 @@ class ListBabFragment : Fragment() {
             binding.progressBar.visibility = View.INVISIBLE
             binding.content.visibility = View.VISIBLE
         }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        moduleReaderCallback = context as ModuleReaderCallback
+    }
+
+    override fun onItemClicked(position: Int, babId: String) {
+        moduleReaderCallback.moveTo(position, babId)
+        viewModel.setSelectedModule(babId)
     }
 }
